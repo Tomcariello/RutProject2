@@ -1,0 +1,20 @@
+{
+  "name": "eat_da_burger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    },
+  "author": "tom cariello",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "method-override": "^2.3.5",
+    "mysql": "^2.10.2"
+  },
+  "devDependencies": {
+    "handlebars-helper-css": "^0.1.0"
+  }
+}
