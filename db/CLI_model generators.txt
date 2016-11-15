@@ -1,0 +1,9 @@
+
+//Create Users Table
+sequelize model:create --name Users --attributes 'firstname:string lastname:string email:string password:string zipcode:integer'
+
+//Create business Table
+sequelize model:create --name BusinessUsers --attributes 'businessname:string website:string email:string password:string zipcode:integer'
+
+//Create Goals Table
+sequelize model:create --name Goals --attributes 'goalname:string imageURL:string' 
