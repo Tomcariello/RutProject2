@@ -1,11 +1,11 @@
 {
-  "name": "eat_da_burger",
+  "name": "bucketlist",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     },
-  "author": "tom cariello",
+  "author": "Tom Cariello, Melissa Baldwin, Marija Naumoski, Ryan Seery",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.2",
