@@ -5,23 +5,27 @@
 
   <h2>Welcome to your User profile!</h2>
 
-    <ul>
+To Do List:
+
+Edit user profile information (seperate tab?)
+View all goals selected by the current user (left side)
+Show completed goals of that user (right side)
+Allow for deletion of selected goals
+Allow for marking complete selected goals
+On hover, display business/helper information
+
+
+**Sample Handlebars code**
       {{#each burgers}}
         {{#unless this.devoured}}
-          <li>
             {{this.burger_name}}
 
-            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devour" value="true">
               <button type="submit">EAT ME!</button>
             </form>
-
-          </li>
         {{/unless}}
       {{/each}}
-    </ul>
-  </div>
-</div>
 
 
 <div class ="row">

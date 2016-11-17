@@ -5,23 +5,25 @@
 
   <h2>Welcome to your business profile!</h2>
 
-    <ul>
+To Do List:
+
+Edit business profile information
+View all goals associated by the current business
+Allow for deletion/updating of selected goals
+
+
+**Sample Handlebars code**
       {{#each burgers}}
         {{#unless this.devoured}}
-          <li>
             {{this.burger_name}}
 
-            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devour" value="true">
               <button type="submit">EAT ME!</button>
             </form>
-
-          </li>
         {{/unless}}
       {{/each}}
-    </ul>
-  </div>
-</div>
+
 
 
 <div class ="row">
