@@ -3,25 +3,31 @@
 <div class ="row">
   <div class="col-xs-12">
 
-  <h2>View previously created goals!</h2>
+  <h2>View all goals!</h2>
 
-    <ul>
+To Do List:
+
+Create "selected" area at the top of the page. This will contain goals that the user wants to add to their profile. Include a 'Done' button.
+List all goals from the DB in a tile format. Exclude goals that are already selected by the current user.
+Include "create a goal" button which creates a modal to create a new goal.
+  Goal Name
+  Keywords
+  Image(?)
+  Backend: timesamp, add goal to current user
+Include search form (stretch goal)
+
+
+**Sample Handlebars code**
       {{#each burgers}}
         {{#unless this.devoured}}
-          <li>
             {{this.burger_name}}
 
-            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devour" value="true">
               <button type="submit">EAT ME!</button>
             </form>
-
-          </li>
         {{/unless}}
       {{/each}}
-    </ul>
-  </div>
-</div>
 
 
 <div class ="row">

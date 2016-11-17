@@ -5,23 +5,36 @@
 
   <h2>Create your user or business account below!</h2>
 
-    <ul>
+To Do List:
+
+Users:
+  firstname
+  lastname
+  email
+  zip code
+  password
+  (Use facebook for login if you want)
+
+Business:
+  Business name
+  website
+  zip code
+  email
+  phone number
+  password
+
+
+**Sample Handlebars code**
       {{#each burgers}}
         {{#unless this.devoured}}
-          <li>
             {{this.burger_name}}
 
-            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devour" value="true">
               <button type="submit">EAT ME!</button>
             </form>
-
-          </li>
         {{/unless}}
       {{/each}}
-    </ul>
-  </div>
-</div>
 
 
 <div class ="row">
