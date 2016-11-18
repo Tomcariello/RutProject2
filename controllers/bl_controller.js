@@ -27,7 +27,17 @@ router.get('/index', function (req, res) {
 });
 
 router.get('/browse', function (req, res) {
-  res.render('browse', {data: 'test'});
+  console.log('goals access requested');
+  models.Goals.findAll({})
+  .then(function(allGoals){
+    console.log(allGoals);
+    var goalObject = { goals: allGoals};
+
+
+    res.render('browse', goalObject);
+  })
+
+  // res.render('browse', {data: 'test'});
 });
 
 router.get('/bprofile', function (req, res) {

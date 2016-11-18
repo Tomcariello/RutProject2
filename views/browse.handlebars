@@ -18,9 +18,8 @@ Include search form (stretch goal)
 
 
 **Sample Handlebars code**
-      {{#each burgers}}
-        {{#unless this.devoured}}
-            {{this.burger_name}}
+      {{#each goals}}
+            {{this.goalname}}
 
             <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devour" value="true">
