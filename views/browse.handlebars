@@ -5,7 +5,7 @@
 
   <h2>View all goals!</h2>
 
-To Do List:
+Tom's To Do List:
 
 Create "selected" area at the top of the page. This will contain goals that the user wants to add to their profile. Include a 'Done' button.
 List all goals from the DB in a tile format. Exclude goals that are already selected by the current user.
@@ -18,9 +18,8 @@ Include search form (stretch goal)
 
 
 **Sample Handlebars code**
-      {{#each burgers}}
-        {{#unless this.devoured}}
-            {{this.burger_name}}
+      {{#each goals}}
+            {{this.goalname}}
 
             <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devour" value="true">
