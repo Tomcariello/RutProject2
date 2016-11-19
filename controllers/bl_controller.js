@@ -37,11 +37,8 @@ router.get('/browse', function (req, res) {
     console.log(allGoals);
     var goalObject = { goals: allGoals};
 
-
     res.render('browse', goalObject);
   })
-
-  // res.render('browse', {data: 'test'});
 });
 
 router.get('/bprofile', function (req, res) {

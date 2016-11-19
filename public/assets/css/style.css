@@ -19,6 +19,9 @@ h2{
 }
 .card {
   text-align: center;
+  height: 200px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background-color: #f0f0f0;
 }
 .goaltitle {
   font-size: 24px;
