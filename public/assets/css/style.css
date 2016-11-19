@@ -21,13 +21,10 @@ h2{
   width: 50%;
 }
 .card {
-  float: left;
-  /*border: 1px solid black;*/
-  width: 20%;
-  height: 20%;
   text-align: center;
-  margin: 1%;
-  padding: 1%;
+  height: 200px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background-color: #f0f0f0;
 }
 .goaltitle {
   font-size: 24px;
@@ -37,4 +34,12 @@ h2{
 }
 footer.page-footer{
   background-color: #415E81;
+<<<<<<< HEAD
+=======
+  width: 100%;
+}
+.sidebar {
+  position: fixed;
+  padding-top: 30px;
+>>>>>>> dcb4600fc8bcef0063e2811cca203717b4a17cac
 }
