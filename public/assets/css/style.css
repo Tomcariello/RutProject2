@@ -1,21 +1,17 @@
-li {
-  background: #FAEBD7;
-  margin: 5px;
-  padding: 5px;
+.nav-wrapper{
+  padding-top: 20px;
 }
-
-.label {
-  font-weight: bold;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
-
-.create-update-form {
-  background: aqua;
-  margin: 5px;
-  padding: 5px;
+h2{
+  margin-top: 100px;
+  text-align: center;
 }
-
-.form-group {
-  margin-bottom: 5px;
+.nav-wrapper{
+  background-color: #415E81;
 }
 .imageicon {
   height: 50%;
@@ -32,5 +28,8 @@ li {
 }
 .goaltitle {
   font-size: 24px;
-
+}
+footer.page-footer{
+  background-color: #415E81;
+  width: 100%;
 }

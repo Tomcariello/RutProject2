@@ -1,38 +1,16 @@
-<h1>Goals!</h1>
+{{!-- <h1>Goals!</h1> --}}
 
 <div class ="row">
   <div class="col-xs-12">
 
   <h2>Welcome to the Bucketlist homepage!</h2>
-
-
-  Positive affirmation
-  Explanation of the site
-  Nice graphics
-  User can login/register or go to the browse page
   
-    <ul>
-      {{#each burgers}}
-        {{#unless this.devoured}}
-          <li>
-            {{this.burger_name}}
-
-            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="devour" value="true">
-              <button type="submit">EAT ME!</button>
-            </form>
-
-          </li>
-        {{/unless}}
-      {{/each}}
-    </ul>
   </div>
 </div>
 
 
 <div class ="row">
   <div class="col-xs-12">
-    <h2>Add a Goal</h2>
     <form class="create-update-form" action="goals/create" method="POST">
 
       <div class="form-group">

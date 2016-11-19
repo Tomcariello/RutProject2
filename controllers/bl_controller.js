@@ -12,9 +12,11 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
 // make our tables
 // note: force:true drops the table if it already exists
+
 .then(function(){
   // return sequelizeConnection.sync({force:true})
 })
+
 
 
 //Establish page routing
