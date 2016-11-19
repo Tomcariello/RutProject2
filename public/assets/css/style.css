@@ -34,12 +34,9 @@ h2{
 }
 footer.page-footer{
   background-color: #415E81;
-<<<<<<< HEAD
-=======
   width: 100%;
 }
 .sidebar {
   position: fixed;
   padding-top: 30px;
->>>>>>> dcb4600fc8bcef0063e2811cca203717b4a17cac
 }
