@@ -5,6 +5,9 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-image: url("/main.jpeg");
+  background-size: cover;
+
 }
 h2{
   margin-top: 100px;
@@ -29,7 +32,9 @@ h2{
 .goaltitle {
   font-size: 24px;
 }
+.footer-copyright{
+  text-align: center;
+}
 footer.page-footer{
   background-color: #415E81;
-  width: 100%;
 }
