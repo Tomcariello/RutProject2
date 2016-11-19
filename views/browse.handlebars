@@ -19,19 +19,16 @@ Include "create a goal" button which creates a modal to create a new goal.
   </ul>
 
 
-**Sample Handlebars code**
-      {{#each goals}}
-           <ul>
-            <li>
-              {{this.goalname}}
-            </li>
-          </ul>
-
-{{!--     <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
-            <input type="hidden" name="devour" value="true">
-            <button type="submit">EAT ME!</button>
-         </form> --}}
-      {{/each}}
+  {{#each goals}}
+    <div class='card'>
+      <div class="goalcard">
+        <img class="imageicon" id={{this.id}} src="{{this.imageURL}}">
+      </div>
+      <div class="goaltitle">
+        {{this.goalname}}
+      </div>
+    </div>
+    {{/each}}
 
 
 <div class ="row">
