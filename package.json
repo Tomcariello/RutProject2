@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
-    },
+  "scripts": {},
   "author": "Tom Cariello, Melissa Baldwin, Marija Naumoski, Ryan Seery",
   "license": "ISC",
   "dependencies": {
@@ -12,7 +11,8 @@
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "method-override": "^2.3.5",
-    "mysql": "^2.10.2"
+    "mysql": "^2.10.2",
+    "sequelize": "^3.27.0"
   },
   "devDependencies": {
     "handlebars-helper-css": "^0.1.0"
