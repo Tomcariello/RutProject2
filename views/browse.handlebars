@@ -10,22 +10,27 @@ Tom's To Do List:
 Create "selected" area at the top of the page. This will contain goals that the user wants to add to their profile. Include a 'Done' button.
 List all goals from the DB in a tile format. Exclude goals that are already selected by the current user.
 Include "create a goal" button which creates a modal to create a new goal.
-  Goal Name
-  Keywords
-  Image(?)
-  Backend: timesamp, add goal to current user
-Include search form (stretch goal)
+  <ul>
+    <li>Goal Name</li>
+    <li>Keywords</li>
+    <li>Image(?)</li>
+    <li>Backend: timesamp, add goal to current user</li>
+    <li>Include search form (stretch goal)</li>
+  </ul>
 
 
 **Sample Handlebars code**
       {{#each goals}}
-            {{this.goalname}}
+           <ul>
+            <li>
+              {{this.goalname}}
+            </li>
+          </ul>
 
-            <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="devour" value="true">
-              <button type="submit">EAT ME!</button>
-            </form>
-        {{/unless}}
+{{!--     <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devour" value="true">
+            <button type="submit">EAT ME!</button>
+         </form> --}}
       {{/each}}
 
 

@@ -13,7 +13,7 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 // make our tables
 // note: force:true drops the table if it already exists
 .then(function(){
-  return sequelizeConnection.sync({force:true})
+  // return sequelizeConnection.sync({force:true})
 })
 
 
@@ -28,8 +28,10 @@ router.get('/index', function (req, res) {
 
 router.get('/browse', function (req, res) {
   console.log('goals access requested');
-  models.Goals.findAll({})
+  models.Goals.findAll({
+  })
   .then(function(allGoals){
+    // console.log("All Goals:");
     console.log(allGoals);
     var goalObject = { goals: allGoals};
 
