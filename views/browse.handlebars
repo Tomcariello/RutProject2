@@ -1,25 +1,22 @@
-<h1>Goals!</h1>
+
 
 <div class ="row">
-  <div class="col-xs-12">
+  <div class="col xs 12">
+    <h3>Click on any activity below to add it to your list!</h3>
 
-  <h2>View all goals!</h2>
+    Tom's To Do List:
 
-Tom's To Do List:
+    Create "selected" area at the top of the page. This will contain goals that the user wants to add to their profile. Include a 'Done' button.
+    List all goals from the DB in a tile format. Exclude goals that are already selected by the current user.
+    Include "create a goal" button which creates a modal to create a new goal.
 
-Create "selected" area at the top of the page. This will contain goals that the user wants to add to their profile. Include a 'Done' button.
-List all goals from the DB in a tile format. Exclude goals that are already selected by the current user.
-Include "create a goal" button which creates a modal to create a new goal.
-  <ul>
-    <li>Goal Name</li>
-    <li>Keywords</li>
-    <li>Image(?)</li>
-    <li>Backend: timesamp, add goal to current user</li>
-    <li>Include search form (stretch goal)</li>
-  </ul>
+  </div>
+</div>
 
+<div class='row'>
 
   {{#each goals}}
+  <div class="col s3">
     <div class='card'>
       <div class="goalcard">
         <img class="imageicon" id={{this.id}} src="{{this.imageURL}}">
@@ -28,7 +25,9 @@ Include "create a goal" button which creates a modal to create a new goal.
         {{this.goalname}}
       </div>
     </div>
-    {{/each}}
+  </div>
+  {{/each}}
+</div>
 
 
 <div class ="row">
