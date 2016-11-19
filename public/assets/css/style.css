@@ -27,3 +27,7 @@ footer.page-footer{
   background-color: #415E81;
   width: 100%;
 }
+.sidebar {
+  position: fixed;
+  padding-top: 30px;
+}

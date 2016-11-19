@@ -1,7 +1,7 @@
 
 
-<div class ="row">
-  <div class="col xs 12">
+<div class='row'>
+  <div class="col s9">
     <h3>Click on any activity below to add it to your list!</h3>
 
     Tom's To Do List:
@@ -10,37 +10,34 @@
     List all goals from the DB in a tile format. Exclude goals that are already selected by the current user.
     Include "create a goal" button which creates a modal to create a new goal.
 
-  </div>
-</div>
 
-<div class='row'>
-
-  {{#each goals}}
-  <div class="col s3">
-    <div class='card'>
-      <div class="goalcard">
-        <img class="imageicon" id={{this.id}} src="{{this.imageURL}}">
+    <div class='row'>
+      {{#each goals}}
+      <div class="col s4">
+        <div class='card'>
+          <div class="goalcard">
+            <img class="imageicon" id={{this.id}} src="{{this.imageURL}}">
+          </div>
+          <div class="goaltitle">
+            {{this.goalname}}
+          </div>
+        </div>
       </div>
-      <div class="goaltitle">
-        {{this.goalname}}
-      </div>
+      {{/each}}
     </div>
   </div>
-  {{/each}}
-</div>
 
+  <div class="col s3">
+    <div class="sidebar">
+      <button type="submit">Go to profile</button>
 
-<div class ="row">
-  <div class="col-xs-12">
-    <h2>Add a Goal</h2>
-    <form class="create-update-form" action="goals/create" method="POST">
-
+      <form class="create-update-form" action="goals/filter" method="POST">
       <div class="form-group">
-        <label for="newGoal">Goal Name:</label>
-        <input type="text" id="newGoal" name="newGoalName">
+        <input type="text" id="filterResult" name="filterResultString">
       </div>
+      <p><button type="submit">Add Filter</button></p>
 
       <button type="submit">Add Goal</button>
-    </form>
+    </div>
   </div>
-</div>
+</div> 
