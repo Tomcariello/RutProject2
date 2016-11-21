@@ -13,9 +13,9 @@
     <div class='row'>
       {{#each goals}}
       <div class="col s4">
-        <div class='card'>
+        <div id={{this.id}} class='card'>
           <div class="goalcard">
-            <img class="imageicon" id={{this.id}} src="{{this.imageURL}}">
+            <img class="imageicon" src="{{this.imageURL}}">
           </div>
           <div class="goaltitle">
             {{this.goalname}}
