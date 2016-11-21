@@ -11,7 +11,7 @@ body {
   flex-direction: column;
   background-image: url("/main.jpeg");
   background-size: cover;
-
+  color: white;
 }
 /*nav .brand-logo{
   margin-bottom: 20px;
@@ -33,6 +33,7 @@ h2{
 }
 .goaltitle {
   font-size: 24px;
+  color: black;
 }
 .footer-copyright{
   text-align: center;
