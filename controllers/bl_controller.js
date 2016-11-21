@@ -42,7 +42,14 @@ router.get('/browse', function (req, res) {
 });
 
 router.get('/bprofile', function (req, res) {
-    res.render('bprofile', {data: 'test'});
+    console.log('business profile is requested');
+    models.BusinessUsers.findAll({
+
+    }).then(function(bprofile){
+      console.log(bprofile);
+
+    })
+    res.render('bprofile');
 });
 
 router.get('/uprofile', function (req, res) {

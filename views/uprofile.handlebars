@@ -5,7 +5,7 @@
 
   <h2>Welcome to your User profile!</h2>
 
-This is Marija's To Do List:
+{{!-- This is Marija's To Do List:
 
 Edit user profile information (seperate tab?)
 View all goals selected by the current user (left side)
@@ -15,18 +15,18 @@ Allow for marking complete selected goals
 On hover, display business/helper information
 
 
-**Sample Handlebars code**
-      {{#each burgers}}
+**Sample Handlebars code** --}}
+     {{!--  {{#each burgers}}
         {{#unless this.devoured}}
             {{this.burger_name}}
 
             <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="devour" value="true">
+              <input type="" name="" value="true">
               <button type="submit">EAT ME!</button>
             </form>
         {{/unless}}
-      {{/each}}
-
+      {{/each}} --}}
+{{#each }}
 
 <div class ="row">
   <div class="col-xs-12">
