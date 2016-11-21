@@ -59,10 +59,20 @@ router.get('/browse', function (req, res) {
   })
   .then(function(allGoals){
     // console.log("All Goals:");
-    console.log(allGoals);
+    // console.log(allGoals);
     var goalObject = { goals: allGoals};
 
     res.render('browse', goalObject);
+  })
+});
+
+router.get('/addusergoal/:userId/:goalId', function (req, res) {
+  console.log('adding a goal: ID is ' + req.params.userId + " and goalid is " + req.params.goalId);
+
+  models.Users.findOne({where: {id: parseInt(req.params.userId)} })
+  // with .then, we can work with this an instance and add a goal
+  .then(function(user){
+    return user.addGoals(parseInt(req.params.goalId));
   })
 });
 
