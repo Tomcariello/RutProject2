@@ -2,9 +2,8 @@
   <div class="col-xs-12">
 
   <h2>Sign up below!</h2>
-  <h4><small>or sign in</small></h4>
 
-To Do List:
+{{!-- To Do List:
 
 Users:
   firstname
@@ -20,33 +19,51 @@ Business:
   zip code
   email
   phone number
-  password
+  password --}}
 
-
-{{!-- **Sample Handlebars code**
-      {{#each burgers}}
-        {{#unless this.devoured}}
-            {{this.burger_name}}
-
-            <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="devour" value="true">
-              <button type="submit">EAT ME!</button>
-            </form>
-        {{/unless}}
-      {{/each}} --}}
-
-
-{{!-- <div class ="row">
-  <div class="col-xs-12">
-    <h2>Add a Goal</h2>
-    <form class="create-update-form" action="goals/create" method="POST">
-
-      <div class="form-group">
-        <label for="newGoal">Goal Name:</label>
-        <input type="text" id="newGoal" name="newGoalName">
+  <form action="#">
+    <p>
+      <div class="input-field col s3">
+      <input name="group1" type="radio" id="personal"/>
+      <label for="test1">Personal</label>
       </div>
+    </p>
+    <p>
+      <div class="input-field col s3">
+      <input name="group1" type="radio" id="business"/>
+      <label for="test2">Business</label>
+      </div>
+    </p>
+  </form>
 
-      <button type="submit">Add Goal</button>
-    </form>
-  </div>
-</div> --}}
+  <div class="row" id="form">
+    <form class="col s7">
+      <div class="row">
+        <div class="input-field col s5">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name">First Name:</label>
+        </div>
+        <div class="input-field col s5">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name:</label>
+        </div>
+      </div>
+  <div class="row">
+      <div class="input-field col s6">
+          <input id="zipcode" type="text" class="validate">
+          <label for="zipcode">Zipcode:</label>
+        </div>
+      </div>
+  <div class="row">
+      <div class="input-field col s6">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email:</label>
+        </div>
+      </div>
+  <div class="row">
+      <div class="input-field col s6">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+    </div>
+
