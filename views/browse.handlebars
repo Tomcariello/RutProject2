@@ -13,6 +13,7 @@
     <div class='row'>
       {{#each goals}}
       <div class="col s4">
+        
         <div id={{this.id}} class='card'>
           <div class="goalcard">
             <img class="imageicon" src="{{this.imageURL}}">
@@ -20,7 +21,15 @@
           <div class="goaltitle">
             {{this.goalname}}
           </div>
+
+          <form action="/addusergoal/1/{{this.id}}" method="POST">
+          <input type="hidden" name="sleepy" value="true">
+          <button type="submit">Add Goal!</button>
+        </form>
         </div>
+
+
+
       </div>
       {{/each}}
     </div>
