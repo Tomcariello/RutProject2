@@ -68,12 +68,10 @@ router.get('/browse/:userId', function (req, res) {
     
     // we then pass the fandoms in a final callback
     .then(function(allGoals){
-
-    var goalObject = { goals: allGoals};
-
-    res.render('browse', goalObject);
-
-  })
+      var goalObject = { goals: allGoals};
+      res.render('browse', goalObject);
+    })
+  });
 });
 
 //Route to process goals being added
