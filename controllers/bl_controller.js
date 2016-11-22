@@ -55,15 +55,34 @@ router.get('/index', function (req, res) {
 
 router.get('/browse', function (req, res) {
   console.log('goals access requested');
-  models.Goals.findAll({
-  })
+  //Find all goals
+  models.Goals.findAll({})
+
+  //find goals the current user does not already have on their list
+  // models.Users.findOne({where: {id: parseInt(req.params.userId)} })
+  // .then(function() {
+
+  //   //return goals that are not associated with the provided ID through usergoals table
+
+  // })
   .then(function(allGoals){
-    // console.log("All Goals:");
-    console.log(allGoals);
     var goalObject = { goals: allGoals};
 
     res.render('browse', goalObject);
   })
+});
+
+//Route to process goals being added
+router.get('/add-user-goal/:userId/:goalId', function (req, res) {
+  // console.log('adding a goal: ID is ' + req.params.userId + " and goalid is " + req.params.goalId);
+
+  models.Users.findOne({where: {id: parseInt(req.params.userId)} })
+  // with .then, we can work with this an instance and add a goal
+  .then(function(user){
+    return user.addGoals(parseInt(req.params.goalId));
+  })
+
+  res.redirect('/browse');
 });
 
 router.get('/bprofile', function (req, res) {
