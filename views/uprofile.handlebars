@@ -4,13 +4,17 @@
 
 <div class ="row">
 
-{{#each Users}}
+{{#each users}}
   {{this.firstname}}
   {{this.lastname}} 
   {{this.email}}
   {{/each}}
-</div>
 
+{{#each goals}}
+{{this.firstname}}
+{{this.goalname}}
+{{this.imageURL}}
+{{/each}}
 </div>
 
 {{!-- This is Marija's To Do List:
