@@ -53,26 +53,57 @@ router.get('/index', function(req, res) {
     res.render('index', { data: 'test' });
 });
 
-router.get('/browse/:userId', function(req, res) {
-    console.log('goals access requested');
-    //Find all goals
-    // models.Goals.findAll({})
+router.get('/browse', function (req, res) {
+  console.log('goals access requested');
+  //Find all goals that are not already associated with the current user
+    
+  // models.Goals.findAll({include: 
+  //   [{model: models.Users, 
+  //     where: {id: {$ne: 3}}}] })
+  // .then(function(allGoals){
+  //   // console.log(allGoals.length);
+  //   var goalObject = { goals: allGoals};
+  //   res.render('browse', goalObject);
+  // });
 
-    //find goals the current user does not already have on their list
-    models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
+  //look up user ID
+  models.Users.findOne({where: {id: 2} })
+  .then(function(user){
+    //get user associated goals
+    return user.getGoals()
+  })
+  .then(function(allUserGoals){
+    //get all goals and filter out allUserGoals
 
-    // we pass that user into our callback
-    .then(function(result) {
-        // and user getAssociations to retrieve all of that user's fandoms
-        return result.getGoals()
+    // console.log("********************************************");
+    // console.log(allUserGoals.length);
+    // console.log(allUserGoals[1].id);
+    // console.log("********************************************");
+    var goalsToExclude = [];
 
-        // we then pass the fandoms in a final callback
-        .then(function(allGoals) {
-            var goalObject = { goals: allGoals };
-            res.render('browse', goalObject);
-        })
+    for (i =0; i < allUserGoals.length; i++) {
+      goalsToExclude.push(allUserGoals[i].id)
+    } 
+    console.log("Goals to exclude are: " + goalsToExclude);
+
+
+    return models.Goals.findAll({
+      where: {
+        $not: [
+          // { id: allUserGoals },
+          { id: goalsToExclude },
+        ]
+      }
     });
+  })
+    .then(function(unselectedGoals) {
+      //get all goals and exclude user associated goals
+      var goalObject = { goals: unselectedGoals};
+      res.render('browse', goalObject);
+    })
 });
+
+
 
 //Route to process goals being added
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
