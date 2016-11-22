@@ -1,7 +1,6 @@
 .nav-wrapper{
-  padding-top: 20px;
   background-color: #333333;
-  padding: 50px;
+  padding: 10px;
   border-bottom: outset;
   border-color: #000005;
 }
@@ -41,9 +40,10 @@ h2{
 footer.page-footer{
   background-color: #333333;
   width: 100%;
-/*  height: 40px;
-*/  position: absolute;
+  /*height: 40px;*/
+  position: fixed;
   bottom: 0;
+  padding: 0px;
 }
 .sidebar {
   position: fixed;
@@ -51,4 +51,10 @@ footer.page-footer{
 }
 form{
   background-color: grey;
+}
+ul {
+  margin: 0px;
+}
+.row {
+  margin-bottom: 0px;
 }

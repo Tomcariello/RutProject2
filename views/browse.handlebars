@@ -14,14 +14,23 @@
       {{#each goals}}
       <div class="col s4">
         
-        <div id={{this.id}} class='card'>
-          <div class="goalcard">
-            <img class="imageicon" src="{{this.imageURL}}">
+        <a href="add-user-goal/1/{{this.id}}">
+          <div id={{this.id}} class='card'>
+            <div class="goalcard">
+              <img class="imageicon" src="{{this.imageURL}}">
+            </div>
+            <div class="goaltitle">
+              {{this.goalname}}
+            </div>
+
+{{!--             <form action="add-user-goal/1/{{this.id}}" method="POST">
+              <input type="hidden" name="addNewGoal" value="true">
+              <button type="submit">Add Goal!</button>
+            </form> --}}
+
+
           </div>
-          <div class="goaltitle">
-            {{this.goalname}}
-          </div>
-        </div>
+        </a>
 
       </div>
       {{/each}}

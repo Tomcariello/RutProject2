@@ -73,7 +73,7 @@ router.get('/browse', function (req, res) {
 });
 
 //Route to process goals being added
-router.get('/addusergoal/:userId/:goalId', function (req, res) {
+router.get('/add-user-goal/:userId/:goalId', function (req, res) {
   // console.log('adding a goal: ID is ' + req.params.userId + " and goalid is " + req.params.goalId);
 
   models.Users.findOne({where: {id: parseInt(req.params.userId)} })
@@ -81,6 +81,8 @@ router.get('/addusergoal/:userId/:goalId', function (req, res) {
   .then(function(user){
     return user.addGoals(parseInt(req.params.goalId));
   })
+
+  res.redirect('/browse');
 });
 
 router.get('/bprofile', function (req, res) {
