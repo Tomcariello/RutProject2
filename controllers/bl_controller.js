@@ -16,7 +16,7 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 })
 
 
-//Create sequelize associations in the table
+// Create sequelize associations in the table
 
 //Assign user 1 goal 1
 models.Users.findOne({where: {id: 1} })
@@ -72,13 +72,40 @@ router.get('/bprofile', function (req, res) {
 
     }).then(function(bprofile){
       console.log(bprofile);
-
+      var businessObject = { bprofile: bprofile };
+      res.render('bprofile', businessObject);
     })
-    res.render('bprofile');
 });
 
+app.get('/:user/goals', function(req, res){
+
+    // we save the user's name to a user variable
+    var user = req.params.user;
+
+    // then, we instance the matching user with findOne
+    models.User.findOne({where: { username: user} })
+    // we pass that user into our callback
+    .then(function(result){
+        // and user getAssociations to retrieve all of that user's fandoms
+        return result.getGoals()
+        // we then pass the fandoms in a final callback
+        .then(function(goals){
+            // and send it to our client as json data
+            return res.json(goals);
+        })
+    })
+})
+
+
 router.get('/uprofile', function (req, res) {
-  res.render('uprofile', {data: 'test'});
+  console.log('user profile is requested');
+  models.UserGoals.findAll({
+
+  }).then(function(uprofile){
+    console.log(uprofile);
+    var userObject = { uprofile: uprofile };
+    res.render('uprofile', userObject);
+  })
 });
 
 router.get('/goalcreate', function (req, res) {
