@@ -1,10 +1,20 @@
-<h1>Goals!</h1>
+<div class="container">
+<h2>Welcome user!</h2>
+<h2>These are your goals</h2>
 
 <div class ="row">
-  <div class="col-xs-12">
 
-  <h2>Welcome to your User profile!</h2>
-</div>
+{{#each users}}
+  {{this.firstname}}
+  {{this.lastname}} 
+  {{this.email}}
+  {{/each}}
+
+{{#each goals}}
+{{this.firstname}}
+{{this.goalname}}
+{{this.imageURL}}
+{{/each}}
 </div>
 
 {{!-- This is Marija's To Do List:
@@ -14,33 +24,5 @@ View all goals selected by the current user (left side)
 Show completed goals of that user (right side)
 Allow for deletion of selected goals
 Allow for marking complete selected goals
-On hover, display business/helper information
+On hover, display business/helper information --}}
 
-
-**Sample Handlebars code** --}}
-     {{!--  {{#each burgers}}
-        {{#unless this.devoured}}
-            {{this.burger_name}}
-
-            <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
-              <input type="" name="" value="true">
-              <button type="submit">EAT ME!</button>
-            </form>
-        {{/unless}}
-      {{/each}} --}}
-
-
-<div class ="row">
-  <div class="col-xs-12">
-    <h2>Add a Goal</h2>
-    <form class="create-update-form" action="goals/create" method="POST">
-
-      <div class="form-group">
-        <label for="newGoal">Goal Name:</label>
-        <input type="text" id="newGoal" name="newGoalName">
-      </div>
-
-      <button type="submit">Add Goal</button>
-    </form>
-  </div>
-</div>

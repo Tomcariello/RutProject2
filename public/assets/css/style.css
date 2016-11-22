@@ -58,3 +58,16 @@ ul {
 .row {
   margin-bottom: 0px;
 }
+
+/*this is making the footer sticky*/
+/*=================================*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+/*=================================*/
