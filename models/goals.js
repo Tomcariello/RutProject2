@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        Goals.belongsToMany(models.Users, {through: 'UserGoals'});
       }
     }
   });

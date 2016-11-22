@@ -10,13 +10,38 @@ var sequelizeConnection = models.sequelize
 // We run this query so that we can drop our tables even though they have foreign keys
 sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
-// make our tables
-// note: force:true drops the table if it already exists
-
+// make our tables; force:true drops the table if it already exists
 .then(function(){
   // return sequelizeConnection.sync({force:true})
 })
 
+
+// Create sequelize associations in the table
+
+//Assign user 1 goal 1
+models.Users.findOne({where: {id: 1} })
+  // with .then, we can work with this an instance and add a goal
+  .then(function(user){
+    return user.addGoals(1);
+  })
+
+models.Users.findOne({where: {id: 2} })
+  // with .then, we can work with this an instance and add a goal
+  .then(function(user){
+    return user.addGoals(2);
+  })
+
+models.Users.findOne({where: {id: 3} })
+  // with .then, we can work with this an instance and add a goal
+  .then(function(user){
+    return user.addGoals(4);
+  })
+
+models.Users.findOne({where: {id: 4} })
+  // with .then, we can work with this an instance and add a goal
+  .then(function(user){
+    return user.addGoals(3);
+  })
 
 
 //Establish page routing
@@ -37,19 +62,50 @@ router.get('/browse', function (req, res) {
     console.log(allGoals);
     var goalObject = { goals: allGoals};
 
-
     res.render('browse', goalObject);
   })
-
-  // res.render('browse', {data: 'test'});
 });
 
 router.get('/bprofile', function (req, res) {
-    res.render('bprofile', {data: 'test'});
+    console.log('business profile is requested');
+    models.BusinessUsers.findAll({
+
+    }).then(function(bprofile){
+      console.log(bprofile);
+      var businessObject = { bprofile: bprofile };
+      res.render('bprofile', businessObject);
+    })
 });
 
+app.get('/:user/goals', function(req, res){
+
+    // we save the user's name to a user variable
+    var user = req.params.user;
+
+    // then, we instance the matching user with findOne
+    models.User.findOne({where: { username: user} })
+    // we pass that user into our callback
+    .then(function(result){
+        // and user getAssociations to retrieve all of that user's fandoms
+        return result.getGoals()
+        // we then pass the fandoms in a final callback
+        .then(function(goals){
+            // and send it to our client as json data
+            return res.json(goals);
+        })
+    })
+})
+
+
 router.get('/uprofile', function (req, res) {
-  res.render('uprofile', {data: 'test'});
+  console.log('user profile is requested');
+  models.UserGoals.findAll({
+
+  }).then(function(uprofile){
+    console.log(uprofile);
+    var userObject = { uprofile: uprofile };
+    res.render('uprofile', userObject);
+  })
 });
 
 router.get('/goalcreate', function (req, res) {
