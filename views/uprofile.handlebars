@@ -10,11 +10,12 @@
   {{this.email}}
   {{/each}}
 
-{{#each goals}}
-{{this.firstname}}
-{{this.goalname}}
-{{this.imageURL}}
-{{/each}}
+      {{#each goals}}
+            <div class="goalcard">
+              <img class="imageicon" src="{{this.imageURL}}">
+            </div>
+
+      {{/each}}
 </div>
 
 {{!-- This is Marija's To Do List:
