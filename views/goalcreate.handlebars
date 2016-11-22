@@ -1,28 +1,26 @@
-<h1>Goals!</h1>
-
 <div class ="row">
   <div class="col-xs-12">
 
   <h2>Create your goals below!</h2>
 
-    <ul>
+To Do List:
+
+This has been rolled into the browse page in the form of a modal
+
+
+**Sample Handlebars code**
       {{#each burgers}}
         {{#unless this.devoured}}
-          <li>
             {{this.burger_name}}
 
-            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devour" value="true">
               <button type="submit">EAT ME!</button>
             </form>
-
-          </li>
         {{/unless}}
       {{/each}}
-    </ul>
-  </div>
 </div>
-
+</div>
 
 <div class ="row">
   <div class="col-xs-12">

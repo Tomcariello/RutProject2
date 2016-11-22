@@ -1,40 +1,23 @@
-<h1>Goals!</h1>
+{{!-- <h1>Goals!</h1> --}}
 
 <div class ="row">
   <div class="col-xs-12">
 
-  <h2>Welcome to the Bucketlist homepage!</h2>
-
-    <ul>
-      {{#each burgers}}
-        {{#unless this.devoured}}
-          <li>
-            {{this.burger_name}}
-
-            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="devour" value="true">
-              <button type="submit">EAT ME!</button>
-            </form>
-
-          </li>
-        {{/unless}}
-      {{/each}}
-    </ul>
+  <h2>Welcome to the homepage!</h2>
+  
   </div>
 </div>
 
 
-<div class ="row">
+{{!-- <div class ="row">
   <div class="col-xs-12">
-    <h2>Add a Goal</h2>
     <form class="create-update-form" action="goals/create" method="POST">
 
       <div class="form-group">
         <label for="newGoal">Goal Name:</label>
         <input type="text" id="newGoal" name="newGoalName">
       </div>
-
       <button type="submit">Add Goal</button>
     </form>
   </div>
-</div>
+</div> --}}
