@@ -53,23 +53,25 @@ router.get('/index', function (req, res) {
 		res.render('index', {data: 'test'});
 });
 
-router.get('/browse', function (req, res) {
+router.get('/browse/:userId', function (req, res) {
   console.log('goals access requested');
   //Find all goals
-  models.Goals.findAll({})
+  // models.Goals.findAll({})
 
   //find goals the current user does not already have on their list
-  // models.Users.findOne({where: {id: parseInt(req.params.userId)} })
-  // .then(function() {
+  models.Users.findOne({where: {id: parseInt(req.params.userId)} })
 
-  //   //return goals that are not associated with the provided ID through usergoals table
-
-  // })
-  .then(function(allGoals){
-    var goalObject = { goals: allGoals};
-
-    res.render('browse', goalObject);
-  })
+  // we pass that user into our callback
+  .then(function(result){
+    // and user getAssociations to retrieve all of that user's fandoms
+    return result.getGoals()
+    
+    // we then pass the fandoms in a final callback
+    .then(function(allGoals){
+      var goalObject = { goals: allGoals};
+      res.render('browse', goalObject);
+    })
+  });
 });
 
 //Route to process goals being added
@@ -77,7 +79,7 @@ router.get('/add-user-goal/:userId/:goalId', function (req, res) {
   // console.log('adding a goal: ID is ' + req.params.userId + " and goalid is " + req.params.goalId);
 
   models.Users.findOne({where: {id: parseInt(req.params.userId)} })
-  // with .then, we can work with this an instance and add a goal
+  // with .then, we can woradd-user-goal/1/{{this.id}}k with this an instance and add a goal
   .then(function(user){
     return user.addGoals(parseInt(req.params.goalId));
   })
@@ -96,24 +98,48 @@ router.get('/bprofile', function (req, res) {
     })
 });
 
-app.get('/:user/goals', function(req, res){
+router.get('/uprofile', function (req, res) {
+ console.log('goals access requested');
+ //Find all goals
+ // models.Goals.findAll({})
 
-    // we save the user's name to a user variable
-    var user = req.params.user;
+ //find goals the current user does not already have on their list
+ // models.Users.findOne({where: {id: parseInt(req.params.userId)} })
+ models.Users.findOne({where: {id: 1} })
 
-    // then, we instance the matching user with findOne
-    models.User.findOne({where: { username: user} })
-    // we pass that user into our callback
-    .then(function(result){
-        // and user getAssociations to retrieve all of that user's fandoms
-        return result.getGoals()
-        // we then pass the fandoms in a final callback
-        .then(function(goals){
-            // and send it to our client as json data
-            return res.json(goals);
-        })
-    })
-})
+ // we pass that user into our callback
+ .then(function(result){
+   // and user getAssociations to retrieve all of that user's fandoms
+   return result.getGoals()
+   
+   // we then pass the fandoms in a final callback
+   .then(function(allGoals){
+     var goalObject = { goals: allGoals};
+     res.render('uprofile', goalObject);
+   })
+ });
+});
+
+
+
+// router.get('/:user/goals', function(req, res){
+
+//     // we save the user's name to a user variable
+//     var user = req.params.user;
+
+//     // then, we instance the matching user with findOne
+//     models.User.findOne({where: { username: user} })
+//     // we pass that user into our callback
+//     .then(function(result){
+//         // and user getAssociations to retrieve all of that user's fandoms
+//         return result.getGoals()
+//         // we then pass the fandoms in a final callback
+//         .then(function(goals){
+//             // and send it to our client as json data
+//             return res.json(goals);
+//         })
+//     })
+// })
 
 
 router.get('/uprofile', function (req, res) {
@@ -135,20 +161,5 @@ router.get('/signup', function (req, res) {
     res.render('signup', {data: 'test'});
 });
 
-// router.post('/burgers/create', function (req, res) {
-// 	burger.create([req.body.newBurgerName], function () {
-// 		res.redirect('/burgers');
-// 	});
-// });
-
-// router.put('/burgers/update/:id', function (req, res) {
-// 	var condition = req.params.id;
-
-// 	console.log('condition ', condition);
-
-// 	burger.update(req.params.id, function () {
-// 		res.redirect('/burgers');
-// 	});
-// });
 
 module.exports = router;
