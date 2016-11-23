@@ -10,67 +10,186 @@ var sequelizeConnection = models.sequelize
 // We run this query so that we can drop our tables even though they have foreign keys
 sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
-// make our tables
-// note: force:true drops the table if it already exists
-
-.then(function(){
-  // return sequelizeConnection.sync({force:true})
+// make our tables; force:true drops the table if it already exists
+.then(function() {
+    // return sequelizeConnection.sync({force:true})
 })
 
 
+// Create sequelize associations in the table
+
+//Assign user 1 goal 1
+models.Users.findOne({ where: { id: 1 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(1);
+    })
+
+models.Users.findOne({ where: { id: 2 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(2);
+    })
+
+models.Users.findOne({ where: { id: 3 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(4);
+    })
+
+models.Users.findOne({ where: { id: 4 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(3);
+    })
+
 
 //Establish page routing
-router.get('/', function (req, res) {
-	res.redirect('/index');
+router.get('/', function(req, res) {
+    res.redirect('/index');
 });
 
-router.get('/index', function (req, res) {
-		res.render('index', {data: 'test'});
+router.get('/index', function(req, res) {
+    res.render('index', { data: 'test' });
 });
 
 router.get('/browse', function (req, res) {
   console.log('goals access requested');
-  models.Goals.findAll({
+  //Find all goals that are not already associated with the current user
+    
+  // models.Goals.findAll({include: 
+  //   [{model: models.Users, 
+  //     where: {id: {$ne: 3}}}] })
+  // .then(function(allGoals){
+  //   // console.log(allGoals.length);
+  //   var goalObject = { goals: allGoals};
+  //   res.render('browse', goalObject);
+  // });
+
+  //look up user ID
+  models.Users.findOne({where: {id: 2} })
+  .then(function(user){
+    //get user associated goals
+    return user.getGoals()
   })
-  .then(function(allGoals){
-    // console.log("All Goals:");
-    console.log(allGoals);
-    var goalObject = { goals: allGoals};
+  .then(function(allUserGoals){
+    //get all goals and filter out allUserGoals
 
-    res.render('browse', goalObject);
+    // console.log("********************************************");
+    // console.log(allUserGoals.length);
+    // console.log(allUserGoals[1].id);
+    // console.log("********************************************");
+    var goalsToExclude = [];
+
+    for (i =0; i < allUserGoals.length; i++) {
+      goalsToExclude.push(allUserGoals[i].id)
+    } 
+    console.log("Goals to exclude are: " + goalsToExclude);
+
+
+    return models.Goals.findAll({
+      where: {
+        $not: [
+          // { id: allUserGoals },
+          { id: goalsToExclude },
+        ]
+      }
+    });
   })
+    .then(function(unselectedGoals) {
+      //get all goals and exclude user associated goals
+      var goalObject = { goals: unselectedGoals};
+      res.render('browse', goalObject);
+    })
 });
 
-router.get('/bprofile', function (req, res) {
-    res.render('bprofile', {data: 'test'});
+
+
+//Route to process goals being added
+router.get('/add-user-goal/:userId/:goalId', function(req, res) {
+    // console.log('adding a goal: ID is ' + req.params.userId + " and goalid is " + req.params.goalId);
+
+    models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
+        // with .then, we can woradd-user-goal/1/{{this.id}}k with this an instance and add a goal
+        .then(function(user) {
+            return user.addGoals(parseInt(req.params.goalId));
+        })
+
+    res.redirect('/browse');
 });
 
-router.get('/uprofile', function (req, res) {
-  res.render('uprofile', {data: 'test'});
+router.get('/bprofile', function(req, res) {
+    console.log('business profile is requested');
+    models.BusinessUsers.findAll({
+
+    }).then(function(bprofile) {
+        console.log(bprofile);
+        var businessObject = { bprofile: bprofile };
+        res.render('bprofile', businessObject);
+    })
+});
+router.get(':userid/uprofile')
+router.get('/uprofile', function(req, res) {
+    console.log('goals access requested');
+    //Find all goals
+    // models.Goals.findAll({})
+
+    //find goals the current user does not already have on their list
+    // models.Users.findOne({where: {id: parseInt(req.params.userId)} })
+    models.Users.findOne({ where: { id: 2 } })
+
+    // we pass that user into our callback
+    .then(function(result) {
+        // and user getAssociations to retrieve all of that user's fandoms
+        return result.getGoals()
+            // we then pass the fandoms in a final callback
+            .then(function(allGoals) {
+                var goalObject = { goals: allGoals };
+                res.render('uprofile', goalObject);
+            })
+    });
 });
 
-router.get('/goalcreate', function (req, res) {
-    res.render('goalcreate', {data: 'test'});
+
+
+// router.get('/:user/goals', function(req, res){
+
+//     // we save the user's name to a user variable
+//     var user = req.params.user;
+
+//     // then, we instance the matching user with findOne
+//     models.User.findOne({where: { username: user} })
+//     // we pass that user into our callback
+//     .then(function(result){
+//         // and user getAssociations to retrieve all of that user's fandoms
+//         return result.getGoals()
+//         // we then pass the fandoms in a final callback
+//         .then(function(goals){
+//             // and send it to our client as json data
+//             return res.json(goals);
+//         })
+//     })
+// })
+
+
+router.get('/uprofile', function(req, res) {
+    console.log('user profile is requested');
+    models.UserGoals.findAll({
+
+    }).then(function(uprofile) {
+        console.log(uprofile);
+        var userObject = { uprofile: uprofile };
+        res.render('uprofile', userObject);
+    })
 });
 
-router.get('/signup', function (req, res) {
-    res.render('signup', {data: 'test'});
+router.get('/goalcreate', function(req, res) {
+    res.render('goalcreate', { data: 'test' });
 });
 
-// router.post('/burgers/create', function (req, res) {
-// 	burger.create([req.body.newBurgerName], function () {
-// 		res.redirect('/burgers');
-// 	});
-// });
+router.get('/signup', function(req, res) {
+    res.render('signup', { data: 'test' });
+});
 
-// router.put('/burgers/update/:id', function (req, res) {
-// 	var condition = req.params.id;
-
-// 	console.log('condition ', condition);
-
-// 	burger.update(req.params.id, function () {
-// 		res.redirect('/burgers');
-// 	});
-// });
 
 module.exports = router;

@@ -1,6 +1,8 @@
 .nav-wrapper{
   padding-top: 20px;
-/*  background-color: #333333;*/
+  background-color: #333333;
+  padding: 10px;
+  border-bottom: outset;
   border-color: #000005;
 }
 nav{
@@ -15,7 +17,7 @@ body {
   flex-direction: column;
   background-image: url("/main.jpeg");
   background-size: cover;
-
+  color: white;
 }
 form{
   margin:30px;;
@@ -41,6 +43,7 @@ h5{
 }
 .goaltitle {
   font-size: 24px;
+  color: black;
 }
 footer{
 /*  border-top-style: groove;
@@ -53,7 +56,9 @@ footer.page-footer{
 /*  height: 40px;*/
   background: rgba(255, 255, 255, 0.3);
   position: absolute;
+  position: fixed;
   bottom: 0;
+  padding: 0px;
 }
 .sidebar {
   position: fixed;
@@ -64,3 +69,25 @@ footer.page-footer{
   background: rgba(255, 255, 255, 0.3);
   margin:30px;
 }
+form{
+  background-color: grey;
+}
+ul {
+  margin: 0px;
+}
+.row {
+  margin-bottom: 0px;
+}
+
+/*this is making the footer sticky*/
+/*=================================*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+/*=================================*/
