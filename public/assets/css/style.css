@@ -1,8 +1,15 @@
 .nav-wrapper{
+  padding-top: 20px;
   background-color: #333333;
   padding: 10px;
   border-bottom: outset;
   border-color: #000005;
+}
+nav{
+/*  background-color: white;
+*/  background: rgba(255, 255, 255, 0.3);
+  border-width: 0px;
+
 }
 body {
   display: flex;
@@ -12,13 +19,17 @@ body {
   background-size: cover;
   color: white;
 }
-/*nav .brand-logo{
-  margin-bottom: 20px;
-}*/
+form{
+  margin:30px;;
+}
 h2{
   margin-top: 100px;
   text-align: center;
   color: white;
+}
+h5{
+  padding-top:20px;
+  float: left;
 }
 .imageicon {
   height: 50%;
@@ -34,20 +45,29 @@ h2{
   font-size: 24px;
   color: black;
 }
+footer{
+/*  border-top-style: groove;
+*/}
 .footer-copyright{
   text-align: center;
 }
 footer.page-footer{
-  background-color: #333333;
   width: 100%;
-  /*height: 40px;*/
+/*  height: 40px;*/
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
   position: fixed;
   bottom: 0;
   padding: 0px;
 }
 .sidebar {
   position: fixed;
-  padding-top: 30px;
+  padding-top: 70px;
+  margin-left: 160px;
+}
+.signup_form{
+  background: rgba(255, 255, 255, 0.3);
+  margin:30px;
 }
 form{
   background-color: grey;
