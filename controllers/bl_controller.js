@@ -22,26 +22,30 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 models.Users.findOne({where: {id: 1} })
   // with .then, we can work with this an instance and add a goal
   .then(function(user){
+    // if (!user){ 
+    //   console.log("you gots no user at id=1");
+    // } else {
     return user.addGoals(1);
+    // }
   })
 
-models.Users.findOne({where: {id: 2} })
-  // with .then, we can work with this an instance and add a goal
-  .then(function(user){
-    return user.addGoals(2);
-  })
+// models.Users.findOne({where: {id: 2} })
+//   // with .then, we can work with this an instance and add a goal
+//   .then(function(user){
+//     return user.addGoals(2);
+//   })
 
-models.Users.findOne({where: {id: 3} })
-  // with .then, we can work with this an instance and add a goal
-  .then(function(user){
-    return user.addGoals(4);
-  })
+// models.Users.findOne({where: {id: 3} })
+//   // with .then, we can work with this an instance and add a goal
+//   .then(function(user){
+//     return user.addGoals(4);
+//   })
 
-models.Users.findOne({where: {id: 4} })
-  // with .then, we can work with this an instance and add a goal
-  .then(function(user){
-    return user.addGoals(3);
-  })
+// models.Users.findOne({where: {id: 4} })
+//   // with .then, we can work with this an instance and add a goal
+//   .then(function(user){
+//     return user.addGoals(3);
+//   })
 
 
 //Establish page routing
