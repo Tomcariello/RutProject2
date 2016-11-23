@@ -2,11 +2,11 @@
 var localStratgey = require('passport-local').Strategy;
 
 //load user model
-var configDB = require('./user.js');
+var configDB = require('../models/user.js');
 var Sequelize = require('/sequelize');
 var pg = require('pg').native;
 var pghstore = require('pg-hstore');
-var connection = New Sequelize('bucketlist', 'root', 'password');
+var sequelize = New Sequelize(configDB.url);
 
 var User = sequelize.import('../models/user');
 User.sync();

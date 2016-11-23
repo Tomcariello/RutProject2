@@ -108,6 +108,9 @@ router.get('/goalcreate', function (req, res) {
     res.render('goalcreate', {data: 'test'});
 });
 
+//Authenticate (First Login)
+
+//locally login
 router.get('/signup', function (req, res) {
     res.render('signup', {message: req.flash('loginMessage')});
 });
