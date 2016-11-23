@@ -128,7 +128,7 @@ router.get('/bprofile', function(req, res) {
         res.render('bprofile', businessObject);
     })
 });
-
+router.get(':userid/uprofile')
 router.get('/uprofile', function(req, res) {
     console.log('goals access requested');
     //Find all goals
