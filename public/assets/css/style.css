@@ -1,13 +1,10 @@
 .nav-wrapper{
   padding-top: 20px;
-/*  background-color: #333333;
-*/  padding: 10px;
-/*  border-bottom: outset;
-*/  border-color: #000005;
+  padding: 10px;
+  border-color: #000005;
 }
 nav{
-/*  background-color: white;
-*/  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.3);
   border-width: 0px;
 
 }
@@ -53,12 +50,12 @@ footer{
 }
 footer.page-footer{
   width: 100%;
-/*  height: 40px;*/
   background: rgba(255, 255, 255, 0.3);
   position: absolute;
   position: fixed;
   bottom: 0;
   padding: 0px;
+  float: left;
 }
 .sidebar {
   position: fixed;
@@ -70,13 +67,19 @@ footer.page-footer{
   margin:30px;
 }
 form{
-  background-color: grey;
+  background: rgba(255, 255, 255, 0.3);
+  margin-bottom: 50px;
+
 }
 ul {
   margin: 0px;
 }
 .row {
   margin-bottom: 0px;
+}
+.grey-text.text-lighten-3{
+  margin-right: 200px;
+  margin-top: 18px;
 }
 
 /*this is making the footer sticky*/
