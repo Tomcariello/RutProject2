@@ -1,9 +1,9 @@
 .nav-wrapper{
   padding-top: 20px;
-  background-color: #333333;
-  padding: 10px;
-  border-bottom: outset;
-  border-color: #000005;
+/*  background-color: #333333;
+*/  padding: 10px;
+/*  border-bottom: outset;
+*/  border-color: #000005;
 }
 nav{
 /*  background-color: white;
@@ -20,7 +20,7 @@ body {
   color: white;
 }
 form{
-  margin:30px;;
+  margin:30px;
 }
 h2{
   margin-top: 100px;
