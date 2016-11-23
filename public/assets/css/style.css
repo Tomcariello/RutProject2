@@ -1,9 +1,13 @@
 .nav-wrapper{
   padding-top: 20px;
-  background-color: #333333;
-  padding: 50px;
-  border-bottom: outset;
+/*  background-color: #333333;*/
   border-color: #000005;
+}
+nav{
+/*  background-color: white;
+*/  background: rgba(255, 255, 255, 0.3);
+  border-width: 0px;
+
 }
 body {
   display: flex;
@@ -13,13 +17,17 @@ body {
   background-size: cover;
 
 }
-/*nav .brand-logo{
-  margin-bottom: 20px;
-}*/
+form{
+  margin:30px;;
+}
 h2{
   margin-top: 100px;
   text-align: center;
   color: white;
+}
+h5{
+  padding-top:20px;
+  float: left;
 }
 .imageicon {
   height: 50%;
@@ -34,20 +42,25 @@ h2{
 .goaltitle {
   font-size: 24px;
 }
+footer{
+/*  border-top-style: groove;
+*/}
 .footer-copyright{
   text-align: center;
 }
 footer.page-footer{
-  background-color: #333333;
   width: 100%;
-/*  height: 40px;
-*/  position: absolute;
+/*  height: 40px;*/
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
   bottom: 0;
 }
 .sidebar {
   position: fixed;
-  padding-top: 30px;
+  padding-top: 70px;
+  margin-left: 160px;
 }
-form{
-  background-color: grey;
+.signup_form{
+  background: rgba(255, 255, 255, 0.3);
+  margin:30px;
 }
