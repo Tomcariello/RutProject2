@@ -3,6 +3,7 @@ Here is where you create all the functions that will do the routing for your app
 */
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 var models = require('../models');
 
 var sequelizeConnection = models.sequelize
