@@ -1,13 +1,10 @@
 .nav-wrapper{
   padding-top: 20px;
-  background-color: #333333;
+  background: rgba(255, 255, 255, 0.3);
   padding: 10px;
-  border-bottom: outset;
-  border-color: #000005;
 }
 nav{
-/*  background-color: white;
-*/  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.3);
   border-width: 0px;
 
 }
@@ -45,15 +42,11 @@ h5{
   font-size: 24px;
   color: black;
 }
-footer{
-/*  border-top-style: groove;
-*/}
 .footer-copyright{
   text-align: center;
 }
 footer.page-footer{
   width: 100%;
-/*  height: 40px;*/
   background: rgba(255, 255, 255, 0.3);
   position: absolute;
   position: fixed;
@@ -68,9 +61,6 @@ footer.page-footer{
 .signup_form{
   background: rgba(255, 255, 255, 0.3);
   margin:30px;
-}
-form{
-  background-color: grey;
 }
 ul {
   margin: 0px;
