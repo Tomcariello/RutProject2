@@ -2,7 +2,7 @@
 var localStratgey = require('passport-local').Strategy;
 
 //load user model
-var configDB = require('./database.js');
+var configDB = require('./user.js');
 var Sequelize = require('/sequelize');
 var pg = require('pg').native;
 var pghstore = require('pg-hstore');

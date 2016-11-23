@@ -109,8 +109,27 @@ router.get('/goalcreate', function (req, res) {
 });
 
 router.get('/signup', function (req, res) {
-    res.render('signup', {data: 'test'});
+    res.render('signup', {message: req.flash('loginMessage')});
 });
+
+//process login form
+router.post('.signup', passport.authenticate('local-login', {
+  successRedirect : '/uprofile', //redirect to profile page
+  failureRedirect : '/signup', //redirect to signup if error
+  failureFlash : true //allow message
+}));
+
+//SignUp
+router.get('/signup', function(req, res) {
+  res.render('signup', { message: req.flash('loginMessage') });
+});
+
+//process signup form
+router.post('/signup', passport.authenticate('local-signup', {
+  successRedirect : '/uprofile', //redirect to profile page
+  failureRedirect : '/signup', //redirect back to signup if error
+  failureFlash : true //allow message
+}))
 
 // router.post('/burgers/create', function (req, res) {
 // 	burger.create([req.body.newBurgerName], function () {
@@ -127,5 +146,12 @@ router.get('/signup', function (req, res) {
 // 		res.redirect('/burgers');
 // 	});
 // });
+
+//route middleware to ensure user is logged in
+function isLoggedIn(req, res, next) {
+  if(req.isAuthenticated())
+    return next();
+  res.redirect('/index');
+}
 
 module.exports = router;
