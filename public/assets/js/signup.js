@@ -1,5 +1,7 @@
 $(document).on('click', function(){
 
+  
+
   $('#personal').click(function(){
 
     $('#signup_formB').fadeOut(2000);
