@@ -15,6 +15,7 @@ body {
   background-image: url("/main.jpeg");
   background-size: cover;
   color: white;
+  font-family: Calibri;
 }
 form{
   margin:30px;;
@@ -29,8 +30,8 @@ h5{
   float: left;
 }
 .imageicon {
-  height: 50%;
-  width: 50%;
+  height: 200px;
+  width: 200px;
 }
 .card {
   text-align: center;
@@ -81,3 +82,10 @@ body {
     flex: 1 0 auto;
   }
 /*=================================*/
+
+
+html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }
+
+
