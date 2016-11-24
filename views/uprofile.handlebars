@@ -1,20 +1,22 @@
 <div class="container">
-<h2>Welcome user!</h2>
-<h2>These are your goals</h2>
-
+<h2>Welcome {{firstname}},</h2>
 <div class ="row">
+{{firstname}}
+{{lastname}}
+{{email}}
 
-{{#each users}}
-  {{this.firstname}}
-  {{this.lastname}} 
-  {{this.email}}
-  {{/each}}
-
-      {{#each goals}}
+{{#each goals}}
             <div class="goalcard">
-              <img class="imageicon" src="{{this.imageURL}}">
+              <img class="imageicon responsive-img" src="{{this.imageURL}}">
             </div>
 
+      {{/each}}
+
+      <h3>These are your goals</h3>
+<h4>User ID and Goal Id</h4>
+      {{#each usergoals}}
+        <p>User id{{this.userid}}</p>
+        <p>Goal id{{this.goalid}}</p>
       {{/each}}
 </div>
 
