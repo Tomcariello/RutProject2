@@ -1,8 +1,12 @@
 .nav-wrapper{
-  background-color: #333333;
+  padding-top: 20px;
+  background: rgba(255, 255, 255, 0.3);
   padding: 10px;
-  border-bottom: outset;
-  border-color: #000005;
+}
+nav{
+  background: rgba(255, 255, 255, 0.3);
+  border-width: 0px;
+
 }
 body {
   display: flex;
@@ -13,13 +17,17 @@ body {
   color: white;
   font-family: Calibri;
 }
-/*nav .brand-logo{
-  margin-bottom: 20px;
-}*/
+form{
+  margin:30px;;
+}
 h2{
   margin-top: 100px;
   text-align: center;
   color: white;
+}
+h5{
+  padding-top:20px;
+  float: left;
 }
 .imageicon {
   height: 200px;
@@ -39,19 +47,21 @@ h2{
   text-align: center;
 }
 footer.page-footer{
-  background-color: #333333;
   width: 100%;
-  /*height: 40px;*/
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
   position: fixed;
   bottom: 0;
   padding: 0px;
 }
 .sidebar {
   position: fixed;
-  padding-top: 30px;
+  padding-top: 70px;
+  margin-left: 160px;
 }
-form{
-  background-color: grey;
+.signup_form{
+  background: rgba(255, 255, 255, 0.3);
+  margin:30px;
 }
 ul {
   margin: 0px;
@@ -73,6 +83,9 @@ body {
   }
 /*=================================*/
 
+
 html {
     font-family: GillSans, Calibri, Trebuchet, sans-serif;
   }
+
+
