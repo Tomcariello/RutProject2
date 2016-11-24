@@ -36,8 +36,29 @@
             <h5>These are your goals</h5>
             <div class ="row">
                   {{#each goals}}
-                    <div class = "col s3">
-                          <img class="imageicon responsive-img card-image" src="{{this.imageURL}}">
+                    <div class = "col s12">
+                          {{!-- <img class="tooltipped imageicon responsive-img card-image" data-position="bottom" data-delay="30" data-tooltip="I am useful tool for you to accomplish this. I am useful tool for you to accomplish this.I am useful tool for you to accomplish this." src="{{this.imageURL}}">
+                          </a> --}}
+
+
+                          {{!-- <a class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"> --}}
+                            <img class="imageicon responsive-img card-image" src="{{this.imageURL}}">
+                          {{!-- </a> --}}
+
+                          <!-- Modal Trigger -->
+                          <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+
+                          <!-- Modal Structure -->
+                            <div id="modal1" class="modal">
+                                  <div class="modal-content">
+                                    <h4>Modal Header</h4>
+                                    <p>A bunch of text</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                                  </div>
+                            </div>
+                            {{!-- end of modal --}}
                     </div>
                   {{/each}}
             </div>
@@ -47,7 +68,6 @@
         </div>
 </div>
 
-  
 
 
 
