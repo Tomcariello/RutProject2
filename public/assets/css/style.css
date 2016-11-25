@@ -1,7 +1,12 @@
 .nav-wrapper{
   padding-top: 20px;
+<<<<<<< HEAD
   padding: 10px;
   border-color: #000005;
+=======
+  background: rgba(255, 255, 255, 0.3);
+  padding: 10px;
+>>>>>>> 1ada1f81f92c9e1bd23391befcd747399debc78f
 }
 nav{
   background: rgba(255, 255, 255, 0.3);
@@ -42,9 +47,6 @@ h5{
   font-size: 24px;
   color: black;
 }
-footer{
-/*  border-top-style: groove;
-*/}
 .footer-copyright{
   text-align: center;
 }
@@ -66,11 +68,14 @@ footer.page-footer{
   background: rgba(255, 255, 255, 0.3);
   margin:30px;
 }
+<<<<<<< HEAD
 form{
   background: rgba(255, 255, 255, 0.3);
   margin-bottom: 50px;
 
 }
+=======
+>>>>>>> 1ada1f81f92c9e1bd23391befcd747399debc78f
 ul {
   margin: 0px;
 }
