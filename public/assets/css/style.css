@@ -3,10 +3,9 @@
   background: rgba(255, 255, 255, 0.3);
   padding: 10px;
 }
-nav{
+nav {
   background: rgba(255, 255, 255, 0.3);
   border-width: 0px;
-
 }
 body {
   display: flex;
@@ -14,7 +13,7 @@ body {
   flex-direction: column;
   background-image: url("/main.jpeg");
   background-size: cover;
-  color: white;
+  /*color: white;*/
   font-family: Calibri;
 }
 form{
@@ -73,19 +72,19 @@ ul {
 /*this is making the footer sticky*/
 /*=================================*/
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+main {
+  flex: 1 0 auto;
+}
 /*=================================*/
 
 
 html {
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-  }
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
 
 

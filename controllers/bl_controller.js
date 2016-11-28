@@ -123,76 +123,76 @@ router.get('/bprofile', function(req, res) {
     })
 });
 
-            router.get('/uprofile/:userId', function(req, res) {
-                console.log('goals access requested');
-                console.log(req.params.userId)
-                //Find all goals
-                // models.Goals.findAll({})
+router.get('/uprofile/:userId', function(req, res) {
+    console.log('goals access requested');
+    console.log(req.params.userId)
+    //Find all goals
+    // models.Goals.findAll({})
 
-                //find goals the current user does not already have on their list
-                // models.Users.findOne({where: {id: parseInt(req.params.userId)} })
-                models.Users.findOne({ where: { id: req.params.userId } })
+    //find goals the current user does not already have on their list
+    // models.Users.findOne({where: {id: parseInt(req.params.userId)} })
+    models.Users.findOne({ where: { id: req.params.userId } })
 
-                // we pass that user into our callback
-                .then(function(result) {
-                  var data=
-                  {
-                    firstname: result.firstname,
-                    lastname: result.lastname,
-                    email: result.email
-                  }
-                    // and user getAssociations to retrieve all of that user's fandoms
-                    return result.getGoals()
-                        // we then pass the fandoms in a final callback
-                        .then(function(allGoals) {
-                            console.log(allGoals)
-                            var goalObject = allGoals
-                            data.goals= goalObject
-                            res.render('uprofile', data);
-                        });
-                });
-            });
-
-
-
-            // router.get('/:user/goals', function(req, res){
-
-            //     // we save the user's name to a user variable
-            //     var user = req.params.user;
-
-            //     // then, we instance the matching user with findOne
-            //     models.User.findOne({where: { username: user} })
-            //     // we pass that user into our callback
-            //     .then(function(result){
-            //         // and user getAssociations to retrieve all of that user's fandoms
-            //         return result.getGoals()
-            //         // we then pass the fandoms in a final callback
-            //         .then(function(goals){
-            //             // and send it to our client as json data
-            //             return res.json(goals);
-            //         })
-            //     })
-            // })
+    // we pass that user into our callback
+    .then(function(result) {
+      var data=
+      {
+        firstname: result.firstname,
+        lastname: result.lastname,
+        email: result.email
+      }
+        // and user getAssociations to retrieve all of that user's fandoms
+        return result.getGoals()
+          // we then pass the fandoms in a final callback
+          .then(function(allGoals) {
+            console.log(allGoals)
+            var goalObject = allGoals
+            data.goals= goalObject
+            res.render('uprofile', data);
+          });
+    });
+});
 
 
-            router.get('/uprofile', function(req, res) {
-                console.log('user profile is requested');
-                models.UserGoals.findAll({
 
-                }).then(function(uprofile) {
-                    console.log(uprofile);
-                    var userObject = { uprofile: uprofile };
-                    res.render('uprofile', userObject);
-                });
-            });
+// router.get('/:user/goals', function(req, res){
 
-            router.get('/goalcreate', function(req, res) {
-                res.render('goalcreate', { data: 'test' });
-            });
+//     // we save the user's name to a user variable
+//     var user = req.params.user;
 
-            router.get('/signup', function(req, res) {
-                res.render('signup', { data: 'test' });
-            });
+//     // then, we instance the matching user with findOne
+//     models.User.findOne({where: { username: user} })
+//     // we pass that user into our callback
+//     .then(function(result){
+//         // and user getAssociations to retrieve all of that user's fandoms
+//         return result.getGoals()
+//         // we then pass the fandoms in a final callback
+//         .then(function(goals){
+//             // and send it to our client as json data
+//             return res.json(goals);
+//         })
+//     })
+// })
 
 
-            module.exports = router;
+router.get('/uprofile', function(req, res) {
+    console.log('user profile is requested');
+    models.UserGoals.findAll({
+
+    }).then(function(uprofile) {
+        console.log(uprofile);
+        var userObject = { uprofile: uprofile };
+        res.render('uprofile', userObject);
+    });
+});
+
+router.get('/goalcreate', function(req, res) {
+    res.render('goalcreate', { data: 'test' });
+});
+
+router.get('/signup', function(req, res) {
+    res.render('signup', { data: 'test' });
+});
+
+
+module.exports = router;
