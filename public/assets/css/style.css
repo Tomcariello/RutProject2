@@ -49,8 +49,8 @@ h5{
 footer.page-footer{
   width: 100%;
   background: rgba(255, 255, 255, 0.3);
-  position: absolute;
-  position: fixed;
+  position: relative;
+  /*position: fixed;*/
   bottom: 0;
   padding: 0px;
 }
