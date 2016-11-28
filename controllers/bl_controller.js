@@ -6,7 +6,7 @@ var router = express.Router();
 var passport = require('passport');
 var models = require('../models');
 
-var sequelizeConnection = models.sequelize
+var sequelizeConnection = models.sequelize;
 
 // We run this query so that we can drop our tables even though they have foreign keys
 sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
@@ -14,7 +14,7 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 // make our tables; force:true drops the table if it already exists
 .then(function(){
   // return sequelizeConnection.sync({force:true})
-})
+});
 
 
 //Create sequelize associations in the table
@@ -23,12 +23,12 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 models.Users.findOne({where: {id: 1} })
   // with .then, we can work with this an instance and add a goal
   .then(function(user){
-    // if (!user){ 
+    // if (!user){
     //   console.log("you gots no user at id=1");
     // } else {
     return user.addGoals(1);
     // }
-  })
+  });
 
 // models.Users.findOne({where: {id: 2} })
 //   // with .then, we can work with this an instance and add a goal
@@ -74,7 +74,7 @@ router.get('/browse', function (req, res) {
     var goalObject = { goals: allGoals};
 
     res.render('browse', goalObject);
-  })
+  });
 });
 
 //Route to process goals being added
@@ -85,7 +85,7 @@ router.get('/add-user-goal/:userId/:goalId', function (req, res) {
   // with .then, we can work with this an instance and add a goal
   .then(function(user){
     return user.addGoals(parseInt(req.params.goalId));
-  })
+  });
 
   res.redirect('/browse');
 });
@@ -97,7 +97,7 @@ router.get('/bprofile', function (req, res) {
     }).then(function(bprofile){
       console.log(bprofile);
 
-    })
+    });
     res.render('bprofile');
 });
 
