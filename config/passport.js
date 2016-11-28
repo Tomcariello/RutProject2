@@ -2,13 +2,13 @@
 var localStratgey = require('passport-local').Strategy;
 
 //load user model
-var configDB = require('../models/user.js');
-var Sequelize = require('/sequelize');
+var configDB = require('../models/users.js');
+var Sequelize = require('sequelize');
 var pg = require('pg').native;
 var pghstore = require('pg-hstore');
-var sequelize = New Sequelize(configDB.url);
+var sequelize = new Sequelize(configDB.url);
 
-var User = sequelize.import('../models/user');
+var User = sequelize.import('../models/users.js');
 User.sync();
 
 //Auth variables
@@ -31,7 +31,7 @@ module.exports = function(passport) {
   });
 
   //Local Login
-  passport.use('local-login', new localStratgey({
+  passport.use('local-login', new LocalStrategy({
     // e-mail and password
     usernameField : 'email',
     passwordField : 'password',
@@ -54,7 +54,7 @@ module.exports = function(passport) {
   }));
 
   //Local Signup
-  passport.use('local-signup', new LocalStrategy({
+  passport.use('local-signup', new localStrategy({
     usernameField : 'email',
     passwordField : 'password',
     passReqToCallback : true
@@ -62,10 +62,10 @@ module.exports = function(passport) {
   function(req, email, password, done) {
     User.findOne({ where: { localemail: email }})
     .then(function(existingUser) {
-
+        
       //check other users for same email
       if (existingUser)
-        return done(null, false,, req.flash('loginMessage', 'That email is already in use.'));
+        return done(null, false, req.flash('loginMessage', 'That email is already in use.'));
 
       //Connect a new local account.
       if(req.user) {
@@ -90,3 +90,4 @@ module.exports = function(passport) {
       done(null, false, req.flash('loginMessage', e.name + " " + e.message));
     })
   }));
+};

@@ -9,6 +9,7 @@
   "author": "Tom Cariello, Melissa Baldwin, Marija Naumoski, Ryan Seery",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.14.2",
     "connect-flash": "^0.1.1",
