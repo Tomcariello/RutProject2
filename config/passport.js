@@ -74,15 +74,23 @@ module.exports = function(passport) {
         var user = req.user;
         user.email = email;
         user.password = User.generateHash(password);
+        user.firstname = req.body.firstName;
+        user.lastname = req.body.lastName;
+        user.zipcode = req.body.zipcode;
         user.save().catch(function(err) {
           throw err;
         }).then(function() {
           done(null, user);
         });
-      }
-      //Not logged in. Create New User.
-      else {
-        var newUser = User.build({ email: email, password: User.generateHash(password)});
+      } else {
+        //Not logged in. Create New User.
+        var newUser = User.build({ 
+          email: email,
+          password: User.generateHash(password),
+          firstname: req.body.firstName,
+          lastname: req.body.lastName,
+          zipcode: req.body.zipcode
+        });
         newUser.save().then(function() {done (null, newUser);}).catch(function(err) {
           done(null, false, req.flash('loginMessage', err));
         });

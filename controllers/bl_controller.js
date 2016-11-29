@@ -204,7 +204,7 @@ router.get('/uprofile/:userId', function(req, res) {
   //process login form
   router.post('/login', passport.authenticate('local-login', {
     successRedirect : '/uprofile', //redirect to profile page
-    failureRedirect : '`', //redirect to signup if error
+    failureRedirect : '/signup', //redirect to signup if error
     failureFlash : true //allow message
   }));
 
