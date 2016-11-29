@@ -43,7 +43,35 @@ models.Users.findOne({ where: { id: 4 } })
         return user.addGoals(3);
     })
 
+// =================================================================
+// Assign business 1 goal 1
+models.BusinessUsers.findOne({ where: { id: 1 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(business) {
+        return business.addGoals(1);
+    })
 
+models.BusinessUsers.findOne({ where: { id: 2 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(business) {
+        return business.addGoals(2);
+    })
+
+models.BusinessUsers.findOne({ where: { id: 3 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(business) {
+        return business.addGoals(4);
+    })
+
+models.BusinessUsers.findOne({ where: { id: 4 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(3);
+    })
+
+
+
+// =================================================================
 //Establish page routing
 router.get('/', function(req, res) {
     res.redirect('/index');
@@ -109,16 +137,17 @@ router.get('/add-user-goal/:userId/:goalId', function(req, res) {
     res.redirect('/browse');
 });
 
-router.get('/bprofile', function(req, res) {
+router.get('/bprofile/:businessId', function(req, res) {
     console.log('business profile is requested');
-    models.BusinessUsers.findAll({
+    console.log(req.params.businessId);
+    // models.BusinessUsers.findAll({
 
-    }).then(function(bprofile) {
-        console.log(bprofile);
-        var businessObject = { bprofile: bprofile };
-        res.render('bprofile', businessObject);
-    })
-});
+    // }).then(function(bprofile) {
+    //     console.log(bprofile);
+    //     var businessObject = { bprofile: bprofile };
+    //     res.render('bprofile', businessObject);
+    });
+
 
 router.get('/uprofile/:userId', function(req, res) {
     console.log('goals access requested');
