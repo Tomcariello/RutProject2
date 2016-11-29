@@ -1,8 +1,9 @@
 //load what we need
-var localStratgey = require('passport-local').Strategy;
+var localStrategy = require('passport-local').Strategy;
 
 //load user model
-var configDB = require('../models/users.js');
+// var configDB = require('../models/users.js');
+var configDB = require('./config.json');
 var Sequelize = require('sequelize');
 var pg = require('pg').native;
 var pghstore = require('pg-hstore');
@@ -31,7 +32,7 @@ module.exports = function(passport) {
   });
 
   //Local Login
-  passport.use('local-login', new LocalStrategy({
+  passport.use('local-login', new localStrategy({
     // e-mail and password
     usernameField : 'email',
     passwordField : 'password',

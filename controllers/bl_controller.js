@@ -26,7 +26,7 @@ models.Users.findOne({where: {id: 1} })
     // if (!user){
     //   console.log("you gots no user at id=1");
     // } else {
-    return user.addGoals(1);
+    // return user.addGoals(1);
     // }
   });
 
