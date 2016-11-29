@@ -34,7 +34,10 @@ $(document).on('click', '#submitGoal', function() {
     var newGoalURL = document.getElementById('addGoalURL').value;
     console.log("modal submitted " + newGoalName + " " + newGoalURL);
 
-    models.addGoals('test','test url');
+    var buildURL = "/goalcreate/" + newGoalName + "/" + newGoalURL;
+
+    location.href = buildURL;
+
 });
 
 //**************************************
