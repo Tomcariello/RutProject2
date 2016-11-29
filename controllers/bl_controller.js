@@ -98,16 +98,13 @@ router.get('/browse', function (req, res) {
     })
 });
 
-console.log("********************************************");//Route to process goals being added
+//Add a goal per use
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
-  console.log("********************************************");
-  console.log('adding a goal: ID is ' + req.params.userId + " and goalid is " + req.params.goalId);
-  console.log("********************************************");
-    models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
-        // with .then, we can woradd-user-goal/1/{{this.id}}k with this an instance and add a goal
-        .then(function(user) {
-            return user.addGoals(parseInt(req.params.goalId));
-        })
+  models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
+    // with .then, we can woradd-user-goal/1/{{this.id}}k with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(parseInt(req.params.goalId));
+    })
 
     res.redirect('/browse');
 });
@@ -186,8 +183,19 @@ router.get('/uprofile', function(req, res) {
     });
 });
 
-router.get('/goalcreate', function(req, res) {
-    res.render('goalcreate', { data: 'test' });
+//Create a goal for the entire database
+router.get('/goalcreate/:goalname/:imageurl', function(req, res) {
+  var goal = req.params.goalname;
+  var imageurl = req.params.imageurl;
+  models.Goals.create(
+    {
+      // the username
+      goalname: goal, 
+      imageURL: imageurl
+    }
+  )
+
+  res.redirect('/browse');
 });
 
 router.get('/signup', function(req, res) {
