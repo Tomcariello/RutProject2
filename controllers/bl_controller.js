@@ -25,36 +25,42 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 models.Users.findOne({ where: { id: 1 } })
     // with .then, we can work with this an instance and add a goal
     .then(function(user) {
-        return user.addGoals(1);
+        // return user.addGoals(1);
     })
 
 models.Users.findOne({ where: { id: 2 } })
     // with .then, we can work with this an instance and add a goal
     .then(function(user) {
-        return user.addGoals(2);
+        // return user.addGoals(2);
     })
 
 models.Users.findOne({ where: { id: 3 } })
     // with .then, we can work with this an instance and add a goal
     .then(function(user) {
-        return user.addGoals(4);
+        // return user.addGoals(4);
     })
 
 models.Users.findOne({ where: { id: 4 } })
     // with .then, we can work with this an instance and add a goal
     .then(function(user) {
-        return user.addGoals(3);
+        // return user.addGoals(3);
     })
 
 
 
 //Establish page routing
 router.get('/', function(req, res) {
-    res.redirect('/index');
+    res.render('index', { data: 'test' });
 });
 
-router.get('/index', function(req, res) {
-    res.render('index', { data: 'test' });
+router.get('/login', function(req, res){
+    // res.render('')
+    console.log("log in route hit");
+    models.Users.findOne({where:{id:1}})
+    .then(function(user){
+
+        console.log('please find a thing and do a thing' + user.firstname);
+    })
 });
 
 router.get('/browse', function (req, res) {
@@ -189,16 +195,16 @@ router.get('/uprofile/:userId', function(req, res) {
 
 
 //Authenticate (First Login)
-module.exports = function(app, passport) {
+// module.exports = function(app, passport) {
   //locally login
-  router.get('/signup', function (req, res) {
-    res.render('signup', {message: req.flash('loginMessage')});
+  router.get('/login', function (req, res) {
+    res.render('login', {message: req.flash('loginMessage')});
   });
 
   //process login form
-  router.post('.signup', passport.authenticate('local-login', {
+  router.post('/login', passport.authenticate('local-login', {
     successRedirect : '/uprofile', //redirect to profile page
-    failureRedirect : '/signup', //redirect to signup if error
+    failureRedirect : '`', //redirect to signup if error
     failureFlash : true //allow message
   }));
 
@@ -213,7 +219,7 @@ module.exports = function(app, passport) {
     failureRedirect : '/signup', //redirect back to signup if error
     failureFlash : true //allow message
   }));
-};
+// };
 // router.post('/burgers/create', function (req, res) {
 // 	burger.create([req.body.newBurgerName], function () {
 // 		res.redirect('/burgers');
@@ -256,9 +262,9 @@ router.get('/goalcreate', function(req, res) {
     res.render('goalcreate', { data: 'test' });
 });
 
-router.get('/signup', function(req, res) {
-    res.render('signup', { data: 'test' });
-});
+// router.get('/signup', function(req, res) {
+//     res.render('signup', { data: 'test' });
+// });
 
 
 //route middleware to ensure user is logged in

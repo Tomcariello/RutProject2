@@ -61,18 +61,19 @@ module.exports = function(passport) {
     passReqToCallback : true
   },
   function(req, email, password, done) {
-    User.findOne({ where: { localemail: email }})
+    User.findOne({ where: { email: email }})
     .then(function(existingUser) {
         
       //check other users for same email
-      if (existingUser)
+      if (existingUser) {
         return done(null, false, req.flash('loginMessage', 'That email is already in use.'));
+      }
 
       //Connect a new local account.
       if(req.user) {
         var user = req.user;
-        user.localemail = email;
-        user.localpassword = User.generateHash(password);
+        user.email = email;
+        user.password = User.generateHash(password);
         user.save().catch(function(err) {
           throw err;
         }).then(function() {
@@ -80,8 +81,8 @@ module.exports = function(passport) {
         });
       }
       //Not logged in. Create New User.
-      else{
-        var newUser = User.build({ localemail: email, localpassword: User.generateHash(password)});
+      else {
+        var newUser = User.build({ email: email, password: User.generateHash(password)});
         newUser.save().then(function() {done (null, newUser);}).catch(function(err) {
           done(null, false, req.flash('loginMessage', err));
         });
