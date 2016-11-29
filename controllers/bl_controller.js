@@ -156,7 +156,7 @@ router.get('/bprofile/:businessId', function(req, res) {
           .then(function(allGoals) {
             console.log(allGoals)
             var goalObject = allGoals
-            data.goals= goalObject
+            data.goals = goalObject
             res.render('bprofile', data);
           });
     });
