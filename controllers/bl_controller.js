@@ -143,23 +143,32 @@ router.get('/add-user-goal/:userId/:goalId', function(req, res) {
 router.get('/bprofile/:businessId', function(req, res) {
     console.log('business profile is requested');
     console.log(req.params.businessId);
-    // models.BusinessUsers.findAll({
+    models.BusinessUsers.findOne({where: { id: req.params.businessId} })
 
-    // }).then(function(bprofile) {
-    //     console.log(bprofile);
-    //     var businessObject = { bprofile: bprofile };
-    //     res.render('bprofile', businessObject);
+    .then(function(result) {
+      var data=
+      {
+        businessname: result.businessname,
+        website: result.website,
+        email: result.email,
+        zipcode: result.zipcode
+      }
+        // and user getAssociations 
+        return result.getGoals()
+          // final callback
+          .then(function(allGoals) {
+            console.log(allGoals)
+            var goalObject = allGoals
+            data.goals= goalObject
+            res.render('bprofile', data);
+          });
+    });
     });
 
 
 router.get('/uprofile/:userId', function(req, res) {
     console.log('goals access requested');
-    console.log(req.params.userId)
-    //Find all goals
-    // models.Goals.findAll({})
-
-    //find goals the current user does not already have on their list
-    // models.Users.findOne({where: {id: parseInt(req.params.userId)} })
+    console.log(req.params.userId);
     models.Users.findOne({ where: { id: req.params.userId } })
 
     // we pass that user into our callback
@@ -170,7 +179,7 @@ router.get('/uprofile/:userId', function(req, res) {
         lastname: result.lastname,
         email: result.email
       }
-        // and user getAssociations to retrieve all of that user's fandoms
+        // and user getAssociations
         return result.getGoals()
           // we then pass the fandoms in a final callback
           .then(function(allGoals) {
