@@ -111,3 +111,12 @@ input[type="text"] {
     background-color: #ffffff;
     color: #000000;
 }
+
+input[type="password"] {
+    width: 60%;
+    border: 1px solid black;
+    margin: 0px;
+    height: 40px;
+    background-color: #ffffff;
+    color: #000000;
+}
