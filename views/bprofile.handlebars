@@ -2,13 +2,31 @@
  --}}
 <div class ="row">
   <h2>Welcome to your business profile!</h2>
-  <h3>Name of company: </h3>
-  <p>Website </p>
-  <p>Login Email</p>
+  <h3>Name of company: {{businessname}}</h3>
+  <p>Website: {{website}} </p>
+  <p>Login Email: {{email}} </p>
+  <p> {{zipcode}}</p>
 </div>
 
 <div class='row'>
   <h2>Goals your business is associated with</h2>
+  <p> {{#each goals}}</p>
+    {{this.goalname}}
+        <a href="#modal1">
+        <img class="imageicon responsive-img card-image" src="{{this.imageURL}}">
+        </a>
+<!-- Modal Structure -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>List of users nearby interested in this goal:</h4>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Thanks!</a>
+        </div>
+  </div>
+  {{!-- end of modal --}}
+
+  {{/each}} 
 
   <button>Browse goals</button>
 <button type = "submit">Edit goals</button>
