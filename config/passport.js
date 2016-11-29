@@ -56,9 +56,9 @@ module.exports = function(passport) {
 
   //Local Signup
   passport.use('local-signup', new localStrategy({
+    passReqToCallback : true,
     usernameField : 'email',
-    passwordField : 'password',
-    passReqToCallback : true
+    passwordField : 'password'    
   },
   function(req, email, password, done) {
     User.findOne({ where: { email: email }})
@@ -76,7 +76,7 @@ module.exports = function(passport) {
         user.password = User.generateHash(password);
         user.firstname = req.body.firstName;
         user.lastname = req.body.lastName;
-        user.zipcode = req.body.zipcode;
+        user.zipcode = parseInt(req.body.zipcode);
         user.save().catch(function(err) {
           throw err;
         }).then(function() {
@@ -89,9 +89,10 @@ module.exports = function(passport) {
           password: User.generateHash(password),
           firstname: req.body.firstName,
           lastname: req.body.lastName,
-          zipcode: req.body.zipcode
+          zipcode: parseInt(req.body.zipcode)
         });
-        newUser.save().then(function() {done (null, newUser);}).catch(function(err) {
+        newUser.save()
+        .then(function() {done (null, newUser);}).catch(function(err) {
           done(null, false, req.flash('loginMessage', err));
         });
       }

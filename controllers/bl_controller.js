@@ -195,7 +195,7 @@ router.get('/uprofile/:userId', function(req, res) {
 
 
 //Authenticate (First Login)
-// module.exports = function(app, passport) {
+//module.exports = function(app, passport) {
   //locally login
   router.get('/login', function (req, res) {
     res.render('login', {message: req.flash('loginMessage')});
@@ -219,7 +219,7 @@ router.get('/uprofile/:userId', function(req, res) {
     failureRedirect : '/signup', //redirect back to signup if error
     failureFlash : true //allow message
   }));
-// };
+//};
 // router.post('/burgers/create', function (req, res) {
 // 	burger.create([req.body.newBurgerName], function () {
 // 		res.redirect('/burgers');
