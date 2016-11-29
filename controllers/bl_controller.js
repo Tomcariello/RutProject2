@@ -181,16 +181,16 @@ router.get('/bprofile', function(req, res) {
             // })
 
 
-            router.get('/uprofile', function(req, res) {
-                console.log('user profile is requested');
-                models.UserGoals.findAll({
+            // router.get('/uprofile', function(req, res) {
+            //     console.log('user profile is requested');
+            //     models.UserGoals.findAll({
 
-                }).then(function(uprofile) {
-                    console.log(uprofile);
-                    var userObject = { uprofile: uprofile };
-                    res.render('uprofile', userObject);
-                });
-            });
+            //     }).then(function(uprofile) {
+            //         console.log(uprofile);
+            //         var userObject = { uprofile: uprofile };
+            //         res.render('uprofile', userObject);
+            //     });
+            // });
 
             router.get('/goalcreate', function(req, res) {
                 res.render('goalcreate', { data: 'test' });
