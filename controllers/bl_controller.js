@@ -67,25 +67,20 @@ router.get('/browse', function (req, res) {
   // });
 
   //look up user ID
-  models.Users.findOne({where: {id: 2} })
+  models.Users.findOne({where: {id: 3} })
   .then(function(user){
     //get user associated goals
     return user.getGoals()
   })
   .then(function(allUserGoals){
-    //get all goals and filter out allUserGoals
 
-    // console.log("********************************************");
-    // console.log(allUserGoals.length);
-    // console.log(allUserGoals[1].id);
-    // console.log("********************************************");
+    //get all goals and filter out allUserGoals
     var goalsToExclude = [];
 
     for (i =0; i < allUserGoals.length; i++) {
       goalsToExclude.push(allUserGoals[i].id)
     } 
     console.log("Goals to exclude are: " + goalsToExclude);
-
 
     return models.Goals.findAll({
       where: {
@@ -103,12 +98,11 @@ router.get('/browse', function (req, res) {
     })
 });
 
-
-
-//Route to process goals being added
+console.log("********************************************");//Route to process goals being added
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
-    // console.log('adding a goal: ID is ' + req.params.userId + " and goalid is " + req.params.goalId);
-
+  console.log("********************************************");
+  console.log('adding a goal: ID is ' + req.params.userId + " and goalid is " + req.params.goalId);
+  console.log("********************************************");
     models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
         // with .then, we can woradd-user-goal/1/{{this.id}}k with this an instance and add a goal
         .then(function(user) {
@@ -128,25 +122,34 @@ router.get('/bprofile', function(req, res) {
         res.render('bprofile', businessObject);
     })
 });
-router.get(':userid/uprofile')
-router.get('/uprofile', function(req, res) {
+
+router.get('/uprofile/:userId', function(req, res) {
     console.log('goals access requested');
+    console.log(req.params.userId)
     //Find all goals
     // models.Goals.findAll({})
 
     //find goals the current user does not already have on their list
     // models.Users.findOne({where: {id: parseInt(req.params.userId)} })
-    models.Users.findOne({ where: { id: 2 } })
+    models.Users.findOne({ where: { id: req.params.userId } })
 
     // we pass that user into our callback
     .then(function(result) {
+      var data=
+      {
+        firstname: result.firstname,
+        lastname: result.lastname,
+        email: result.email
+      }
         // and user getAssociations to retrieve all of that user's fandoms
         return result.getGoals()
-            // we then pass the fandoms in a final callback
-            .then(function(allGoals) {
-                var goalObject = { goals: allGoals };
-                res.render('uprofile', goalObject);
-            })
+          // we then pass the fandoms in a final callback
+          .then(function(allGoals) {
+            console.log(allGoals)
+            var goalObject = allGoals
+            data.goals= goalObject
+            res.render('uprofile', data);
+          });
     });
 });
 
@@ -180,7 +183,7 @@ router.get('/uprofile', function(req, res) {
         console.log(uprofile);
         var userObject = { uprofile: uprofile };
         res.render('uprofile', userObject);
-    })
+    });
 });
 
 router.get('/goalcreate', function(req, res) {

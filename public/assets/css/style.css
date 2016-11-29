@@ -6,10 +6,9 @@
   padding: 10px;
 
 }
-nav{
+nav {
   background: rgba(255, 255, 255, 0.3);
   border-width: 0px;
-
 }
 body {
   display: flex;
@@ -17,7 +16,8 @@ body {
   flex-direction: column;
   background-image: url("/main.jpeg");
   background-size: cover;
-  color: white;
+  /*color: white;*/
+  font-family: Calibri;
 }
 form{
   margin:30px;
@@ -32,8 +32,8 @@ h5{
   float: left;
 }
 .imageicon {
-  height: 50%;
-  width: 50%;
+  height: 200px;
+  width: 200px;
 }
 .card {
   text-align: center;
@@ -51,8 +51,8 @@ h5{
 footer.page-footer{
   width: 100%;
   background: rgba(255, 255, 255, 0.3);
-  position: absolute;
-  position: fixed;
+  position: relative;
+  /*position: fixed;*/
   bottom: 0;
   padding: 0px;
   float: left;
@@ -83,12 +83,19 @@ ul {
 /*this is making the footer sticky*/
 /*=================================*/
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+main {
+  flex: 1 0 auto;
+}
 /*=================================*/
+
+
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
+
