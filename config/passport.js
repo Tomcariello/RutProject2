@@ -1,9 +1,10 @@
 //load what we need
+var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 
 //load user model
 // var configDB = require('../models/users.js');
-var configDB = require('./config.json');
+var configDB = require('./connection.js');
 var Sequelize = require('sequelize');
 var pg = require('pg').native;
 var pghstore = require('pg-hstore');
@@ -11,10 +12,11 @@ var sequelize = new Sequelize(configDB.url);
 var db = require('../models');
 
 var User = sequelize.import('../models/users.js');
+
 User.sync();
 
 //Auth variables
-var configAuth = require('./auth');
+//var configAuth = require('./auth');
 
 //passport signin
 module.exports = function(passport) {
@@ -63,12 +65,12 @@ module.exports = function(passport) {
   },
   function(req, username, password, done) {
     db.User.create({
-      name: req.body.name,
-      email: username,
-      password: password,
+      name: req.body.firstName,
+      email: req.body.email ,
+      password: req.body.password,
       zipcode: req.body.zipcode
     }).then(function(user) {
-      user.userName = req.body.name
+      user.userName = req.body.email
       user.zipcode = parseInt(req.body.zipcode);
       user.save();
       return done(null, user);

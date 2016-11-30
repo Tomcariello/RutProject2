@@ -1,7 +1,7 @@
 /*
 Here is where you make the connection to the database and export and used by the O.R.M.
 */
-var password = require('../config/password.js');
+//var password = require('../config/password.js');
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
