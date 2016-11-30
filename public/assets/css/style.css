@@ -1,4 +1,4 @@
-.nav-wrapper{
+/*.nav-wrapper{
   padding-top: 20px;
   padding: 10px;
   border-color: #000005;
@@ -7,15 +7,16 @@
 
 }*/
 nav {
-  background: rgba(255, 255, 255, 0.3);
+  /*background: rgba(255, 255, 255, 0.3);*/
   border-width: 0px;
   color: black;
+  
 }
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-image: url("/main.jpg");
+  /*background-image: url("/main.jpg");*/
   background-size: cover;
   /*color: white;*/
   font-family: Calibri;
@@ -74,14 +75,20 @@ body {
   flex-direction: column;
 }
 
-/*main {
+main {
   flex: 1 0 auto;
-}*/
+}
 /*=================================*/
 
 
 html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  /*GOOGLE FONTS*/
+/*/*font-family: 'Abril Fatface', cursive;
+font-family: 'Bungee Inline', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Yellowtail', cursive;*/
 }
 
 
@@ -106,10 +113,3 @@ input.pass[type="password"] {
     background-color: #ffffff;
     color: #000000;
 }
-
-/*GOOGLE FONTS*/
-/*font-family: 'Abril Fatface', cursive;
-font-family: 'Bungee Inline', cursive;
-font-family: 'Pacifico', cursive;
-font-family: 'Shadows Into Light', cursive;
-font-family: 'Yellowtail', cursive;

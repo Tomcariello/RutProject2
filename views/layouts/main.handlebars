@@ -5,7 +5,13 @@
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bungee+Inline|Pacifico|Shadows+Into+Light|Yellowtail" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/public/assets/favicon.ico"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  {{!-- skeleton refs --}}
+  <link rel="stylesheet" href="/assets/css/normalize.css" type="text/css"/>
+  <link rel="stylesheet" href="/assets/css/skeleton.css" type="text/css"/>
   <link rel="stylesheet" href="/assets/css/style.css" type="text/css"/>
+  {{!-- icons --}}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   {{!-- jquery reference --}}
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
@@ -50,45 +56,46 @@
   <body>
   {{!-- Navbar --}}
     <nav>
-    <div class="nav-wrapper">
-      <a href="index" class="brand-logo">Bucket Dreams</a>
+    <div class="nav-wrapper blue lighten-5">
+      <a href="index" class="brand-logo" style="font-family:'Bungee Inline', cursive;">DreamBucket</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down" style="font-family:'Shadows Into Light', cursive; font-size: 30rem">
+        <li><a href="#">Sing Up</a></li>
+        <li><a href="#">Log In</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
     </div>
   </nav>
 
 		{{{ body }}}
     {{!-- footer --}}
-<footer class="page-footer transparent">
+<footer class="page-footer blue lighten-5">
   <div class="container">
     <div class="row">
                 <div class="col l6">
-                  <div class = "row">
-                    <div class = "col l6">
-                      <h4 class="white-text">Rutgers Coding Bootcamp</h4>
+                      <h4 class="">Rutgers Coding Bootcamp
+                      </h4>
+                      <h6 class="">Project 2: BucketDreams or Beyond the Pail</h6>
                       </div>
-                      <div class = "col l6">
-                      <h5 class="grey-text text-lighten-4">Project 2: BucketDreams or Beyond the Pail</h5>
-                      </div>
-                    </div>
-                </div>
                 <div class="col l6">
-                  <h5 class="white-text">Find Us On GitHub</h5>
+                  <h6 class="">Find Us On GitHub</h6>
                   <ul>
-                    <li><a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">Project Repo</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Ryan Seery</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Melissa Baldwin</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Tom Cariello</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Marija Naumoski</a></li>
+                    <li><a class="" href="https://github.com/Tomcariello/RutProject2">Project Repo</a></li>
+                    <li><a class="" href="#!">Ryan Seery</a></li>
+                    <li><a class="" href="#!">Melissa Baldwin</a></li>
+                    <li><a class="" href="#!">Tom Cariello</a></li>
+                    <li><a class="" href="#!">Marija Naumoski</a></li>
                   </ul>
                 </div>
     </div>
 
-          <div class="footer-copyright">
-            <div class="container">
-            © 2016 French Toast Mafia
+        <div class="row">
+          <div class="footer-copyright blue lighten-7">
+            <div class="container black-text">© 2016 French Toast Mafia
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
-        </div>
+          </div>
+</div>
       </footer>
 </body>
 </HTML>
