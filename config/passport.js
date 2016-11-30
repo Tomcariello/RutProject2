@@ -8,6 +8,7 @@ var Sequelize = require('sequelize');
 var pg = require('pg').native;
 var pghstore = require('pg-hstore');
 var sequelize = new Sequelize(configDB.url);
+var db = require('../models');
 
 var User = sequelize.import('../models/users.js');
 User.sync();
@@ -60,7 +61,25 @@ module.exports = function(passport) {
     usernameField : 'email',
     passwordField : 'password'    
   },
-  function(req, email, password, done) {
+  function(req, username, password, done) {
+    db.User.create({
+      name: req.body.name,
+      email: username,
+      password: password,
+      zipcode: req.body.zipcode
+    }).then(function(user) {
+      user.userName = req.body.name
+      user.zipcode = parseInt(req.body.zipcode);
+      user.save();
+      return done(null, user);
+    }).catch(function() {
+      return done(null, false);
+    });
+    console.log(req, username, password)
+  }
+));
+}
+  /*function(req, email, password, done) {
     User.findOne({ where: { email: email }})
     .then(function(existingUser) {
         
@@ -101,4 +120,4 @@ module.exports = function(passport) {
       done(null, false, req.flash('loginMessage', e.name + " " + e.message));
     })
   }));
-};
+};*/
