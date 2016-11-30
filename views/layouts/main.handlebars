@@ -5,13 +5,14 @@
   <link rel="shortcut icon" type="image/x-icon" href="/public/assets/favicon.ico"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link rel="stylesheet" href="/assets/css/style.css" type="text/css"/>
-
+  {{!-- jquery reference --}}
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-
+  {{!-- signup js --}}
   <script src="./assets/js/signup.js"></script>
-
+  {{!-- materialize reference --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  {{!-- JS reference --}}
   <script src="/assets/js/scripts.js"></script>
   
 
@@ -45,9 +46,8 @@
 
   </head>
 
-  
   <body>
-    <div class="navbar-fixed">
+    {{!-- <div class="navbar-fixed">
     <nav>
     <div class="nav-wrapper">
       <a href="index" class="brand-logo">Bucket Dreams</a>
@@ -59,41 +59,16 @@
       </ul>
     </div>
   </nav>
-  </div>
+  </div> --}}
 
 		{{{ body }}}
-    <footer class="page-footer">
-                <p class="grey-text text-lighten-4">Made by Tom, Ryan, Marija, and Melissa</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text"></h5>
-
-{{!-- >>>>>>> 1ada1f81f92c9e1bd23391befcd747399debc78f
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">Github</a></li>
-                </ul>
-======= --}}
-
-                <p><a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">Click to find on us on Github</a></p>
-
-    </footer>
-	</body>
-{{!-- footer --}}
-{{!-- <footer class="page-footer transparent">
-          <div class="container">
-            <div class="row">
-                <p>Made by Tom, Ryan, Marija, and Melissa</p>
-                <p><a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">See it on Github</a>
-
-              </div>
-            </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2016 French Toast Mafia
-            </div>
+    {{!-- <footer class="page-footer transparent">
+        <a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">Click to find on us on Github</a>
+      <div class="footer-copyright">
+        <div class="container">
+          Made by Tom, Ryan, Marija, and Melissa © 2016 French Toast Mafia
           </div>
-
-    </footer>
-  </footer> --}}
-    </body>
+        </div>
+    </footer> --}}
+	</body>
 </HTML>
