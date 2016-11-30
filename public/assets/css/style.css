@@ -1,4 +1,4 @@
-/*.nav-wrapper{
+.nav-wrapper{
   padding-top: 20px;
   padding: 10px;
   border-color: #000005;
@@ -74,9 +74,9 @@ body {
   flex-direction: column;
 }
 
-main {
+/*main {
   flex: 1 0 auto;
-}
+}*/
 /*=================================*/
 
 
@@ -106,3 +106,10 @@ input.pass[type="password"] {
     background-color: #ffffff;
     color: #000000;
 }
+
+/*GOOGLE FONTS*/
+/*font-family: 'Abril Fatface', cursive;
+font-family: 'Bungee Inline', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Yellowtail', cursive;
