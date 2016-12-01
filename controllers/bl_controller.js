@@ -83,11 +83,18 @@ router.get('/index', function(req, res) {
 });
 
 router.get('/browse', function (req, res) {
+  models.Goals.findAll({})
+  .then(function(goalObject){
+    res.render('browseusergoals', goalObject);
+  })
+})
+
+router.get('/browse/:userId', function (req, res) {
   console.log('goals access requested');
   //Find all goals that are not already associated with the current user
-    
+
   //look up user ID
-  models.Users.findOne({where: {id: 2} })
+  models.Users.findOne({where: {id: req.params.userId} })
   .then(function(user){
     //get user associated goals
     return user.getGoals()
@@ -105,7 +112,6 @@ router.get('/browse', function (req, res) {
     return models.Goals.findAll({
       where: {
         $not: [
-          // { id: allUserGoals },
           { id: goalsToExclude },
         ]
       }
@@ -114,7 +120,7 @@ router.get('/browse', function (req, res) {
     .then(function(unselectedGoals) {
       //get all goals and exclude user associated goals
       var goalObject = { goals: unselectedGoals};
-      res.render('browse', goalObject);
+      res.render('browseusergoals', goalObject);
     })
 });
 
