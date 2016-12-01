@@ -2,16 +2,24 @@
 <!-- Update your html tag to include the itemscope and itemtype attributes. -->
 <HTML lang="en" itemscope itemtype="http://schema.org/Type">
 	<head>
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bungee+Inline|Pacifico|Shadows+Into+Light|Yellowtail" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/public/assets/favicon.ico"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  {{!-- skeleton refs --}}
+  <link rel="stylesheet" href="/assets/css/normalize.css" type="text/css"/>
+  <link rel="stylesheet" href="/assets/css/skeleton.css" type="text/css"/>
   <link rel="stylesheet" href="/assets/css/style.css" type="text/css"/>
+  {{!-- icons --}}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  {{!-- jquery reference --}}
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-
+  {{!-- signup js --}}
   <script src="./assets/js/signup.js"></script>
-
+  {{!-- materialize reference --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  {{!-- JS reference --}}
   <script src="/assets/js/scripts.js"></script>
   
 
@@ -45,55 +53,47 @@
 
   </head>
 
-  
   <body>
-    <div class="navbar-fixed">
+  {{!-- Navbar --}}
     <nav>
-    <div class="nav-wrapper">
-      <a href="index" class="brand-logo">Bucket Dreams</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="signup"><i class="material-icons">Sign up</i></a></li>
-        <li>Username: <input type='text' name='login'></li>
-        <li>Password: <input type='password' name='pass'></li>
-        <li><button id="login">Login</button>
+    <div class="nav-wrapper blue lighten-5">
+      <a href="index" class="brand-logo" style="font-family:'Bungee Inline', cursive;">DreamBucket</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down" style="font-family:'Shadows Into Light', cursive; font-size: 30rem">
+        <li><a href="/signup">Sing Up</a></li>
+        <li><a href="#">Log In</a></li>
+        <li><a href="#">Contact Us</a></li>
       </ul>
     </div>
   </nav>
-  </div>
 
 		{{{ body }}}
-    <footer class="page-footer">
-                <p class="grey-text text-lighten-4">Made by Tom, Ryan, Marija, and Melissa</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text"></h5>
-
-{{!-- >>>>>>> 1ada1f81f92c9e1bd23391befcd747399debc78f
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">Github</a></li>
-                </ul>
-======= --}}
-
-                <p><a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">Click to find on us on Github</a></p>
-
-    </footer>
-	</body>
-{{!-- footer --}}
-{{!-- <footer class="page-footer transparent">
-          <div class="container">
-            <div class="row">
-                <p>Made by Tom, Ryan, Marija, and Melissa</p>
-                <p><a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">See it on Github</a>
-
-              </div>
-            </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2016 French Toast Mafia
+    {{!-- footer --}}
+<footer class="page-footer blue lighten-5">
+  <div class="container">
+    <div class="row">
+                <div class="col l6">
+                      <h4 class="">Rutgers Coding Bootcamp
+                      </h4>
+                      <h6 class="">Project 2: BucketDreams or Beyond the Pail</h6>
+                      </div>
+                <div class="col l6">
+                  <h6 class="">Find Us On GitHub</h6>
+                  <ul>
+                    <li><a class="" href="https://github.com/Tomcariello/RutProject2">Project Repo</a></li>
+                    <li><a class="" href="#!">Ryan Seery</a></li>
+                    <li><a class="" href="#!">Melissa Baldwin</a></li>
+                    <li><a class="" href="#!">Tom Cariello</a></li>
+                    <li><a class="" href="#!">Marija Naumoski</a></li>
+                    <li><a class="black-text" href="#!">More Links</a></li>
+                  </ul>
+                </div>
+    </div>
+</div>
+          <div class="footer-copyright blue lighten-2">
+            <div class="black-text center">© 2016 French Toast Mafia
             </div>
           </div>
 
-    </footer>
-  </footer> --}}
-    </body>
+      </footer>
+</body>
 </HTML>

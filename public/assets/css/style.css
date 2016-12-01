@@ -1,20 +1,22 @@
-.nav-wrapper{
+/*.nav-wrapper{
   padding-top: 20px;
   padding: 10px;
   border-color: #000005;
   background: rgba(255, 255, 255, 0.3);
   padding: 10px;
 
-}
+}*/
 nav {
-  background: rgba(255, 255, 255, 0.3);
+  /*background: rgba(255, 255, 255, 0.3);*/
   border-width: 0px;
+  color: black;
+  
 }
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-image: url("/main.jpg");
+  /*background-image: url("/main.jpg");*/
   background-size: cover;
   /*color: white;*/
   font-family: Calibri;
@@ -22,18 +24,7 @@ body {
 form{
   margin:30px;
 }
-h2{
-  margin-top: 100px;
-  text-align: center;
-  color: white;
-}
-h3{
-  margin-bottom: 230px;
-}
-h5{
-  padding-top:20px;
-  float: left;
-}
+
 .imageicon {
   height: 200px;
   width: 200px;
@@ -48,17 +39,8 @@ h5{
   font-size: 24px;
   color: black;
 }
-.footer-copyright{
-  text-align: center;
-}
-footer.page-footer{
-  width: 100%;
-  background: rgba(255, 255, 255, 0.3);
-  position: relative;
-  bottom: 0;
-  padding: 0px;
-  float: left;
-}
+
+
 .sidebar {
   position: fixed;
   padding-top: 70px;
@@ -72,22 +54,22 @@ form{
   background: rgba(255, 255, 255, 0.3);
   margin-bottom: 50px;
 }
-ul {
+/*ul {
   margin: 0px;
 }
 li{
   margin: 10px;
-}
-.row {
+}*/
+/*.row {
   margin-bottom: 0px;
-}
-.grey-text.text-lighten-3{
+}*/
+/*.grey-text.text-lighten-3{
   margin-right: 200px;
   margin-top: 18px;
-}
+}*/
 /*this is making the footer sticky*/
 /*=================================*/
-/*body {
+body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -95,12 +77,18 @@ li{
 
 main {
   flex: 1 0 auto;
-}*/
+}
 /*=================================*/
 
 
 html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  /*GOOGLE FONTS*/
+/*/*font-family: 'Abril Fatface', cursive;
+font-family: 'Bungee Inline', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Yellowtail', cursive;*/
 }
 
 
