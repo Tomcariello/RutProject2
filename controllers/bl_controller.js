@@ -213,6 +213,7 @@ router.get('/uprofile/:userId', function(req, res) {
     res.render('signup', { message: req.flash('loginMessage') });
   });
 
+  
   //process signup form
   router.post('/signup', passport.authenticate('local-signup', {
     successRedirect : '/uprofile', //redirect to profile page

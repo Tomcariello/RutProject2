@@ -4,11 +4,11 @@ var localStrategy = require('passport-local').Strategy;
 
 //load user model
 // var configDB = require('../models/users.js');
-var configDB = require('./connection.js');
+var configDB = require('./config.json');
 var Sequelize = require('sequelize');
 // var pg = require('pg').native;
 // var pghstore = require('pg-hstore');
-var sequelize = new Sequelize(configDB.url);
+var sequelize = new Sequelize(configDB.development);
 var db = require('../models');
 
 var User = sequelize.import('../models/users.js');
