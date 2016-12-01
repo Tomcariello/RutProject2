@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     setterMethods: {
       someValue: function(value ) {
-        this.someValue = value;
+        this.someValue = value; 
       }
     }
   });

@@ -160,7 +160,7 @@ router.get('/bprofile', function(req, res) {
         var businessObject = { bprofile: bprofile };
         res.render('bprofile', businessObject);
     })
-    res.render('bprofile');
+    // res.render('bprofile');
 });
 
 router.get('/uprofile/:userId', function(req, res) {
@@ -249,7 +249,8 @@ router.get('/uprofile/:userId', function(req, res) {
 
 router.get('/uprofile', function(req, res) {
     console.log('user profile is requested');
-    models.UserGoals.findAll({
+    // res.send("please work?")
+    models.Goals.findAll({
 
     }).then(function(uprofile) {
         console.log(uprofile);

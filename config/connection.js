@@ -3,21 +3,21 @@ Here is where you make the connection to the database and export and used by the
 */
 //var password = require('../config/password.js');
 
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-	port: 3306,
-	host: '127.0.0.1',
-	user: 'root',
-	password: 'Guitar01',
-	database: 'bucketlist'
-});
+// var mysql = require('mysql');
+// var connection = mysql.createConnection({
+// 	port: 3306,
+// 	host: '127.0.0.1',
+// 	user: 'root',
+// 	password: 'Guitar01',
+// 	database: 'bucketlist'
+// });
 
-connection.connect(function (err) {
-	if (err) {
-		console.error('error connecting: ' + err.stack);
-		return;
-	}
-	console.log('connected as id ' + connection.threadId);
-});
+// connection.connect(function (err) {
+// 	if (err) {
+// 		console.error('error connecting: ' + err.stack);
+// 		return;
+// 	}
+// 	console.log('connected as id ' + connection.threadId);
+// });
 
-module.exports = connection;
+// module.exports = connection;
