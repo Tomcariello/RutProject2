@@ -161,11 +161,17 @@ router.get('/uprofile/:userId', function(req, res) {
         return result.getGoals()
           // we then pass the fandoms in a final callback
           .then(function(allGoals) {
-            console.log(allGoals)
+            allGoals.forEach(function(value){
+              models.BusinessGoals.findAll({ where: {GoalId: value.id}})
+              .then(function(results){
+                console.log('results', results)
+              });
+            // console.log('GOALS:', allGoals)
             var goalObject = allGoals
             data.goals= goalObject
             res.render('uprofile', data);
           });
+        });
     });
 });
 
