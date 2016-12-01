@@ -66,20 +66,22 @@ module.exports = function(passport) {
   function(req, username, password, done) {
     db.Users.create({
       firstname: req.body.firstName,
-      lastname: "placeholder",
+      lastname: req.body.lastName,
       email: req.body.email ,
       password: req.body.password,
       zipcode: req.body.zipcode
     }).then(function(user) {
       console.log('show me an id?', user)
-      user.userName = req.body.email
+      /*user.userName = req.body.email
       user.zipcode = parseInt(req.body.zipcode);
-      user.save();
+      user.save();*/
       return done(null, user);
-    }).catch(function() {
+    }).catch(function(err) {
+      if(err) throw err;
+      console.log("FAIL FAIL FAIL FAIL")
       return done(null, false);
     });
-    console.log(req, username, password)
+    // console.log(req, username, password)
   }
 ));
 }
