@@ -186,17 +186,6 @@ router.get('/uprofile/:userId', function(req, res) {
 });
 
 
-// router.get('/uprofile', function(req, res) {
-//     console.log('user profile is requested');
-//     models.UserGoals.findAll({
-
-//     }).then(function(uprofile) {
-//         console.log(uprofile);
-//         var userObject = { uprofile: uprofile };
-//         res.render('uprofile', userObject);
-//     });
-// });
-
 //Add a goal per user
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
   console.log('Goal being added');
@@ -239,5 +228,8 @@ router.get('/signup', function(req, res) {
     res.render('signup', { data: 'test' });
 });
 
+router.get('/contact', function(req, res) {
+    res.render('contact', { data: 'test' });
+});
 
 module.exports = router;
