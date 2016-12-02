@@ -93,6 +93,7 @@ router.get('/browse', function (req, res) {
 
 router.get('/browse/:userId', function (req, res) {
   console.log('goals access requested');
+  console.log(req.params.userId);
   //Find all goals that are not already associated with the current user
 
   //look up user ID
