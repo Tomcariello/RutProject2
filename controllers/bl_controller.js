@@ -9,7 +9,7 @@ var bodyParser = require('body-parser')
 var sequelizeConnection = models.sequelize
 
 // We run this query so that we can drop our tables even though they have foreign keys
-// sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
+sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
 // // make our tables; force:true drops the table if it already exists
 // .then(function() {
@@ -93,6 +93,7 @@ router.get('/browse', function (req, res) {
 
 router.get('/browse/:userId', function (req, res) {
   console.log('goals access requested');
+  console.log(req.params.userId);
   //Find all goals that are not already associated with the current user
 
   //look up user ID
@@ -196,13 +197,13 @@ router.get('/uprofile/:userId', function(req, res) {
 //     });
 // });
 
-//Add a goal per use
+//Add a goal per user
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
   console.log('Goal being added');
   models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
     // with .then, we can work with this instance and add a goal
     .then(function(user) {
-        user.addGoals(parseInt(req.params.goalId), {goalstatus: 'false' });
+        user.addGoals(parseInt(req.params.goalId), {goalstatus: false });
         var urlRedirect = '/browse/' + req.params.userId;
         res.redirect(urlRedirect);
     })
