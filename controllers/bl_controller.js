@@ -20,55 +20,55 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 // Create sequelize associations in the table
 
 //Assign user 1 goal 1
-models.Users.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(1);
-    })
+// models.Users.findOne({ where: { id: 1 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(1);
+//     })
 
-models.Users.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(2);
-    })
+// models.Users.findOne({ where: { id: 2 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(2);
+//     })
 
-models.Users.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(4);
-    })
+// models.Users.findOne({ where: { id: 3 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(4);
+//     })
 
-models.Users.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
+// models.Users.findOne({ where: { id: 4 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(3);
+//     })
 
-// =================================================================
-// Assign business 1 goal 1
-models.BusinessUsers.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(1);
-    })
+// // =================================================================
+// // Assign business 1 goal 1
+// models.BusinessUsers.findOne({ where: { id: 1 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(business) {
+//         return business.addGoals(1);
+//     })
 
-models.BusinessUsers.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(2);
-    })
+// models.BusinessUsers.findOne({ where: { id: 2 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(business) {
+//         return business.addGoals(2);
+//     })
 
-models.BusinessUsers.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(4);
-    })
+// models.BusinessUsers.findOne({ where: { id: 3 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(business) {
+//         return business.addGoals(4);
+//     })
 
-models.BusinessUsers.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
+// models.BusinessUsers.findOne({ where: { id: 4 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(3);
+//     })
 
 
 
@@ -104,7 +104,7 @@ router.get('/browse/:userId', function (req, res) {
   .then(function(allUserGoals){
 
     //get all goals and filter out allUserGoals
-    var goalsToExclude = [];
+    var goalsToExclude = [-1];
 
     for (i = 0; i < allUserGoals.length; i++) {
       goalsToExclude.push(allUserGoals[i].id)
@@ -202,7 +202,7 @@ router.get('/add-user-goal/:userId/:goalId', function(req, res) {
   models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
     // with .then, we can work with this instance and add a goal
     .then(function(user) {
-        user.addGoals(parseInt(req.params.goalId));
+        user.addGoals(parseInt(req.params.goalId), {goalstatus: 'false' });
         var urlRedirect = '/browse/' + req.params.userId;
         res.redirect(urlRedirect);
     })
