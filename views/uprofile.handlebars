@@ -41,12 +41,14 @@
           <thead>
             <tr>
               <th>Goals</th>
+              <th>Suggestion</th>
             </tr>
           </thead>
           <tbody>
             {{#each goals}}
             <tr>
-              <td>{{this.goalname}}</td>
+              <td><h5>{{this.goalname}}</h5></td>
+              <td><img class="imageicon responsive-img card-image" src="{{this.imageURL}}"></td>
             </tr>
           </tbody>
         </table>
