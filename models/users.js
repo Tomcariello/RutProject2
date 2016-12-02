@@ -24,17 +24,11 @@ module.exports = function(sequelize, DataTypes) {
         return this.someValue;
       }
     },
-  //   setterMethods: {
-  //     someValue: function(value ) {
-  //       this.someValue = value; 
-
-  //     associate: function(models) {
-  //       // associations can be defined here
-  //       // Users.hasMany(Goals, {as: 'UserGoals'})
-  //       // Users.belongsToMany(models.Goals, {through: 'UserGoals'});
-  //     }
-  //   }
-  // });
-  // return Users;
-})
-}
+    setterMethods: {
+      someValue: function(value ) {
+        this.someValue = value; 
+      }
+    }
+  });
+  return Users;
+  };
