@@ -4,6 +4,7 @@ Here is where you create all the functions that will do the routing for your app
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
+var bodyParser = require('body-parser')
 
 var sequelizeConnection = models.sequelize
 
@@ -19,55 +20,55 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 // Create sequelize associations in the table
 
 //Assign user 1 goal 1
-models.Users.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(1);
-    })
+// models.Users.findOne({ where: { id: 1 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(1);
+//     })
 
-models.Users.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(2);
-    })
+// models.Users.findOne({ where: { id: 2 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(2);
+//     })
 
-models.Users.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(4);
-    })
+// models.Users.findOne({ where: { id: 3 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(4);
+//     })
 
-models.Users.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
+// models.Users.findOne({ where: { id: 4 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(3);
+//     })
 
-// =================================================================
-// Assign business 1 goal 1
-models.BusinessUsers.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(1);
-    })
+// // =================================================================
+// // Assign business 1 goal 1
+// models.BusinessUsers.findOne({ where: { id: 1 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(business) {
+//         return business.addGoals(1);
+//     })
 
-models.BusinessUsers.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(2);
-    })
+// models.BusinessUsers.findOne({ where: { id: 2 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(business) {
+//         return business.addGoals(2);
+//     })
 
-models.BusinessUsers.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(4);
-    })
+// models.BusinessUsers.findOne({ where: { id: 3 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(business) {
+//         return business.addGoals(4);
+//     })
 
-models.BusinessUsers.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
+// models.BusinessUsers.findOne({ where: { id: 4 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(3);
+//     })
 
 
 
@@ -81,21 +82,21 @@ router.get('/index', function(req, res) {
     res.render('index', { data: 'test' });
 });
 
+//browse goals without being logged in
 router.get('/browse', function (req, res) {
+  models.Goals.findAll({})
+  .then(function(allGoals){
+    var goalObject = { goals: allGoals};
+    res.render('browseusergoals', goalObject);
+  })
+})
+
+router.get('/browse/:userId', function (req, res) {
   console.log('goals access requested');
   //Find all goals that are not already associated with the current user
-    
-  // models.Goals.findAll({include: 
-  //   [{model: models.Users, 
-  //     where: {id: {$ne: 3}}}] })
-  // .then(function(allGoals){
-  //   // console.log(allGoals.length);
-  //   var goalObject = { goals: allGoals};
-  //   res.render('browse', goalObject);
-  // });
 
   //look up user ID
-  models.Users.findOne({where: {id: 3} })
+  models.Users.findOne({where: {id: req.params.userId} })
   .then(function(user){
     //get user associated goals
     return user.getGoals()
@@ -103,9 +104,9 @@ router.get('/browse', function (req, res) {
   .then(function(allUserGoals){
 
     //get all goals and filter out allUserGoals
-    var goalsToExclude = [];
+    var goalsToExclude = [-1];
 
-    for (i =0; i < allUserGoals.length; i++) {
+    for (i = 0; i < allUserGoals.length; i++) {
       goalsToExclude.push(allUserGoals[i].id)
     } 
     console.log("Goals to exclude are: " + goalsToExclude);
@@ -113,7 +114,6 @@ router.get('/browse', function (req, res) {
     return models.Goals.findAll({
       where: {
         $not: [
-          // { id: allUserGoals },
           { id: goalsToExclude },
         ]
       }
@@ -122,19 +122,8 @@ router.get('/browse', function (req, res) {
     .then(function(unselectedGoals) {
       //get all goals and exclude user associated goals
       var goalObject = { goals: unselectedGoals};
-      res.render('browse', goalObject);
+      res.render('browseusergoals', goalObject);
     })
-});
-
-//Add a goal per use
-router.get('/add-user-goal/:userId/:goalId', function(req, res) {
-  models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
-    // with .then, we can woradd-user-goal/1/{{this.id}}k with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(parseInt(req.params.goalId));
-    })
-
-    res.redirect('/browse');
 });
 
 router.get('/bprofile/:businessId', function(req, res) {
@@ -164,6 +153,7 @@ router.get('/bprofile/:businessId', function(req, res) {
 
 
 router.get('/uprofile/:userId', function(req, res) {
+  console.log('******************************')
     console.log('goals access requested');
     console.log(req.params.userId);
     models.Users.findOne({ where: { id: req.params.userId } })
@@ -180,34 +170,19 @@ router.get('/uprofile/:userId', function(req, res) {
         return result.getGoals()
           // we then pass the fandoms in a final callback
           .then(function(allGoals) {
-            console.log(allGoals)
+            allGoals.forEach(function(value){
+              models.BusinessGoals.findAll({ where: {GoalId: value.id}})
+              .then(function(results){
+                console.log('results', results)
+              });
+            // console.log('GOALS:', allGoals)
             var goalObject = allGoals
             data.goals= goalObject
             res.render('uprofile', data);
           });
+        });
     });
 });
-
-
-
-// router.get('/:user/goals', function(req, res){
-
-//     // we save the user's name to a user variable
-//     var user = req.params.user;
-
-//     // then, we instance the matching user with findOne
-//     models.User.findOne({where: { username: user} })
-//     // we pass that user into our callback
-//     .then(function(result){
-//         // and user getAssociations to retrieve all of that user's fandoms
-//         return result.getGoals()
-//         // we then pass the fandoms in a final callback
-//         .then(function(goals){
-//             // and send it to our client as json data
-//             return res.json(goals);
-//         })
-//     })
-// })
 
 
 router.get('/uprofile', function(req, res) {
@@ -221,10 +196,27 @@ router.get('/uprofile', function(req, res) {
     });
 });
 
-//Create a goal for the entire database
-router.get('/goalcreate/:goalname/:imageurl', function(req, res) {
-  var goal = req.params.goalname;
-  var imageurl = req.params.imageurl;
+//Add a goal per use
+router.get('/add-user-goal/:userId/:goalId', function(req, res) {
+  console.log('Goal being added');
+  models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
+    // with .then, we can work with this instance and add a goal
+    .then(function(user) {
+        user.addGoals(parseInt(req.params.goalId), {goalstatus: 'false' });
+        var urlRedirect = '/browse/' + req.params.userId;
+        res.redirect(urlRedirect);
+    })
+});
+
+
+//Create a goal for the entire database & add to user
+router.post('/create-goal', function(req, res) {
+
+  var goal = req.body.addGoalName;
+  var imageurl = req.body.addGoalURL;
+  var userID = req.body.userID;
+
+  //Create Goal and append to database
   models.Goals.create(
     {
       // the username
@@ -232,8 +224,14 @@ router.get('/goalcreate/:goalname/:imageurl', function(req, res) {
       imageURL: imageurl
     }
   )
-
-  res.redirect('/browse');
+  //add this goal to the user that created it
+  .then(function(result){
+    models.Users.findOne({ where: { id: req.body.userID } })
+    .then(function(user) {
+      user.addGoals(result.id);
+      res.redirect('/browse');
+    })
+  })
 });
 
 router.get('/signup', function(req, res) {

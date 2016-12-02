@@ -2,23 +2,17 @@
   <div class="col s9">
     <h4>Click on any activity below to add it to your list!</h4>
 
-    <h4>Tom's To Do List:</h4>
-    <ul>
-      <li>List all goals from the DB in a tile format. Exclude goals that are already selected by the current user.</li>
-
-      <li>Create "selected" area at the top of the page. This will contain goals that the user wants to add to their profile. Include a 'Done' button.</li>
-      
-      <li>Include "create a goal" button which creates a modal to create a new goal.</li>
-    </ul>
-
-    <h4>Click on any activity below to add it to your list!</h4>
     <hr>
 
     <div class='row'>
+
       {{#each goals}}
       <div class="col s4">
-        
-        <a href="add-user-goal/3/{{this.id}}">
+
+      {{!-- Replace '2' with current user id --}}
+      
+        <a href="../add-user-goal/2/{{this.id}}">
+
           <div id={{this.id}} class='card'>
             <div class="goalcard">
               <img class="imageicon" src="{{this.imageURL}}">
@@ -26,18 +20,12 @@
             <div class="goaltitle">
               {{this.goalname}}
             </div>
-
-{{!--             <form action="add-user-goal/1/{{this.id}}" method="POST">
-              <input type="hidden" name="addNewGoal" value="true">
-              <button type="submit">Add Goal!</button>
-            </form> --}}
-
-
           </div>
         </a>
-
       </div>
       {{/each}}
+
+
     </div>
   </div>
 
@@ -68,13 +56,22 @@
     <p>This goal will be added to your profile and visible to all users.</p>
   </div>
 
+
   <div class="form-group">
-    Goalname: <input type="text" id="addGoalName"></input>
-    Image:<input type="text" id="addGoalURL"></input>
+    <form action="/create-goal" method="POST">
+      Goalname:<input type="text" name="addGoalName"></input>
+      Image:<input type="text" name="addGoalURL"></input>
+
+      {{!-- Replace '2' with current user id --}}
+
+        <input type="hidden" name="userID" value=2></input>
+  
+
   </div>
 
   <div class="modal-footer">
-    <button id="submitGoal" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+    <button id="Submit" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+    </form>
   </div>
 </div>
 
