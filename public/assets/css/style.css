@@ -54,20 +54,7 @@ form{
   background: rgba(255, 255, 255, 0.3);
   margin-bottom: 50px;
 }
-/*ul {
-  margin: 0px;
-}
-li{
-  margin: 10px;
-}*/
-/*.row {
-  margin-bottom: 0px;
-}*/
-/*.grey-text.text-lighten-3{
-  margin-right: 200px;
-  margin-top: 18px;
-}*/
-/*this is making the footer sticky*/
+
 /*=================================*/
 body {
   display: flex;
