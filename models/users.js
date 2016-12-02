@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     zipcode: DataTypes.INTEGER
   }, {
     classMethods: {
-<<<<<<< HEAD
+
       generateHash : function(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
       },
@@ -28,14 +28,15 @@ module.exports = function(sequelize, DataTypes) {
     setterMethods: {
       someValue: function(value ) {
         this.someValue = value; 
-=======
-      associate: function(models) {
-        // associations can be defined here
-        // Users.hasMany(Goals, {as: 'UserGoals'})
-        // Users.belongsToMany(models.Goals, {through: 'UserGoals'});
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
-      }
+
+      // associate: function(models) {
+      //   // associations can be defined here
+      //   // Users.hasMany(Goals, {as: 'UserGoals'})
+      //   // Users.belongsToMany(models.Goals, {through: 'UserGoals'});
+
+      // }
     }
+  }
   });
   return Users;
 };

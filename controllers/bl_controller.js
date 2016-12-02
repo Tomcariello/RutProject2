@@ -12,28 +12,18 @@ var sequelizeConnection = models.sequelize;
 // We run this query so that we can drop our tables even though they have foreign keys
 sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
-<<<<<<< HEAD
+
 // make our tables; force:true drops the table if it already exists
 .then(function(){
   // return sequelizeConnection.sync({force:true})
 });
 
-=======
-// // make our tables; force:true drops the table if it already exists
-// .then(function() {
-//     return sequelizeConnection.sync({force:true})
-// })
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
 
 
 // Create sequelize associations in the table
 
-<<<<<<< HEAD
-//Assign user 1 goal 1
-
-=======
 // Assign user 1 goal 1
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
+
 models.Users.findOne({ where: { id: 1 } })
     // with .then, we can work with this an instance and add a goal
     .then(function(user) {
@@ -86,10 +76,8 @@ models.BusinessUsers.findOne({ where: { id: 4 } })
 
 
 
-<<<<<<< HEAD
-=======
 // =================================================================
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
+
 //Establish page routing
 router.get('/', function(req, res) {
     res.render('index', { data: 'test' });
@@ -116,7 +104,7 @@ router.get('/browse', function (req, res) {
 
 router.get('/browse/:userId', function (req, res) {
   console.log('goals access requested');
-<<<<<<< HEAD
+
 
   //Find all goals
   models.Goals.findAll({})
@@ -145,9 +133,9 @@ router.get('/add-user-goal/:userId/:goalId', function (req, res) {
     return user.addGoals(parseInt(req.params.goalId));
   });
 
-=======
+
   console.log(req.params.userId);
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
+
   //Find all goals that are not already associated with the current user
 
   //look up user ID
@@ -181,7 +169,7 @@ router.get('/add-user-goal/:userId/:goalId', function (req, res) {
     })
 });
 
-<<<<<<< HEAD
+
 
 console.log("********************************************");//Route to process goals being added
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
@@ -197,10 +185,10 @@ router.get('/add-user-goal/:userId/:goalId', function(req, res) {
     res.redirect('/browse');
 });
 
-router.get('/bprofile', function(req, res) {
-=======
+// router.get('/bprofile', function(req, res) {
+
 router.get('/bprofile/:businessId', function(req, res) {
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
+
     console.log('business profile is requested');
     console.log(req.params.businessId);
     models.BusinessUsers.findOne({where: { id: req.params.businessId} })
@@ -213,7 +201,7 @@ router.get('/bprofile/:businessId', function(req, res) {
         email: result.email,
         zipcode: result.zipcode
       }
-        // and user getAssociations 
+        // and user getAssociations
         return result.getGoals()
           // final callback
           .then(function(allGoals) {
@@ -223,23 +211,20 @@ router.get('/bprofile/:businessId', function(req, res) {
             res.render('bprofile', data);
           });
     });
-    });
-
-<<<<<<< HEAD
     }).then(function(bprofile) {
         console.log(bprofile);
         var businessObject = { bprofile: bprofile };
         res.render('bprofile', businessObject);
     })
     // res.render('bprofile');
-});
+// };
 
 router.get('localhost:3000/uprofile/:userId', function(req, res) {
-=======
+
 
 router.get('/uprofile/:userId', function(req, res) {
   console.log('******************************')
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
+
     console.log('goals access requested');
     console.log(req.params.userId);
     models.Users.findOne({ where: { id: req.params.userId } })
@@ -265,13 +250,14 @@ router.get('/uprofile/:userId', function(req, res) {
             var goalObject = allGoals
             data.goals= goalObject
             res.render('uprofile', data);
+          })
           });
         });
     });
 });
 
 
-<<<<<<< HEAD
+
 //Authenticate (First Login)
 //module.exports = function(app, passport) {
   //locally login
@@ -336,7 +322,7 @@ router.get('/uprofile', function(req, res) {
         var userObject = { uprofile: uprofile };
         res.render('uprofile', userObject);
     });
-=======
+
 //Add a goal per user
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
   console.log('Goal being added');
@@ -347,7 +333,7 @@ router.get('/add-user-goal/:userId/:goalId', function(req, res) {
         var urlRedirect = '/browse/' + req.params.userId;
         res.redirect(urlRedirect);
     })
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
+
 });
 
 
@@ -381,17 +367,17 @@ router.post('/create-goal', function(req, res) {
 // });
 
 
-<<<<<<< HEAD
+
 //route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
   if(req.isAuthenticated())
     return next();
   res.redirect('/index');
 }
-=======
+
 router.get('/contact', function(req, res) {
     res.render('contact', { data: 'test' });
 });
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
+
 
 module.exports = router;
