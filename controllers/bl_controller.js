@@ -82,9 +82,11 @@ router.get('/index', function(req, res) {
     res.render('index', { data: 'test' });
 });
 
+//browse goals without being logged in
 router.get('/browse', function (req, res) {
   models.Goals.findAll({})
-  .then(function(goalObject){
+  .then(function(allGoals){
+    var goalObject = { goals: allGoals};
     res.render('browseusergoals', goalObject);
   })
 })
@@ -151,6 +153,7 @@ router.get('/bprofile/:businessId', function(req, res) {
 
 
 router.get('/uprofile/:userId', function(req, res) {
+  console.log('******************************')
     console.log('goals access requested');
     console.log(req.params.userId);
     models.Users.findOne({ where: { id: req.params.userId } })
@@ -199,10 +202,10 @@ router.get('/add-user-goal/:userId/:goalId', function(req, res) {
   models.Users.findOne({ where: { id: parseInt(req.params.userId) } })
     // with .then, we can work with this instance and add a goal
     .then(function(user) {
-        return user.addGoals(parseInt(req.params.goalId));
+        user.addGoals(parseInt(req.params.goalId));
+        var urlRedirect = '/browse/' + req.params.userId;
+        res.redirect(urlRedirect);
     })
-
-    res.redirect('/browse');
 });
 
 
