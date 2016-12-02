@@ -8,6 +8,7 @@ Businesses have similar opportunities to create profiles and browse, select, and
 - HTML, CSS, JavaScript, jQuery, Materialize.css, Skeleton.css
 - Node.js, Handlebars.js, Sequelize.js, MySQL Workbench
 
+Find presentation here: https://docs.google.com/presentation/d/1mueVKAcKJ49jRcFqX6RG1Hg9WD3E61_wGrvmbAkWDAg/edit#slide=id.gc6f90357f_0_5
 
 Team: Tom, Ryan, Melissa, and Marija
 
