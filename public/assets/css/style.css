@@ -10,7 +10,9 @@ nav {
   /*background: rgba(255, 255, 255, 0.3);*/
   border-width: 0px;
   color: black;
-  
+}
+h2{
+  text-align: center;
 }
 body {
   display: flex;
@@ -46,9 +48,9 @@ form{
   padding-top: 70px;
   margin-left: 160px;
 }
-.signup_form{
-  background: rgba(255, 255, 255, 0.3);
-  margin:30px;
+#signup_formP,
+#signup_formB{
+  display: none;
 }
 form{
   background: rgba(255, 255, 255, 0.3);
