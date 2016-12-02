@@ -4,10 +4,10 @@ Here is where you create all the functions that will do the routing for your app
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 
-/module.exports = function(app, passport) {
+ module.exports = function(app, passport) {
   //locally login
    router.get('/login', function (req, res) {
     res.render('login', {message: req.flash('loginMessage')});
@@ -25,13 +25,13 @@ var bodyParser = require('body-parser')
     res.render('signup', { message: req.flash('loginMessage') });
   });
 
-  
   //process signup form
   router.post('/signup', passport.authenticate('local-signup', {
     successRedirect : '/uprofile', //redirect to profile page
     failureRedirect : '/signup', //redirect back to signup if error
     failureFlash : true //allow message
-  }));
+    }));
+  };
 
 
 var sequelizeConnection = models.sequelize
