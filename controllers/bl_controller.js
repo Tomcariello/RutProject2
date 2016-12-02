@@ -12,63 +12,63 @@ var sequelizeConnection = models.sequelize
 sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
 // // make our tables; force:true drops the table if it already exists
-// .then(function() {
-//     return sequelizeConnection.sync({force:true})
-// })
+.then(function() {
+    return sequelizeConnection.sync({force:true})
+})
 
 
 // Create sequelize associations in the table
 
 // Assign user 1 goal 1
-models.Users.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(1);
-    })
+// models.Users.findOne({ where: { id: 1 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(1);
+//     })
 
-models.Users.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(2);
-    })
+// models.Users.findOne({ where: { id: 2 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(2);
+//     })
 
-models.Users.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(4);
-    })
+// models.Users.findOne({ where: { id: 3 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(4);
+//     })
 
-models.Users.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
+// models.Users.findOne({ where: { id: 4 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(3);
+//     })
 
-// =================================================================
-// Assign business 1 goal 1
-models.BusinessUsers.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(1);
-    })
+// // =================================================================
+// // Assign business 1 goal 1
+// models.BusinessUsers.findOne({ where: { id: 1 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(business) {
+//         return business.addGoals(1);
+//     })
 
-models.BusinessUsers.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(2);
-    })
+// models.BusinessUsers.findOne({ where: { id: 2 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(business) {
+//         return business.addGoals(2);
+//     })
 
-models.BusinessUsers.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(4);
-    })
+// models.BusinessUsers.findOne({ where: { id: 3 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(business) {
+//         return business.addGoals(4);
+//     })
 
-models.BusinessUsers.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
+// models.BusinessUsers.findOne({ where: { id: 4 } })
+//     // with .then, we can work with this an instance and add a goal
+//     .then(function(user) {
+//         return user.addGoals(3);
+//     })
 
 
 
@@ -225,7 +225,7 @@ router.post('/create-goal', function(req, res) {
 });
 
 router.get('/signup', function(req, res) {
-    res.render('signup', { data: 'test' });
+    res.render('signup', { data: 'test' }, { user: 2});
 });
 
 router.get('/contact', function(req, res) {

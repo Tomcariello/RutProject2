@@ -5,7 +5,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Usergoals = sequelize.define('Usergoals', {
-    goalstatus: DataTypes.BOOLEAN,
+    goalstatus: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {
