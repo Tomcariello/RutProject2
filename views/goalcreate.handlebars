@@ -3,14 +3,9 @@
 
   <h2>Create your goals below!</h2>
 
-To Do List:
-
-This has been rolled into the browse page in the form of a modal
-
-
-**Sample Handlebars code**
-      {{#each burgers}}
-        {{#unless this.devoured}}
+{{!-- **Sample Handlebars code** --}}
+      {{#each goals}}
+        {{#unless this.goalstatus}}
             {{this.burger_name}}
 
             <form action="goals/update/{{this.id}}?_method=PUT" method="POST">

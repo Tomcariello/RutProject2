@@ -48,7 +48,7 @@
             {{#each goals}}
             <tr>
               <td><h6>{{this.goalname}}</h6></td>
-              <td><a href="#modal1"><img style="width: 150px; height:150px;" class="imageicon responsive-img" src="{{this.imageURL}}"></a></td>
+              <td><a href="#modal1"><img style="width: 150px; height:150px;" class="imageicon responsive-img" src="{{this.imageURL}}"><button id="closeButton">X Remove</button></a></td>
             </tr>
             {{/each}}
           </tbody>
@@ -91,6 +91,16 @@
                                     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Thanks!</a>
                                   </div>
                             </div>
+                            {{!-- {{#each goals}}
+        {{#unless this.goalstatus}}
+            {{this.goalname}}
+
+            <form action="goals/update/{{this.id}}?_method=PUT" method="POST">
+              <input type="hidden" name="goalstatus" value="true">
+              <button type="submit">Completed</button>
+            </form>
+        {{/unless}}
+      {{/each}} --}}
                             {{!-- end of modal --}}
                     {{!-- </div> --}}
                   {{!-- {{/each}} --}}
