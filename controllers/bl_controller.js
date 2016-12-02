@@ -163,7 +163,7 @@ router.get('/bprofile', function(req, res) {
     // res.render('bprofile');
 });
 
-router.get('/uprofile/:userId', function(req, res) {
+router.get('localhost:3000/uprofile/:userId', function(req, res) {
     console.log('goals access requested');
     console.log(req.params.userId)
     //Find all goals
