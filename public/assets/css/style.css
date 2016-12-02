@@ -41,12 +41,44 @@ form{
   font-size: 24px;
   color: black;
 }
+#logo{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.mainLinks{
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+.team{
+  padding-left: 7px;
+  color: white;
+}
+.repo{
+  color: white;
+  padding-left: 5px;
+}
+.RCB{
+  padding-top: 30px;
+  color: white;
 
-
+}
 .sidebar {
   position: fixed;
   padding-top: 70px;
   margin-left: 160px;
+}
+.sunsetImage{
+  padding-top: 45px;
+}
+.glacierImage{
+  padding-top: 30px;
+}
+.loginText{
+  padding-top: 100px;
+}
+.findUs{
+  color:#CED4D2;
 }
 #signup_formP,
 #signup_formB{
