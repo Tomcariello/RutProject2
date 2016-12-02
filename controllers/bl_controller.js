@@ -9,66 +9,66 @@ var bodyParser = require('body-parser')
 var sequelizeConnection = models.sequelize
 
 // We run this query so that we can drop our tables even though they have foreign keys
-sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
+// sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
-// make our tables; force:true drops the table if it already exists
-.then(function() {
-    // return sequelizeConnection.sync({force:true})
-})
+// // make our tables; force:true drops the table if it already exists
+// .then(function() {
+//     return sequelizeConnection.sync({force:true})
+// })
 
 
 // Create sequelize associations in the table
 
-//Assign user 1 goal 1
-// models.Users.findOne({ where: { id: 1 } })
-//     // with .then, we can work with this an instance and add a goal
-//     .then(function(user) {
-//         return user.addGoals(1);
-//     })
+// Assign user 1 goal 1
+models.Users.findOne({ where: { id: 1 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(1);
+    })
 
-// models.Users.findOne({ where: { id: 2 } })
-//     // with .then, we can work with this an instance and add a goal
-//     .then(function(user) {
-//         return user.addGoals(2);
-//     })
+models.Users.findOne({ where: { id: 2 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(2);
+    })
 
-// models.Users.findOne({ where: { id: 3 } })
-//     // with .then, we can work with this an instance and add a goal
-//     .then(function(user) {
-//         return user.addGoals(4);
-//     })
+models.Users.findOne({ where: { id: 3 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(4);
+    })
 
-// models.Users.findOne({ where: { id: 4 } })
-//     // with .then, we can work with this an instance and add a goal
-//     .then(function(user) {
-//         return user.addGoals(3);
-//     })
+models.Users.findOne({ where: { id: 4 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(3);
+    })
 
-// // =================================================================
-// // Assign business 1 goal 1
-// models.BusinessUsers.findOne({ where: { id: 1 } })
-//     // with .then, we can work with this an instance and add a goal
-//     .then(function(business) {
-//         return business.addGoals(1);
-//     })
+// =================================================================
+// Assign business 1 goal 1
+models.BusinessUsers.findOne({ where: { id: 1 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(business) {
+        return business.addGoals(1);
+    })
 
-// models.BusinessUsers.findOne({ where: { id: 2 } })
-//     // with .then, we can work with this an instance and add a goal
-//     .then(function(business) {
-//         return business.addGoals(2);
-//     })
+models.BusinessUsers.findOne({ where: { id: 2 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(business) {
+        return business.addGoals(2);
+    })
 
-// models.BusinessUsers.findOne({ where: { id: 3 } })
-//     // with .then, we can work with this an instance and add a goal
-//     .then(function(business) {
-//         return business.addGoals(4);
-//     })
+models.BusinessUsers.findOne({ where: { id: 3 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(business) {
+        return business.addGoals(4);
+    })
 
-// models.BusinessUsers.findOne({ where: { id: 4 } })
-//     // with .then, we can work with this an instance and add a goal
-//     .then(function(user) {
-//         return user.addGoals(3);
-//     })
+models.BusinessUsers.findOne({ where: { id: 4 } })
+    // with .then, we can work with this an instance and add a goal
+    .then(function(user) {
+        return user.addGoals(3);
+    })
 
 
 
@@ -185,16 +185,16 @@ router.get('/uprofile/:userId', function(req, res) {
 });
 
 
-router.get('/uprofile', function(req, res) {
-    console.log('user profile is requested');
-    models.UserGoals.findAll({
+// router.get('/uprofile', function(req, res) {
+//     console.log('user profile is requested');
+//     models.UserGoals.findAll({
 
-    }).then(function(uprofile) {
-        console.log(uprofile);
-        var userObject = { uprofile: uprofile };
-        res.render('uprofile', userObject);
-    });
-});
+//     }).then(function(uprofile) {
+//         console.log(uprofile);
+//         var userObject = { uprofile: uprofile };
+//         res.render('uprofile', userObject);
+//     });
+// });
 
 //Add a goal per use
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
