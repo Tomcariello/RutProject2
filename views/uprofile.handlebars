@@ -9,10 +9,10 @@
       </div>
 {{!-- the dashboard holds a photo of the user --}}
   <div class = "row">
-      <div class = "col s5">
-        <img src="http://placehold.it/300x300">
+      <div class = "col s5 l6">
+        <img class="responsive-img" src="http://placehold.it/300x300">
       </div>
-      <div class = "col s7">
+      <div class = "col s7 l6">
           <table>
           <caption>{{firstname}}'s Dashboard</caption>
               <thead>
@@ -35,7 +35,7 @@
     </div>
     </div>
 <div class = "row">
-      <div class = "col s12">
+      <div class = "col s12 l12">
         <table>
           <caption><h3>List of {{firstname}} {{lastname}}'s Goals</h3></caption>
           <thead>
@@ -55,15 +55,17 @@
 </div>
 
 <div class = "row">
-        <div class="col s6">
+        <div class="col s6 l6">
             <h5>Checkout different ways to achieve your goals {{firstname}}</h5>
             <div class ="row">
                   {{#each goals}}
-                    <div class = "col s12">
+                    <div class = "col s6 l12">
 <!-- Modal Trigger -->
                           <a href="#modal1">
                           <img class="imageicon responsive-img card-image" src="{{this.imageURL}}">
                           </a>
+                          <br>
+                          {{!-- <button id="closeButton">X Remove</button> --}}
     
                          {{!-- <img class="tooltipped imageicon responsive-img card-image" data-position="bottom" data-delay="30" data-tooltip="I am useful tool for you to accomplish this. I am useful tool for you to accomplish this.I am useful tool for you to accomplish this." src="{{this.imageURL}}">
                           </a> --}}
@@ -92,7 +94,7 @@
                   {{/each}}
             </div>
         </div>
-        <div class = "col s6">
+        <div class = "col s6 l6">
           <h5>Completed goals</h5>
         </div>
 </div>

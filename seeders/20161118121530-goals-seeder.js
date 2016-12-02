@@ -5,6 +5,42 @@ module.exports = {
 
       return queryInterface.bulkInsert('goals', [
       {
+        goalname: '',
+        imageURL: "",
+        createdAt: "2016-01-01 00:00:00",
+        updatedAt: "2016-01-01 00:00:00"
+      },
+      {
+        goalname: '',
+        imageURL: "",
+        createdAt: "2016-01-01 00:00:00",
+        updatedAt: "2016-01-01 00:00:00"
+      },
+      {
+        goalname: '',
+        imageURL: "",
+        createdAt: "2016-01-01 00:00:00",
+        updatedAt: "2016-01-01 00:00:00"
+      },
+      {
+        goalname: '',
+        imageURL: "",
+        createdAt: "2016-01-01 00:00:00",
+        updatedAt: "2016-01-01 00:00:00"
+      },
+      {
+        goalname: '',
+        imageURL: "",
+        createdAt: "2016-01-01 00:00:00",
+        updatedAt: "2016-01-01 00:00:00"
+      },
+      {
+        goalname: '',
+        imageURL: "",
+        createdAt: "2016-01-01 00:00:00",
+        updatedAt: "2016-01-01 00:00:00"
+      },
+      {
         goalname: 'Swim with sharks',
         imageURL: "http://www.sharksider.com/images/swimming-with-sharks-in-cage.jpg",
         createdAt: "2016-01-01 00:00:00",
