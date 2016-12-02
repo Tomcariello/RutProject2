@@ -8,7 +8,11 @@
 
       {{#each goals}}
       <div class="col s4">
+
+      {{!-- Replace '2' with current user id --}}
+      
         <a href="../add-user-goal/2/{{this.id}}">
+
           <div id={{this.id}} class='card'>
             <div class="goalcard">
               <img class="imageicon" src="{{this.imageURL}}">
@@ -57,7 +61,12 @@
     <form action="/create-goal" method="POST">
       Goalname:<input type="text" name="addGoalName"></input>
       Image:<input type="text" name="addGoalURL"></input>
-      <input type="hidden" name="userID" value=2></input>
+
+      {{!-- Replace '2' with current user id --}}
+
+        <input type="hidden" name="userID" value=2></input>
+  
+
   </div>
 
   <div class="modal-footer">
