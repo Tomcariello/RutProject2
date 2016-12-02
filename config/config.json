@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Guitar01",
+    "password": "",
     "database": "bucketlist",
     "host": "127.0.0.1",
     "dialect": "mysql"
