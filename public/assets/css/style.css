@@ -88,6 +88,9 @@ form{
 #footer{
   width: 100%;
 }
+.blue-grey.darken-2{
+  bottom: 0px;
+}
 /*=================================*/
 body {
   display: flex;
@@ -99,7 +102,10 @@ main {
   flex: 1 0 auto;
 }
 /*=================================*/
-
+.brand{
+  float: left;
+  color: white;
+}
 
 html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
