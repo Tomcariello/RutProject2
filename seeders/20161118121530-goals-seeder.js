@@ -5,9 +5,6 @@ module.exports = {
 
       return queryInterface.bulkInsert('goals', [
       {
-<<<<<<< HEAD
-        goalname: 'See the Norhtern Lights',
-=======
         goalname: 'Try a Maple Bacon Donut',
         imageURL: "http://4.bp.blogspot.com/-bFfDpXUUN1o/TbhOTvCYFZI/AAAAAAAABYk/4lZCAFq44PY/s640/IMG_8719.JPG",
         createdAt: "2016-01-01 00:00:00",
@@ -95,7 +92,6 @@ module.exports = {
       },
       {
         goalname: 'Swim with sharks',
->>>>>>> 151a5724e972cd0f4ef63b910edd43f2eb089914
         imageURL: "http://www.sharksider.com/images/swimming-with-sharks-in-cage.jpg",
         createdAt: "2016-01-01 00:00:00",
         updatedAt: "2016-01-01 00:00:00"

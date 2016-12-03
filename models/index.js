@@ -33,7 +33,7 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;'use strict';
+module.exports = db;
 
 var fs        = require('fs');
 var path      = require('path');
