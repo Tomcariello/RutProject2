@@ -11,7 +11,7 @@ if (process.env.JAWSDB_URL){
   connection = new Sequelize('bucketlist', 'root', 'password', {
     host: 'localhost',
     dialect: 'mysql',
-    port:'3306'
+    port:'3000'
   })
 }
 
