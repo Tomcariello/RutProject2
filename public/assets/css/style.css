@@ -1,33 +1,33 @@
-.nav-wrapper{
+/*.nav-wrapper{
   padding-top: 20px;
+  padding: 10px;
+  border-color: #000005;
   background: rgba(255, 255, 255, 0.3);
   padding: 10px;
-}
-nav{
-  background: rgba(255, 255, 255, 0.3);
-  border-width: 0px;
 
+}*/
+nav {
+  /*background: rgba(255, 255, 255, 0.3);*/
+  border-width: 0px;
+  color: black;
 }
+h2{
+  text-align: center;
+}
+
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-image: url("/main.jpeg");
+  /*background-image: url("/main.jpg");*/
   background-size: cover;
-  color: white;
-  font-family: Calibri;
+  /*color: white;*/
+  font-family: Roboto, Calibri;
 }
 form{
-  margin:30px;;
-}
-h2{
-  margin-top: 100px;
-  text-align: center;
-  color: white;
-}
-h5{
-  padding-top:20px;
-  float: left;
+  margin:30px;
+  background: rgba(255, 255, 255, 0.3);
+  margin-bottom: 50px;
 }
 .imageicon {
   height: 200px;
@@ -43,49 +43,106 @@ h5{
   font-size: 24px;
   color: black;
 }
-.footer-copyright{
-  text-align: center;
+#logo{
+  padding-top: 10px;
+  padding-left: 10px;
 }
-footer.page-footer{
-  width: 100%;
-  background: rgba(255, 255, 255, 0.3);
-  position: absolute;
-  position: fixed;
-  bottom: 0;
-  padding: 0px;
+.mainLinks{
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+.team{
+  padding-left: 7px;
+  color: white;
+}
+.repo{
+  color: white;
+  padding-left: 5px;
+}
+.RCB{
+  padding-top: 30px;
+  color: white;
+
 }
 .sidebar {
   position: fixed;
   padding-top: 70px;
   margin-left: 160px;
 }
-.signup_form{
-  background: rgba(255, 255, 255, 0.3);
-  margin:30px;
+.sunsetImage{
+  padding-top: 45px;
 }
-ul {
-  margin: 0px;
+.glacierImage{
+  padding-top: 30px;
 }
-.row {
-  margin-bottom: 0px;
+.loginText{
+  padding-top: 100px;
 }
-
-/*this is making the footer sticky*/
+.findUs{
+  color:#CED4D2;
+}
+#signup_formP, #signup_formB{
+  display: none;
+}
+#footer{
+  width: 100%;
+}
 /*=================================*/
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+main {
+  flex: 1 0 auto;
+}
 /*=================================*/
 
 
 html {
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-  }
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  /*GOOGLE FONTS*/
+/*/*font-family: 'Abril Fatface', cursive;
+font-family: 'Bungee Inline', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Yellowtail', cursive;*/
+}
 
 
+.modal {
+  color: black;
+}
+
+input.name[type="text"] {
+    width: 20%;
+    border: 1px solid black;
+    margin: 0px;
+    height: 0px;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+input.pass[type="password"] {
+    width: 20%;
+    border: 1px solid black;
+    margin: 0px;
+    height: 0px;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#closeButton {
+  padding: 24px;
+  border: 0px;
+  position: relative;
+  top: -150px;
+  right: 20px;
+  /*width: auto;*/
+  /*width: 200px;
+  height: 100px;
+  border: 3px solid #73AD21;*/
+
+}

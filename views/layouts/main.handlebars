@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <!-- Update your html tag to include the itemscope and itemtype attributes. -->
-<html lang="en" itemscope itemtype="http://schema.org/Type">
+<HTML lang="en" itemscope itemtype="http://schema.org/Type">
 	<head>
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bungee+Inline|Pacifico|Shadows+Into+Light|Yellowtail" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/public/assets/favicon.ico"/>
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  {{!-- skeleton refs --}}
+  <link rel="stylesheet" href="/assets/css/normalize.css" type="text/css"/>
+  <link rel="stylesheet" href="/assets/css/skeleton.css" type="text/css"/>
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css"/>
+  {{!-- icons --}}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  {{!-- jquery reference --}}
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <script src="/assets/js/scripts.js"></script>
-    <title>BucketDreams</title>
+
+  {{!-- materialize reference --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+  
+
+  <title>BucketDreams</title>
+
     {{!-- SEO --}}
     <meta name="description" content="The description" />
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
@@ -37,47 +50,64 @@
     <meta property="og:site_name" content="Site name" />
 
   </head>
+
   <body>
-    <div class="navbar-fixed">
+  {{!-- Navbar --}}
     <nav>
-    <div class="nav-wrapper">
-      <a href="index" class="brand-logo">Bucket Dreams</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="signup"><i class="material-icons">Sign up</i></a></li>
-        <li><a href="collapsible.html"><i class="material-icons">Login</i></a></li>
+
+    <div class="nav-wrapper blue-grey darken-2">
+
+      {{!-- <img class="img-responsive" src="logo.png" id="logo" alt="BucketDeams" > --}}
+      <ul id="nav-mobile" class="right hide-on-med-and-down" style="font-family:'Shadows Into Light', cursive; font-size: 30rem">
+
+
+      {{!-- <a href="index" class="brand-logo" style="font-family:'Bungee Inline', cursive;">DreamBucket</a> --}}
+
+      {{!-- This line below is messing with my req.params read on the browse route --}}
+      {{!-- <img class="img-responsive" src="logo.png" alt="logo"> --}}
+        <li><a href="/index" class="mainLinks" id="home">Home</a></li>
+        <li><a href="/signup" class="mainLinks" id="signup">Sign Up</a></li>
+        <li><a href="/login" class="mainLinks" id="login">Login</a></li>
+        <li><a href="/contact" class="mainLinks" id="contact">Contact Us</a></li>
       </ul>
     </div>
   </nav>
-  </div>
 
 		{{{ body }}}
-	</body>
-    <footer class="page-footer">
-          <div class="row">
-              <div class="col l6 s12">
-                <p class="grey-text text-lighten-4">Made by Tom, Ryan, Marija, and Melissa</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">Github</a></li>
-                </ul>
-    </footer>
-{{!-- footer --}}
-{{!-- <footer class="page-footer transparent">
-          <div class="container">
-            <div class="row">
-                <p>Made by Tom, Ryan, Marija, and Melissa</p>
-                <p><a class="grey-text text-lighten-3" href="https://github.com/Tomcariello/RutProject2">See it on Github</a>
-
-              </div>
-            </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2016 French Toast Mafia
+    {{!-- footer --}}
+<footer class="page-footer blue-grey darken-2" id="">
+  <div class="container">
+    <div class="row">
+                <div class="col m6">
+                  <h4 class="RCB">Rutgers Coding Bootcamp</h4>
+                </div>
+                <div class="col l6">
+                  <h6 class="findUs">Find Us On GitHub:</h6>
+    </div>
+    </br>
+      <div class="col l6">
+                  <ul>
+                    <li><a class="repo" href="https://github.com/Tomcariello/RutProject2">Project Repository</a></li>
+                    <h6 class="findUs">Our Team:</h6>
+                    <a class="team" href="https://github.com/ryanseery">Ryan Seery</a>
+                    <a class="team" href="https://github.com/Melissa414">Melissa Baldwin</a>
+                    <a class="team" href="https://github.com/Tomcariello">Tom Cariello</a>
+                    <a class="team" href="https://github.com/mnaumoski">Marija Naumoski</a>
+{{!--               <li><a class="black-text" href="#!">More Links</a></li>
+ --}}                  </ul>
+                </div>
+    </div>
+</div>
+          <div class="footer-copyright blue-grey darken-3">
+            <div class="white-text center">© 2016 French Toast Mafia
             </div>
           </div>
 
-    </footer>
-  </footer> --}}
-    </body>
+      </footer>
+
+  {{!-- signup js --}}
+  <script src="assets/js/signup.js"></script>
+  {{!-- JS reference --}}
+  <script src="/assets/js/scripts.js"></script>
+</body>
 </HTML>

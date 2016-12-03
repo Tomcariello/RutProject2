@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+        BusinessUsers.belongsToMany(models.Goals, {through: 'BusinessGoals'});
         // associations can be defined here
       }
     }
