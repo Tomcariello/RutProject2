@@ -46,10 +46,16 @@
           </thead>
           <tbody>
             {{#each goals}}
+              {{#unless this.goalstatus}}
             <tr>
               <td><h6>{{this.goalname}}</h6></td>
-              <td><a href="#modal1"><img style="width: 150px; height:150px;" class="imageicon responsive-img" src="{{this.imageURL}}"><button id="closeButton">X Remove</button></a></td>
+              <td><a href="#modal1"><img style="width: 150px; height:150px;" class="imageicon responsive-img" src="{{this.imageURL}}">
+              <form method="POST" action="/goals/update?_method=PUT" class="button-size">
+              <input input type="hidden" type="text" name="goalid" value={{this.id}}><br><button type="submit" id="closeButton">X Remove</button></a></form></td>
             </tr>
+        </div>
+
+              {{/unless}}
             {{/each}}
           </tbody>
         </table>
@@ -90,6 +96,12 @@
 <div class="container z-depth-5 ">
     <div class = "col l12 s12">
           <h5 style="text-align: center;">Completed goals</h5>
+
+          {{#each goals}}
+              {{this.goalstatus}}
+            <h6>{{this.goalname}}</h6> 
+            <img style="width: 150px; height:150px;" class=" responsive-img" src="{{this.imageURL}}">
+            {{/each}}
         </div>
 </div>
 {{!-- </div> --}}
