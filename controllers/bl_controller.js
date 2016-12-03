@@ -278,12 +278,28 @@ router.post('/usersignupcomplete', function(req, res) {
 
 router.post('/businesssignupcomplete', function(req, res) {
   console.log('*****************Business Sign Up Information Submitted ****************');
-  var first_name = req.body.first_name;
-  var last_name = req.body.last_name;
+  var business_name = req.body.business_name;
   var zipcode = req.body.zipcode;
-  var last_name = req.body.email;
-  var zipcode = req.body.password;
-  console.log(first_name);
+  var email = req.body.email;
+  var website = req.body.website;
+  var password = req.body.password;
+  console.log(req);
+  console.log(business_name);
+  console.log(zipcode);
+  console.log(email);
+  console.log(website);
+  console.log(password);
+
+    models.BusinessUsers.create(
+    {
+      // the username
+      businessname: business_name, 
+      website: website,
+      email: email, 
+      password: password,
+      zipcode: zipcode
+    }
+  )
   res.render('index');
 });
 
