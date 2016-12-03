@@ -72,9 +72,9 @@ var sequelizeConnection = models.sequelize
 sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
 // // make our tables; force:true drops the table if it already exists
-// .then(function() {
-//     return sequelizeConnection.sync({force:true})
-// })
+.then(function() {
+    return sequelizeConnection.sync();
+})
 
 
 // Create sequelize associations in the table
@@ -287,7 +287,7 @@ router.post('/create-goal', function(req, res) {
     models.Users.findOne({ where: { id: req.body.userID } })
     .then(function(user) {
       user.addGoals(result.id);
-      res.redirect('/browse');
+      res.redirect('/browse/2');
     })
   })
 });
