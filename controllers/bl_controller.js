@@ -180,6 +180,9 @@ router.get('/bprofile/:businessId', function(req, res) {
     });
     });
 
+router.get('/contact', function(req, res) {
+  res.render('contact', { data: 'test' });
+ });
 
 router.get('/uprofile/:userId', function(req, res) {
   console.log('******************************')
