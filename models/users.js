@@ -10,7 +10,6 @@ module.exports = function(sequelize, DataTypes) {
     zipcode: DataTypes.INTEGER
   }, {
     classMethods: {
-
       generateHash : function(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
       },
@@ -28,15 +27,8 @@ module.exports = function(sequelize, DataTypes) {
     setterMethods: {
       someValue: function(value ) {
         this.someValue = value; 
-
-      // associate: function(models) {
-      //   // associations can be defined here
-      //   // Users.hasMany(Goals, {as: 'UserGoals'})
-      //   // Users.belongsToMany(models.Goals, {through: 'UserGoals'});
-
-      // }
+      }
     }
-  }
   });
   return Users;
-};
+  };

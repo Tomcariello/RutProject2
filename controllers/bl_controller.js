@@ -7,9 +7,9 @@ var models = require('../models');
 var bodyParser = require('body-parser');
 
 
- module.exports = function(app, passport) {
-  //locally login
-   router.get('/login', function (req, res) {
+module.exports = function(app, passport) {
+//locally login
+  router.get('/login', function (req, res) {
     res.render('login', {message: req.flash('loginMessage')});
   });
 
@@ -23,6 +23,7 @@ var bodyParser = require('body-parser');
   //SignUp
   router.get('/signup', function(req, res) {
     res.render('signup', { message: req.flash('loginMessage') });
+    res.render('signup', { data: 'test' }, { user: 2});
   });
 
   //process signup form
@@ -31,7 +32,7 @@ var bodyParser = require('body-parser');
     failureRedirect : '/signup', //redirect back to signup if error
     failureFlash : true //allow message
     }));
-  };
+};
 
 
 var sequelizeConnection = models.sequelize
@@ -180,6 +181,9 @@ router.get('/bprofile/:businessId', function(req, res) {
     });
     });
 
+router.get('/contact', function(req, res) {
+  res.render('contact', { data: 'test' });
+ });
 
 router.get('/uprofile/:userId', function(req, res) {
   console.log('******************************')
@@ -264,7 +268,8 @@ router.post('/create-goal', function(req, res) {
 });
 
 router.get('/signup', function(req, res) {
-    res.render('signup', { data: 'test' });
+  console.log('*****************Sign Up Requested ****************');
+  res.render('signup');
 });
 
 function isLoggedIn(req, res, next) {
