@@ -33,7 +33,7 @@ module.exports = function(app, passport) {
     failureRedirect : '/signup', //redirect back to signup if error
     failureFlash : true //allow message
   }));
-
+}
 // module.exports = function(app, passport) {
 // //locally login
 //   router.get('/login', function (req, res) {
@@ -351,4 +351,3 @@ function isLoggedIn(req, res, next) {
 }
 
 module.exports = router;
-};
