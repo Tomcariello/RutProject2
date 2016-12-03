@@ -26,6 +26,8 @@ body {
 }
 form{
   margin:30px;
+  background: rgba(255, 255, 255, 0.3);
+  margin-bottom: 50px;
 }
 .imageicon {
   height: 200px;
@@ -80,13 +82,8 @@ form{
 .findUs{
   color:#CED4D2;
 }
-#signup_formP,
-#signup_formB{
+#signup_formP, #signup_formB{
   display: none;
-}
-form{
-  background: rgba(255, 255, 255, 0.3);
-  margin-bottom: 50px;
 }
 #footer{
   width: 100%;

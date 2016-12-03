@@ -1,5 +1,5 @@
 //Test connectivity per page
-console.log('hello world');
+console.log('hello world!');
 
 //You can't do this without triggering this script on every page
 $(document).ready(function() {
@@ -26,16 +26,3 @@ $(document).on('click', '.card', function() {
     //kill card
     this.remove();
 });
-
-// $(document).on('click', '#submitGoal', function() {
-//     var newGoalName = document.getElementById('addGoalName').value;
-//     var newGoalURL = document.getElementById('addGoalURL').value;
-//     console.log("modal submitted " + newGoalName + " " + newGoalURL);
-
-//     var buildURL = "/goalcreate/" + newGoalName + "/" + newGoalURL;
-
-//     location.href = buildURL;
-
-// });
-
-//**************************************
