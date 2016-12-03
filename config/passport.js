@@ -1,3 +1,5 @@
+console.log('passport.js is doing something');
+
 //load what we need
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;

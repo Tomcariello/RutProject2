@@ -28,9 +28,12 @@
     "sequelize": "^3.27.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "express": "^4.14.0",
     "handlebars": "^4.0.6",
     "handlebars-helper-css": "^0.1.0",
+    "mocha": "^3.2.0",
+    "nightmare": "^2.8.1",
     "sequelize": "^3.26.0"
   },
   "repository": {

@@ -7,6 +7,7 @@ var models = require('../models');
 var bodyParser = require('body-parser');
 
 
+<<<<<<< HEAD
 module.exports = function(app, passport) {
   //locally login
    router.get('/login', function (req, res) {
@@ -32,6 +33,37 @@ module.exports = function(app, passport) {
     failureRedirect : '/signup', //redirect back to signup if error
     failureFlash : true //allow message
   }));
+=======
+// module.exports = function(app, passport) {
+// //locally login
+//   router.get('/login', function (req, res) {
+//     console.log('***** Login get route accessed *****');
+//     // render the page and pass in any flash data if it exists
+//     res.render('login', {message: req.flash('loginMessage')});
+//   });
+
+//   //process login form
+//   router.post('/login', passport.authenticate('local-login', {
+//     successRedirect : '/uprofile', //redirect to profile page
+//     failureRedirect : '/signup', //redirect to signup if error
+//     failureFlash : true //allow message
+//   }));
+
+//   //SignUp
+//   router.get('/signup', function(req, res) {
+//     console.log('***** Signup get route accessed *****');
+//     res.render('signup', { message: req.flash('loginMessage') });
+//     res.render('signup', { data: 'test' }, { user: 2});
+//   });
+
+//   //process signup form
+//   router.post('/signup', passport.authenticate('local-signup', {
+//     successRedirect : '/uprofile', //redirect to profile page
+//     failureRedirect : '/signup', //redirect back to signup if error
+//     failureFlash : true //allow message
+//     }));
+// };
+>>>>>>> 848e65350f66b8070ef9aa0ecb87b1282c269e0d
 
 
 var sequelizeConnection = models.sequelize
@@ -47,63 +79,23 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
 // Create sequelize associations in the table
 
-// Assign user 1 goal 1
-models.Users.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(1);
-    })
+// Assign users goals
+models.Users.findOne({ where: { id: 1 } }).then(function(user) {return user.addGoals(1); })
+models.Users.findOne({ where: { id: 2 } }).then(function(user) {return user.addGoals(2); })
+models.Users.findOne({ where: { id: 3 } }).then(function(user) {return user.addGoals(4); })
+models.Users.findOne({ where: { id: 4 } }).then(function(user) {return user.addGoals(3); })
 
-models.Users.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(2);
-    })
-
-models.Users.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(4);
-    })
-
-models.Users.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
-
-// =================================================================
-// Assign business 1 goal 1
-models.BusinessUsers.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(1);
-    })
-
-models.BusinessUsers.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(2);
-    })
-
-models.BusinessUsers.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(4);
-    })
-
-models.BusinessUsers.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
-
+// Assign businesses goals 
+models.BusinessUsers.findOne({ where: { id: 1 } }).then(function(business) { return business.addGoals(1); })
+models.BusinessUsers.findOne({ where: { id: 2 } }).then(function(business) { return business.addGoals(2); })
+models.BusinessUsers.findOne({ where: { id: 3 } }).then(function(business) { return business.addGoals(4); })
+models.BusinessUsers.findOne({ where: { id: 4 } }).then(function(user) { return user.addGoals(3); })
 
 
 // =================================================================
 //Establish page routing
 router.get('/', function(req, res) {
-    res.redirect('/index');
+  res.redirect('/index');
 });
 
 router.get('/index', function(req, res) {
@@ -120,8 +112,6 @@ router.get('/browse', function (req, res) {
 })
 
 router.get('/browse/:userId', function (req, res) {
-  console.log('goals access requested');
-  console.log(req.params.userId);
   //Find all goals that are not already associated with the current user
 
   //look up user ID
@@ -155,6 +145,51 @@ router.get('/browse/:userId', function (req, res) {
     })
 });
 
+
+
+
+
+
+router.get('/browsebusiness/:userId', function (req, res) {
+  //look up user ID
+  models.BusinessUsers.findOne({where: {id: req.params.userId} })
+  .then(function(business){
+    //get business associated goals
+    return business.getGoals()
+  })
+.then(function(allBusinessGoals){
+
+    //get all goals and filter out allBusinessGoals
+    var goalsToExclude = [-1];
+
+    for (i = 0; i < allBusinessGoals.length; i++) {
+      goalsToExclude.push(allBusinessGoals[i].id)
+    } 
+    console.log("Goals to exclude are: " + goalsToExclude);
+
+    return models.Goals.findAll({
+      where: {
+        $not: [
+          { id: goalsToExclude },
+        ]
+      }
+    });
+  })
+    .then(function(unselectedGoals) {
+      //get all goals and exclude user associated goals
+      var goalObject = { goals: unselectedGoals};
+      res.render('browsebusinessgoals', goalObject);
+    })
+});
+
+
+
+
+
+
+
+
+
 router.get('/bprofile/:businessId', function(req, res) {
     console.log('business profile is requested');
     console.log(req.params.businessId);
@@ -180,10 +215,7 @@ router.get('/bprofile/:businessId', function(req, res) {
     });
     });
 
-
 router.get('/uprofile/:userId', function(req, res) {
-  console.log('******************************')
-    console.log('goals access requested');
     console.log(req.params.userId);
     models.Users.findOne({ where: { id: req.params.userId } })
 
@@ -197,33 +229,19 @@ router.get('/uprofile/:userId', function(req, res) {
       }
         // and user getAssociations
         return result.getGoals()
-          // we then pass the fandoms in a final callback
+
           .then(function(allGoals) {
-            allGoals.forEach(function(value){
-              models.BusinessGoals.findAll({ where: {GoalId: value.id}})
-              .then(function(results){
-                console.log('results', results)
-              });
-            // console.log('GOALS:', allGoals)
+
             var goalObject = allGoals
             data.goals= goalObject
             res.render('uprofile', data);
           });
         });
     });
-});
 
-
-// router.get('/uprofile', function(req, res) {
-//     console.log('user profile is requested');
-//     models.UserGoals.findAll({
-
-//     }).then(function(uprofile) {
-//         console.log(uprofile);
-//         var userObject = { uprofile: uprofile };
-//         res.render('uprofile', userObject);
-//     });
-// });
+router.get('/contact', function(req, res) {
+  res.render('contact', { data: 'test' });
+ });
 
 //Add a goal per user
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
@@ -233,6 +251,17 @@ router.get('/add-user-goal/:userId/:goalId', function(req, res) {
     .then(function(user) {
         user.addGoals(parseInt(req.params.goalId), {goalstatus: false });
         var urlRedirect = '/browse/' + req.params.userId;
+        res.redirect(urlRedirect);
+    })
+});
+
+//Add a goal per user
+router.get('/add-business-goal/:userId/:goalId', function(req, res) {
+  models.BusinessUsers.findOne({ where: { id: parseInt(req.params.userId) } })
+    // with .then, we can work with this instance and add a goal
+    .then(function(business) {
+        business.addGoals(parseInt(req.params.goalId));
+        var urlRedirect = '/browsebusiness/' + req.params.userId;
         res.redirect(urlRedirect);
     })
 });
@@ -263,8 +292,56 @@ router.post('/create-goal', function(req, res) {
   })
 });
 
+//Load Signup Page
 router.get('/signup', function(req, res) {
-    res.render('signup', { data: 'test' });
+  res.render('signup');
+});
+
+router.post('/usersignupcomplete', function(req, res) {
+  console.log('*****************User Sign Up Information Submitted ****************');
+  var first_name = req.body.first_name;
+  var last_name = req.body.last_name;
+  var zipcode = req.body.zipcode;
+  var email = req.body.email;
+  var password = req.body.password;
+
+    models.Users.create(
+    {
+      // the username
+      firstname: first_name, 
+      lastname: last_name,
+      email: email, 
+      password: password,
+      zipcode: zipcode
+    }
+  )
+  res.render('index');
+});
+
+router.post('/businesssignupcomplete', function(req, res) {
+  console.log('*****************Business Sign Up Information Submitted ****************');
+  var business_name = req.body.business_name;
+  var zipcode = req.body.zipcode;
+  var email = req.body.email;
+  var website = req.body.website;
+  var password = req.body.password;
+
+    models.BusinessUsers.create(
+    {
+      // the username
+      businessname: business_name, 
+      website: website,
+      email: email, 
+      password: password,
+      zipcode: zipcode
+    }
+  )
+  res.redirect('browsebusiness/5');
+});
+
+router.get('/login', function(req, res) {
+  console.log('*****************Login Requested ****************');
+  res.render('login');
 });
 
 function isLoggedIn(req, res, next) {

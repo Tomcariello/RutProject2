@@ -15,12 +15,10 @@
   {{!-- jquery reference --}}
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-  {{!-- signup js --}}
-  <script src="assets/js/signup.js"></script>
+
   {{!-- materialize reference --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-  {{!-- JS reference --}}
-  <script src="/assets/js/scripts.js"></script>
+
   
 
   <title>BucketDreams</title>
@@ -59,25 +57,27 @@
 
     <div class="nav-wrapper blue-grey darken-2">
 
-      <img class="img-responsive" src="logo.png" id="logo" alt="BucketDeams" >
+      <h1 class="brand" href="/index">Bucket Dreams</h1>
+      {{!-- <img class="img-responsive" src="logo.png" id="logo" alt="BucketDeams" > --}}
       <ul id="nav-mobile" class="right hide-on-med-and-down" style="font-family:'Shadows Into Light', cursive; font-size: 30rem">
 
-
+      
       {{!-- <a href="index" class="brand-logo" style="font-family:'Bungee Inline', cursive;">DreamBucket</a> --}}
+
 
       {{!-- This line below is messing with my req.params read on the browse route --}}
       {{!-- <img class="img-responsive" src="logo.png" alt="logo"> --}}
-        <li><a href="/index" class="mainLinks">Home</a></li>
-        <li><a href="/signup" class="mainLinks">Sign Up</a></li>
-        <li><a href="#" class="mainLinks">Log In</a></li>
-        <li><a href="/contact" class="mainLinks">Contact Us</a></li>
+        <li><a href="/index" class="mainLinks" id="home">Home</a></li>
+        <li><a href="/signup" class="mainLinks" id="signup">Sign Up</a></li>
+        <li><a href="/login" class="mainLinks" id="login">Login</a></li>
+        <li><a href="/contact" class="mainLinks" id="contact">Contact Us</a></li>
       </ul>
     </div>
   </nav>
 
 		{{{ body }}}
     {{!-- footer --}}
-<footer class="page-footer blue-grey darken-2">
+<footer class="page-footer blue-grey darken-2" id="">
   <div class="container">
     <div class="row">
                 <div class="col m6">
@@ -106,5 +106,10 @@
           </div>
 
       </footer>
+
+  {{!-- signup js --}}
+  <script src="assets/js/signup.js"></script>
+  {{!-- JS reference --}}
+  <script src="/assets/js/scripts.js"></script>
 </body>
 </HTML>

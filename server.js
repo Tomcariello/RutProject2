@@ -20,7 +20,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
 var flash = require('connect-flash');
-var morgan = require('morgan'); //loggr
+var morgan = require('morgan'); //logger
 var cookieParser = require('cookie-parser'); //parse cookies
 var session = require('express-session'); //session middleware
 
@@ -28,7 +28,7 @@ var session = require('express-session'); //session middleware
 
 var app = express();
 
-require('./config/passport')(passport), //passes passport for configuration
+// require('./config/passport')(passport); //passes passport for configuration
 
 
 
