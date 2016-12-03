@@ -7,7 +7,7 @@ var models = require('../models');
 var bodyParser = require('body-parser');
 
 
-<<<<<<< HEAD
+
 module.exports = function(app, passport) {
   //locally login
    router.get('/login', function (req, res) {
@@ -33,7 +33,7 @@ module.exports = function(app, passport) {
     failureRedirect : '/signup', //redirect back to signup if error
     failureFlash : true //allow message
   }));
-=======
+
 // module.exports = function(app, passport) {
 // //locally login
 //   router.get('/login', function (req, res) {
@@ -63,7 +63,7 @@ module.exports = function(app, passport) {
 //     failureFlash : true //allow message
 //     }));
 // };
->>>>>>> 848e65350f66b8070ef9aa0ecb87b1282c269e0d
+
 
 
 var sequelizeConnection = models.sequelize
@@ -351,3 +351,4 @@ function isLoggedIn(req, res, next) {
 }
 
 module.exports = router;
+};
