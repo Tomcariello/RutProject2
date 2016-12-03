@@ -138,11 +138,11 @@ input.pass[type="password"] {
 }
 
 #closeButton {
-  /*padding: 24px;
+  padding: 24px;
   border: 0px;
   position: relative;
-  top: -200px;
-  right: -157px;*/
+  top: -150px;
+  right: 20px;
   /*width: auto;*/
   /*width: 200px;
   height: 100px;

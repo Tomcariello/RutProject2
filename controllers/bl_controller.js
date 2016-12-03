@@ -180,13 +180,7 @@ router.get('/bprofile/:businessId', function(req, res) {
     });
     });
 
-router.get('/contact', function(req, res) {
-  res.render('contact', { data: 'test' });
- });
-
 router.get('/uprofile/:userId', function(req, res) {
-  console.log('******************************')
-    console.log('goals access requested');
     console.log(req.params.userId);
     models.Users.findOne({ where: { id: req.params.userId } })
 
@@ -202,31 +196,17 @@ router.get('/uprofile/:userId', function(req, res) {
         return result.getGoals()
           // we then pass the fandoms in a final callback
           .then(function(allGoals) {
-            allGoals.forEach(function(value){
-              models.BusinessGoals.findAll({ where: {GoalId: value.id}})
-              .then(function(results){
-                console.log('results', results)
-              });
-            // console.log('GOALS:', allGoals)
+
             var goalObject = allGoals
             data.goals= goalObject
             res.render('uprofile', data);
           });
         });
     });
-});
 
-
-// router.get('/uprofile', function(req, res) {
-//     console.log('user profile is requested');
-//     models.UserGoals.findAll({
-
-//     }).then(function(uprofile) {
-//         console.log(uprofile);
-//         var userObject = { uprofile: uprofile };
-//         res.render('uprofile', userObject);
-//     });
-// });
+router.get('/contact', function(req, res) {
+  res.render('contact', { data: 'test' });
+ });
 
 //Add a goal per user
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
