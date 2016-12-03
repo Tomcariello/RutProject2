@@ -259,7 +259,7 @@ router.post('/create-goal', function(req, res) {
     models.Users.findOne({ where: { id: req.body.userID } })
     .then(function(user) {
       user.addGoals(result.id);
-      res.redirect('/browse');
+      res.redirect('/browse/2');
     })
   })
 });
