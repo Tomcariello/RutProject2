@@ -7,9 +7,9 @@ var models = require('../models');
 var bodyParser = require('body-parser');
 
 
- module.exports = function(app, passport) {
-  //locally login
-   router.get('/login', function (req, res) {
+module.exports = function(app, passport) {
+//locally login
+  router.get('/login', function (req, res) {
     res.render('login', {message: req.flash('loginMessage')});
   });
 
@@ -31,7 +31,7 @@ var bodyParser = require('body-parser');
     failureRedirect : '/signup', //redirect back to signup if error
     failureFlash : true //allow message
     }));
-  };
+};
 
 
 var sequelizeConnection = models.sequelize
@@ -264,7 +264,7 @@ router.post('/create-goal', function(req, res) {
 });
 
 router.get('/signup', function(req, res) {
-    res.render('signup', { data: 'test' });
+    res.render('signup', { data: 'test' }, { user: 2});
 });
 
 function isLoggedIn(req, res, next) {
