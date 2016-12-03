@@ -33,9 +33,4 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-<<<<<<< HEAD
-=======
-module.exports = db;
->>>>>>> 835d893ad3deb29562614ed9cb117739d1968ff2
-
 module.exports = db;
