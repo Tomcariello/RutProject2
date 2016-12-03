@@ -13,7 +13,15 @@ Businesses have similar opportunities to create profiles and browse, select, and
 
 ###Checkout our Screenshots
 
+####Landing Page
+
 <img src= "https://github.com/Tomcariello/RutProject2/blob/master/public/ssimg1.png"/>
+
+####Browse Goals
+
+<img src= "https://github.com/Tomcariello/RutProject2/blob/master/public/ssimg2.png"/>
+
+
 
 Find presentation here: https://docs.google.com/presentation/d/1mueVKAcKJ49jRcFqX6RG1Hg9WD3E61_wGrvmbAkWDAg/edit#slide=id.gc6f90357f_0_5
 
