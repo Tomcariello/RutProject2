@@ -56,45 +56,52 @@
   <body>
   {{!-- Navbar --}}
     <nav>
-    <div class="nav-wrapper blue-grey darken">
+
+    <div class="nav-wrapper blue-grey darken-2">
+
+      <img class="img-responsive" src="logo.png" id="logo" alt="BucketDeams" >
+      <ul id="nav-mobile" class="right hide-on-med-and-down" style="font-family:'Shadows Into Light', cursive; font-size: 30rem">
+
+
       {{!-- <a href="index" class="brand-logo" style="font-family:'Bungee Inline', cursive;">DreamBucket</a> --}}
-      
+
       {{!-- This line below is messing with my req.params read on the browse route --}}
       {{!-- <img class="img-responsive" src="logo.png" alt="logo"> --}}
-
-      <ul id="nav-mobile" class="right hide-on-med-and-down" style="font-family:'Shadows Into Light', cursive; font-size: 30rem">
-        <li><a href="/signup">Sign Up</a></li>
-        <li><a href="#">Log In</a></li>
-        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/index" class="mainLinks" id="home">Home</a></li>
+        <li><a href="/signup" class="mainLinks" id="signup">Sign Up</a></li>
+        <li><a href="/login" class="mainLinks" id="login">Login</a></li>
+        <li><a href="/contact" class="mainLinks" id="contact">Contact Us</a></li>
       </ul>
     </div>
   </nav>
 
 		{{{ body }}}
     {{!-- footer --}}
-<footer class="page-footer blue lighten-5">
+<footer class="page-footer blue-grey darken-2" id="">
   <div class="container">
     <div class="row">
+                <div class="col m6">
+                  <h4 class="RCB">Rutgers Coding Bootcamp</h4>
+                </div>
                 <div class="col l6">
-                      <h4 class="">Rutgers Coding Bootcamp
-                      </h4>
-                      <h6 class="">Project 2: BucketDreams or Beyond the Pail</h6>
-                      </div>
-                <div class="col l6">
-                  <h6 class="">Find Us On GitHub</h6>
+                  <h6 class="findUs">Find Us On GitHub:</h6>
+    </div>
+    </br>
+      <div class="col l6">
                   <ul>
-                    <li><a class="" href="https://github.com/Tomcariello/RutProject2">Project Repo</a></li>
-                    <li><a class="" href="#!">Ryan Seery</a></li>
-                    <li><a class="" href="#!">Melissa Baldwin</a></li>
-                    <li><a class="" href="#!">Tom Cariello</a></li>
-                    <li><a class="" href="#!">Marija Naumoski</a></li>
-                    <li><a class="black-text" href="#!">More Links</a></li>
-                  </ul>
+                    <li><a class="repo" href="https://github.com/Tomcariello/RutProject2">Project Repository</a></li>
+                    <h6 class="findUs">Our Team:</h6>
+                    <a class="team" href="https://github.com/ryanseery">Ryan Seery</a>
+                    <a class="team" href="https://github.com/Melissa414">Melissa Baldwin</a>
+                    <a class="team" href="https://github.com/Tomcariello">Tom Cariello</a>
+                    <a class="team" href="https://github.com/mnaumoski">Marija Naumoski</a>
+{{!--               <li><a class="black-text" href="#!">More Links</a></li>
+ --}}                  </ul>
                 </div>
     </div>
 </div>
-          <div class="footer-copyright blue lighten-2">
-            <div class="black-text center">© 2016 French Toast Mafia
+          <div class="footer-copyright blue-grey darken-3">
+            <div class="white-text center">© 2016 French Toast Mafia
             </div>
           </div>
 

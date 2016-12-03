@@ -4,7 +4,35 @@ Here is where you create all the functions that will do the routing for your app
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+
+
+ module.exports = function(app, passport) {
+  //locally login
+   router.get('/login', function (req, res) {
+    res.render('login', {message: req.flash('loginMessage')});
+  });
+
+  //process login form
+  router.post('/login', passport.authenticate('local-login', {
+    successRedirect : '/uprofile', //redirect to profile page
+    failureRedirect : '/signup', //redirect to signup if error
+    failureFlash : true //allow message
+  }));
+
+  //SignUp
+  router.get('/signup', function(req, res) {
+    res.render('signup', { message: req.flash('loginMessage') });
+  });
+
+  //process signup form
+  router.post('/signup', passport.authenticate('local-signup', {
+    successRedirect : '/uprofile', //redirect to profile page
+    failureRedirect : '/signup', //redirect back to signup if error
+    failureFlash : true //allow message
+    }));
+  };
+
 
 var sequelizeConnection = models.sequelize
 
@@ -186,6 +214,17 @@ router.get('/uprofile/:userId', function(req, res) {
 });
 
 
+// router.get('/uprofile', function(req, res) {
+//     console.log('user profile is requested');
+//     models.UserGoals.findAll({
+
+//     }).then(function(uprofile) {
+//         console.log(uprofile);
+//         var userObject = { uprofile: uprofile };
+//         res.render('uprofile', userObject);
+//     });
+// });
+
 //Add a goal per user
 router.get('/add-user-goal/:userId/:goalId', function(req, res) {
   console.log('Goal being added');
@@ -228,8 +267,10 @@ router.get('/signup', function(req, res) {
     res.render('signup', { data: 'test' }, { user: 2});
 });
 
-router.get('/contact', function(req, res) {
-    res.render('contact', { data: 'test' });
-});
+function isLoggedIn(req, res, next) {
+  if(req.isAuthenticated())
+    return next();
+  res.redirect('/index');
+}
 
 module.exports = router;
