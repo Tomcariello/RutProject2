@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 module.exports = function(app, passport) {
 //locally login
   router.get('/login', function (req, res) {
+    // render the page and pass in any flash data if it exists
     res.render('login', {message: req.flash('loginMessage')});
   });
 
@@ -270,6 +271,11 @@ router.post('/create-goal', function(req, res) {
 router.get('/signup', function(req, res) {
   console.log('*****************Sign Up Requested ****************');
   res.render('signup');
+});
+
+router.get('/login', function(req, res) {
+  console.log('*****************Login Requested ****************');
+  res.render('login');
 });
 
 function isLoggedIn(req, res, next) {
