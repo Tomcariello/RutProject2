@@ -3,7 +3,7 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
 
-      return queryInterface.bulkInsert('goals', [
+      return queryInterface.bulkInsert('Goals', [
       {
         goalname: 'Try a Maple Bacon Donut',
         imageURL: "http://4.bp.blogspot.com/-bFfDpXUUN1o/TbhOTvCYFZI/AAAAAAAABYk/4lZCAFq44PY/s640/IMG_8719.JPG",
