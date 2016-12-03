@@ -13,7 +13,7 @@ Businesses have similar opportunities to create profiles and browse, select, and
 
 ###Checkout our Screenshots
 
-![Alt text](public/ssimg1.jpg?raw=true "Optional Title")
+![Alt text](https://github.com/Tomcariello/RutProject2/blob/master/public/ssimg1.png?raw=true "Optional Title")
 
 Find presentation here: https://docs.google.com/presentation/d/1mueVKAcKJ49jRcFqX6RG1Hg9WD3E61_wGrvmbAkWDAg/edit#slide=id.gc6f90357f_0_5
 
