@@ -7,33 +7,35 @@ var models = require('../models');
 var bodyParser = require('body-parser');
 
 
-module.exports = function(app, passport) {
-//locally login
-  router.get('/login', function (req, res) {
-    // render the page and pass in any flash data if it exists
-    res.render('login', {message: req.flash('loginMessage')});
-  });
+// module.exports = function(app, passport) {
+// //locally login
+//   router.get('/login', function (req, res) {
+//     console.log('***** Login get route accessed *****');
+//     // render the page and pass in any flash data if it exists
+//     res.render('login', {message: req.flash('loginMessage')});
+//   });
 
-  //process login form
-  router.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/uprofile', //redirect to profile page
-    failureRedirect : '/signup', //redirect to signup if error
-    failureFlash : true //allow message
-  }));
+//   //process login form
+//   router.post('/login', passport.authenticate('local-login', {
+//     successRedirect : '/uprofile', //redirect to profile page
+//     failureRedirect : '/signup', //redirect to signup if error
+//     failureFlash : true //allow message
+//   }));
 
-  //SignUp
-  router.get('/signup', function(req, res) {
-    res.render('signup', { message: req.flash('loginMessage') });
-    res.render('signup', { data: 'test' }, { user: 2});
-  });
+//   //SignUp
+//   router.get('/signup', function(req, res) {
+//     console.log('***** Signup get route accessed *****');
+//     res.render('signup', { message: req.flash('loginMessage') });
+//     res.render('signup', { data: 'test' }, { user: 2});
+//   });
 
-  //process signup form
-  router.post('/signup', passport.authenticate('local-signup', {
-    successRedirect : '/uprofile', //redirect to profile page
-    failureRedirect : '/signup', //redirect back to signup if error
-    failureFlash : true //allow message
-    }));
-};
+//   //process signup form
+//   router.post('/signup', passport.authenticate('local-signup', {
+//     successRedirect : '/uprofile', //redirect to profile page
+//     failureRedirect : '/signup', //redirect back to signup if error
+//     failureFlash : true //allow message
+//     }));
+// };
 
 
 var sequelizeConnection = models.sequelize
@@ -105,7 +107,7 @@ models.BusinessUsers.findOne({ where: { id: 4 } })
 // =================================================================
 //Establish page routing
 router.get('/', function(req, res) {
-    res.redirect('/index');
+  res.redirect('/index');
 });
 
 router.get('/index', function(req, res) {
@@ -248,9 +250,41 @@ router.post('/create-goal', function(req, res) {
   })
 });
 
+//Load Signup Page
 router.get('/signup', function(req, res) {
-  console.log('*****************Sign Up Requested ****************');
   res.render('signup');
+});
+
+router.post('/usersignupcomplete', function(req, res) {
+  console.log('*****************User Sign Up Information Submitted ****************');
+  var first_name = req.body.first_name;
+  var last_name = req.body.last_name;
+  var zipcode = req.body.zipcode;
+  var email = req.body.email;
+  var password = req.body.password;
+
+    models.Users.create(
+    {
+      // the username
+      firstname: first_name, 
+      lastname: last_name,
+      email: email, 
+      password: password,
+      zipcode: zipcode
+    }
+  )
+  res.render('index');
+});
+
+router.post('/businesssignupcomplete', function(req, res) {
+  console.log('*****************Business Sign Up Information Submitted ****************');
+  var first_name = req.body.first_name;
+  var last_name = req.body.last_name;
+  var zipcode = req.body.zipcode;
+  var last_name = req.body.email;
+  var zipcode = req.body.password;
+  console.log(first_name);
+  res.render('index');
 });
 
 router.get('/login', function(req, res) {

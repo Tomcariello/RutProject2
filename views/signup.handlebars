@@ -1,6 +1,6 @@
 <h2>Sign up below!</h2>
 
-{{!-- <div class="container">
+<div class="container">
   <form action="#">
     <div class="row">
       <div class="container">
@@ -23,14 +23,17 @@
 
 
 <div class="container" id="signup_formP" >
-  <form class="col l12" action="/signup" method="POST">
+  <form class="col l12" action="/usersignupcomplete" method="POST">
     <div class="row">
       <div class="input-field col s7">
-        <input id="first_name" type="text" class="validate" name="firstName">
+        <input id="first_name" type="text" class="validate" name="first_name">
         <label for="first_name">First Name:</label>
       </div>
+    </div>
+
+    <div class="row">
       <div class="input-field col s7">
-        <input id="last_name" type="text" class="validate" name="lastName">
+        <input id="last_name" type="text" class="validate" name="last_name">
         <label for="last_name">Last Name:</label>
       </div>
     </div>
@@ -48,19 +51,18 @@
         <label for="email">Email:</label>
       </div>
     </div>
-
     <div class="row">
       <div class="input-field col s7">
         <input id="password" type="password" class="validate" name="password">
         <label for="password">Password</label>
-        <button class="btn waves-effect waves-light" type="submit" name="action" id="submitForm">Submit<i class="material-icons right">send</i></button>
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="submituserForm">Submit<i class="material-icons right">send</i></button>
       </div>
     </div>
   </form>
 </div>
 
 <div class="container" id="signup_formB" >
-  <form class="col l12">
+ <form class="col l12" action="/businesssignupcomplete" method="POST">
     <div class="row">
       <div class="input-field col s12">
         <input id="business" type="text" class="validate">
@@ -75,7 +77,6 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-<<<<<<< HEAD
           <input id="number" type="number" class="validate">
           <label for="number">Phone Number: </label>
         </div>
@@ -85,46 +86,8 @@
       <input id="password" type="password" class="validate">
       <label for="password">Password</label>
 
-      <button class="btn waves-effect waves-light" type="submit" name="action" id="submitForm">Submit<i class="material-icons right">send</i></button>
+      <button class="btn waves-effect waves-light" type="submit" name="action" id="submitbusinessForm">Submit<i class="material-icons right">send</i></button>
     </div>
   </div>
 </form>
 </div>
-
- --}}
-=======
-        <input id="email" type="text" class="validate">
-        <label for="email">Email:</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="number" type="number" class="validate">
-        <label for="number">Phone Number: </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="password" type="password" class="validate">
-        <label for="password">Password</label>
-        <button class="btn waves-effect waves-light" type="submit" name="action" id="submitForm">Submit<i class="material-icons right">send</i></button>
-      </div>
-    </div>
-  </form>
-</div>
-<script>
-$(document).on('click', function(){
-
-  $('#personal').click(function(){
-    $('#signup_formB').fadeOut(700);
-    $('#signup_formP').fadeIn(700);
-  });
-
-  $('#business').click(function(){
-    console.log('business was clicked');
-    $('#signup_formP').fadeOut(700);
-    $('#signup_formB').fadeIn(700);
-  });
-});
-</script>
->>>>>>> 29d282b86ec550c2176cacfb064c8da70d671c36
