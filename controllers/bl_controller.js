@@ -51,57 +51,17 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
 // Create sequelize associations in the table
 
-// Assign user 1 goal 1
-models.Users.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(1);
-    })
+// Assign users goals
+models.Users.findOne({ where: { id: 1 } }).then(function(user) {return user.addGoals(1); })
+models.Users.findOne({ where: { id: 2 } }).then(function(user) {return user.addGoals(2); })
+models.Users.findOne({ where: { id: 3 } }).then(function(user) {return user.addGoals(4); })
+models.Users.findOne({ where: { id: 4 } }).then(function(user) {return user.addGoals(3); })
 
-models.Users.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(2);
-    })
-
-models.Users.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(4);
-    })
-
-models.Users.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
-
-// =================================================================
-// Assign business 1 goal 1
-models.BusinessUsers.findOne({ where: { id: 1 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(1);
-    })
-
-models.BusinessUsers.findOne({ where: { id: 2 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(2);
-    })
-
-models.BusinessUsers.findOne({ where: { id: 3 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(business) {
-        return business.addGoals(4);
-    })
-
-models.BusinessUsers.findOne({ where: { id: 4 } })
-    // with .then, we can work with this an instance and add a goal
-    .then(function(user) {
-        return user.addGoals(3);
-    })
-
+// Assign businesses goals 
+models.BusinessUsers.findOne({ where: { id: 1 } }).then(function(business) { return business.addGoals(1); })
+models.BusinessUsers.findOne({ where: { id: 2 } }).then(function(business) { return business.addGoals(2); })
+models.BusinessUsers.findOne({ where: { id: 3 } }).then(function(business) { return business.addGoals(4); })
+models.BusinessUsers.findOne({ where: { id: 4 } }).then(function(user) { return user.addGoals(3); })
 
 
 // =================================================================
@@ -124,8 +84,6 @@ router.get('/browse', function (req, res) {
 })
 
 router.get('/browse/:userId', function (req, res) {
-  console.log('goals access requested');
-  console.log(req.params.userId);
   //Find all goals that are not already associated with the current user
 
   //look up user ID
@@ -158,6 +116,51 @@ router.get('/browse/:userId', function (req, res) {
       res.render('browseusergoals', goalObject);
     })
 });
+
+
+
+
+
+
+router.get('/browsebusiness/:userId', function (req, res) {
+  //look up user ID
+  models.BusinessUsers.findOne({where: {id: req.params.userId} })
+  .then(function(business){
+    //get business associated goals
+    return business.getGoals()
+  })
+.then(function(allBusinessGoals){
+
+    //get all goals and filter out allBusinessGoals
+    var goalsToExclude = [-1];
+
+    for (i = 0; i < allBusinessGoals.length; i++) {
+      goalsToExclude.push(allBusinessGoals[i].id)
+    } 
+    console.log("Goals to exclude are: " + goalsToExclude);
+
+    return models.Goals.findAll({
+      where: {
+        $not: [
+          { id: goalsToExclude },
+        ]
+      }
+    });
+  })
+    .then(function(unselectedGoals) {
+      //get all goals and exclude user associated goals
+      var goalObject = { goals: unselectedGoals};
+      res.render('browsebusinessgoals', goalObject);
+    })
+});
+
+
+
+
+
+
+
+
 
 router.get('/bprofile/:businessId', function(req, res) {
     console.log('business profile is requested');
@@ -224,6 +227,17 @@ router.get('/add-user-goal/:userId/:goalId', function(req, res) {
     })
 });
 
+//Add a goal per user
+router.get('/add-business-goal/:userId/:goalId', function(req, res) {
+  models.BusinessUsers.findOne({ where: { id: parseInt(req.params.userId) } })
+    // with .then, we can work with this instance and add a goal
+    .then(function(business) {
+        business.addGoals(parseInt(req.params.goalId));
+        var urlRedirect = '/browsebusiness/' + req.params.userId;
+        res.redirect(urlRedirect);
+    })
+});
+
 
 //Create a goal for the entire database & add to user
 router.post('/create-goal', function(req, res) {
@@ -283,12 +297,6 @@ router.post('/businesssignupcomplete', function(req, res) {
   var email = req.body.email;
   var website = req.body.website;
   var password = req.body.password;
-  console.log(req);
-  console.log(business_name);
-  console.log(zipcode);
-  console.log(email);
-  console.log(website);
-  console.log(password);
 
     models.BusinessUsers.create(
     {
@@ -300,7 +308,7 @@ router.post('/businesssignupcomplete', function(req, res) {
       zipcode: zipcode
     }
   )
-  res.render('index');
+  res.redirect('browsebusiness/5');
 });
 
 router.get('/login', function(req, res) {

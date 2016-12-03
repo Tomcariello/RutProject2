@@ -28,7 +28,7 @@ var session = require('express-session'); //session middleware
 
 var app = express();
 
-require('./config/passport')(passport); //passes passport for configuration
+// require('./config/passport')(passport); //passes passport for configuration
 
 
 
