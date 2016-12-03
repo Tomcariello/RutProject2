@@ -287,7 +287,7 @@ router.post('/usersignupcomplete', function(req, res) {
       zipcode: zipcode
     }
   )
-  res.render('index');
+  res.redirect('/browse/2');
 });
 
 router.post('/businesssignupcomplete', function(req, res) {
