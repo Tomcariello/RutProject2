@@ -198,7 +198,7 @@ router.get('/uprofile/:userId', function(req, res) {
       }
         // and user getAssociations
         return result.getGoals()
-          // we then pass the fandoms in a final callback
+
           .then(function(allGoals) {
 
             var goalObject = allGoals
