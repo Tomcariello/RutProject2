@@ -22,13 +22,10 @@ body {
   /*background-image: url("/main.jpg");*/
   background-size: cover;
   /*color: white;*/
-  font-family: Calibri;
+  font-family: Roboto, Calibri;
 }
 form{
   margin:30px;
-}
-.options{
-  border:none;
 }
 .imageicon {
   height: 200px;
