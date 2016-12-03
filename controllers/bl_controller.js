@@ -23,6 +23,7 @@ module.exports = function(app, passport) {
   //SignUp
   router.get('/signup', function(req, res) {
     res.render('signup', { message: req.flash('loginMessage') });
+    res.render('signup', { data: 'test' }, { user: 2});
   });
 
   //process signup form
@@ -247,7 +248,8 @@ router.post('/create-goal', function(req, res) {
 });
 
 router.get('/signup', function(req, res) {
-    res.render('signup', { data: 'test' }, { user: 2});
+  console.log('*****************Sign Up Requested ****************');
+  res.render('signup');
 });
 
 function isLoggedIn(req, res, next) {

@@ -1,8 +1,6 @@
 $(document).on('click', function(){
 
-  
-
-  $('#personal').click(function(){
+    $('#personal').click(function(){
 
     $('#signup_formB').fadeOut(700);
     $('#signup_formP').fadeIn(700);
