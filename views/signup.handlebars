@@ -1,105 +1,111 @@
 <h2>Sign up below!</h2>
 
-{{!-- <div class="container">
+<div class="container">
   <form action="#">
     <div class="row">
-    <div class="container">
-    <div class="input-field col s6">
-    <p>
-      <input class="with-gap" name="group1" type="radio" class="personal"  />
-      <label for="personal">Personal</label>
-    </p>
-    </div>
-    <div class="input-field col s6">
-    <p>
-      <input class="with-gap" name="group1" type="radio" class="business"  />
-      <label for="business">Business</label>
-    </p>
-    </div>
-    </div>
+      <div class="container">
+        <div class="input-field col s6">
+          <p>
+            <input class="with-gap personal" id="personal" type="radio"/>
+            <label for="personal">Personal</label>
+          </p>
+        </div>
+        <div class="input-field col s6">
+          <p>
+            <input class="with-gap business" id="business" type="radio"/>
+            <label for="business">Business</label>
+          </p>
+        </div>
+      </div>
     </div>
   </form>
 </div>
 
 
-<div class="container">
-  <div class="row" id="signup_formP" >
-    <form class="col l12" action="/signup" method="POST">
-
-        <div class="input-field col s7">
-          <input id="first_name" type="text" class="validate" name="firstName">
-          <label for="first_name">First Name:</label>
-        </div>
-        <div class="input-field col s7">
-          <input id="last_name" type="text" class="validate" name="lastName">
-          <label for="last_name">Last Name:</label>
-        </div>
-
-  <div class="row">
+<div class="container" id="signup_formP" >
+  <form class="col l12" action="/signup" method="POST">
+    <div class="row">
       <div class="input-field col s7">
-          <input id="zipcode" type="text" class="validate" name="zipcode">
-          <label for="zipcode">Zipcode:</label>
-        </div>
+        <input id="first_name" type="text" class="validate" name="firstName">
+        <label for="first_name">First Name:</label>
       </div>
-  <div class="row">
       <div class="input-field col s7">
-          <input id="email" type="email" class="validate" name="email">
-          <label for="email">Email:</label>
-        </div>
+        <input id="last_name" type="text" class="validate" name="lastName">
+        <label for="last_name">Last Name:</label>
       </div>
-  <div class="row">
-      <div class="input-field col s7">
-
-          <input id="password" type="password" class="validate" name="password">
-          <label for="password">Password</label>
-
-
-      <button class="btn waves-effect waves-light" type="submit" name="action" id="submitForm">Submit<i class="material-icons right">send</i></button>
-
-
-        </div>
-        </div>
-      </form>
     </div>
-  </div>
+
+    <div class="row">
+      <div class="input-field col s7">
+        <input id="zipcode" type="text" class="validate" name="zipcode">
+        <label for="zipcode">Zipcode:</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s7">
+        <input id="email" type="email" class="validate" name="email">
+        <label for="email">Email:</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s7">
+        <input id="password" type="password" class="validate" name="password">
+        <label for="password">Password</label>
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="submitForm">Submit<i class="material-icons right">send</i></button>
+      </div>
+    </div>
+  </form>
 </div>
 
-
-    <div class="row" id="signup_formB">
-    <form class="col l12">
-{{!--       <div class="row"> --}}
-        <div class="input-field col s12">
-          <input id="business" type="text" class="validate">
-          <label for="business">Business Name:</label>
-        </div>
-{{!--       </div> --}}
-  <div class="row">
+<div class="container" id="signup_formB" >
+  <form class="col l12">
+    <div class="row">
       <div class="input-field col s12">
-          <input id="zipcode" type="text" class="validate">
-          <label for="zipcode">Zipcode:</label>
-        </div>
+        <input id="business" type="text" class="validate">
+        <label for="business">Business Name:</label>
       </div>
-  <div class="row">
-      <div class="input-field col s12">
-          <input id="email" type="text" class="validate">
-          <label for="email">Email:</label>
-        </div>
-      </div>
-      <div class="row">
-      <div class="input-field col s12">
-          <input id="number" type="number" class="validate">
-          <label for="number">Phone Number: </label>
-        </div>
-        </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input id="password" type="password" class="validate">
-      <label for="password">Password</label>
-
-      <button class="btn waves-effect waves-light" type="submit" name="action" id="submitForm">Submit<i class="material-icons right">send</i></button>
     </div>
-  </div>
-</form>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="zipcode" type="text" class="validate">
+        <label for="zipcode">Zipcode:</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="text" class="validate">
+        <label for="email">Email:</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="number" type="number" class="validate">
+        <label for="number">Phone Number: </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" class="validate">
+        <label for="password">Password</label>
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="submitForm">Submit<i class="material-icons right">send</i></button>
+      </div>
+    </div>
+  </form>
 </div>
+<script>
+$(document).on('click', function(){
 
- --}}
+  $('#personal').click(function(){
+    $('#signup_formB').fadeOut(700);
+    $('#signup_formP').fadeIn(700);
+  });
+
+  $('#business').click(function(){
+    console.log('business was clicked');
+    $('#signup_formP').fadeOut(700);
+    $('#signup_formB').fadeIn(700);
+  });
+});
+</script>
