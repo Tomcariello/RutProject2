@@ -3,6 +3,18 @@ Here is where you set up your server file.
 express middleware.
 */
 
+var Sequelize = require('sequelize'),
+  connection;
+if (process.env.JAWSDB_URL){
+  connection = new Sequelize(process.env.JAWSDB_URL);
+} else{
+  connection = new Sequelize('bucketlist', 'root', 'password', {
+    host: 'localhost',
+    dialect: 'mysql',
+    port:'3306'
+  })
+}
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');

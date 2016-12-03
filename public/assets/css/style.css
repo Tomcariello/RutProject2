@@ -14,6 +14,7 @@ nav {
 h2{
   text-align: center;
 }
+
 body {
   display: flex;
   min-height: 100vh;
@@ -21,12 +22,11 @@ body {
   /*background-image: url("/main.jpg");*/
   background-size: cover;
   /*color: white;*/
-  font-family: Calibri;
+  font-family: Roboto, Calibri;
 }
 form{
   margin:30px;
 }
-
 .imageicon {
   height: 200px;
   width: 200px;
@@ -88,7 +88,9 @@ form{
   background: rgba(255, 255, 255, 0.3);
   margin-bottom: 50px;
 }
-
+#footer{
+  width: 100%;
+}
 /*=================================*/
 body {
   display: flex;
