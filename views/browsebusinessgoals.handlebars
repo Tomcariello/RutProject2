@@ -1,0 +1,79 @@
+<div class='row'>
+  <div class="col s9">
+    <h4>Click on any activity below to add your company information to help people accomplish their goals!</h4>
+
+    <hr>
+
+    <div class='row'>
+
+      {{#each goals}}
+      <div class="col s4">
+
+      {{!-- Replace '2' with current user id --}}
+      
+        <a href="../add-business-goal/3/{{this.id}}">
+
+          <div id={{this.id}} class='card'>
+            <div class="goalcard">
+              <img class="imageicon" src="{{this.imageURL}}" alt="{{this.goalname}}">
+            </div>
+            <div class="goaltitle">
+              {{this.goalname}}
+            </div>
+          </div>
+          <br>
+          <br>
+        </a>
+      </div>
+      {{/each}}
+
+
+    </div>
+  </div>
+
+  <div class="col s3">
+    <div class="sidebar">
+      <a href="../bprofile/3">
+        <button class="waves-effect waves-light btn">Go to profile</button>
+      </a>
+
+      {{!-- <form class="create-update-form" action="browse" method="POST"> --}}
+{{!--       <div class="form-group">
+        <input type="text" id="filterResult" name="filterResultString">
+      </div>
+      <p><button class="waves-effect waves-light btn">Add Filter</button></p> --}}
+
+      <a class="modal-trigger" href="#modal1">
+        <button class="waves-effect waves-light btn" id="addGoalButton">Add Goal</button>
+      </a>
+
+    </div>
+  </div>
+</div> 
+
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Add a new goal</h4>
+    <p>This goal will be visible to all users and you're company information will be connected.</p>
+  </div>
+
+
+  <div class="form-group">
+    <form action="/create-goal" method="POST">
+      Goalname:<input type="text" name="addGoalName"></input>
+      Image:<input type="text" name="addGoalURL"></input>
+
+      {{!-- Replace '2' with current user id --}}
+
+        <input type="hidden" name="userID" value=3></input>
+  
+
+  </div>
+
+  <div class="modal-footer">
+    <button id="Submit" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+    </form>
+  </div>
+</div>
+
